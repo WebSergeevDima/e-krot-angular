@@ -1,0 +1,223 @@
+
+<div class="example-container">
+
+
+  <mat-sidenav-container class="example-sidenav-container">
+    <mat-sidenav #snav>
+          eert
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+      <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+
+
+      <header class="header">
+        <div class="header__toolbar">
+          <div class="container header-box">
+
+
+<div>
+  <mat-icon>near_me</mat-icon>
+
+    <select class="header__top-select" data-select="city">
+      <option value="1" selected="selected">Беларусь</option>
+     <option value="2">Россия (Москва)</option>
+     <option value="3">Россия (СПб)</option>
+     <option value="4">Россия (Смоленск)</option>
+</select>
+
+
+
+
+<div class="header__top-select-right">
+  <mat-icon>attach_money</mat-icon>
+  <div class="header__top-select-wrapper">
+  <select data-select="rate" class="header__top-select">
+      <option value="1" selected="selected">USD</option>
+      <option value="2">RUB</option>
+      <option value="3">EUR</option>
+      <option value="4">BYN</option>
+      <option value="5">UAH</option>
+  </select>
+      <div class="header__top-select-loading">
+          <div class="cssload-container">
+              <div class="cssload-speeding-wheel"></div>
+              </div>
+      </div>
+  </div>
+ </div>
+
+
+</div>
+
+
+
+
+      <div>
+      </div>
+      
+      <div>
+        <div class="header-account">
+          <a href="/registration/" class="header-account__registration">Регистрация</a> | <span class="header-account__registration" data-toggle="modal" data-target="#loginModal">Вход</span>
+      </div>
+      </div>
+          
+    </div>
+      
+  </div>
+</header>
+
+<div class="logo">
+  <a [routerLink]="['/']" class="logo">
+    <img src="/assets/main/logo.png" alt="">
+  </a>
+  <div class="logo__description">удобный и быстрый инструмент оценки автомобиля</div>
+</div>
+
+
+
+
+
+      <router-outlet></router-outlet>
+
+
+
+
+
+
+
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
+
+
+
+<!--
+
+
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <button type="button" mat-button (click)="drawer.toggle()">
+      Закрыть
+    </button>
+    <p>Auto-resizing sidenav</p>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+
+    <button type="button" mat-button (click)="drawer.toggle()">
+      Меню
+    </button>
+
+
+
+<header class="header">
+  <div class="header__toolbar2">
+
+    <div class="container">
+
+      <div>
+        111</div>
+    <div>222
+    
+    </div>
+    
+    </div>
+
+  </div>
+</header>
+
+
+
+
+
+
+
+
+2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>2 <br>
+
+
+
+
+
+
+
+
+
+<div layout="column">
+  <div>
+  111
+  </div>
+  <div>
+    222
+  </div>
+  <div>
+    333
+  </div>
+
+
+  </div>
+
+<mat-toolbar>  
+  <mat-toolbar-row>
+    <span>First Row</span>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row>
+    <span>Second Row</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+
+
+<mat-grid-list cols = "4" rowHeight = "100px">
+  <mat-grid-tile 
+  [colspan] = "3"
+  [rowspan] = "1">1
+  </mat-grid-tile>
+  <mat-grid-tile 
+  [colspan] = "1"
+  [rowspan] = "2">2
+  </mat-grid-tile>
+  <mat-grid-tile 
+  [colspan] = "1"
+  [rowspan] = "1">3
+  </mat-grid-tile>
+  <mat-grid-tile 
+  [colspan] = "2"
+  [rowspan] = "1">4
+  </mat-grid-tile>
+</mat-grid-list>
+
+<header>
+
+  <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+
+  <button mat-icon-button color="accent" aria-label="Example icon button with a menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  
+  <br>
+  
+  
+  Шапка сайта</header>
+<p>main-layout works!</p>
+<router-outlet></router-outlet>
+
+  </div>
+
+</mat-drawer-container>
+-->
+
+<button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+
+
+
+
+
+
+
+

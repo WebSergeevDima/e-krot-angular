@@ -1,1 +1,198 @@
 /* You can add global styles to this file, and also import other style files */
+/*
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+*/
+
+
+//@import '~normalize.css';
+//@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+
+select:focus {
+  outline: none !important;
+  
+}
+option {
+  border: 0;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.header-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__toolbar {
+  background: rgb(76, 141, 255);
+  padding: 5px 0;
+  box-shadow: 0px -1px 9px rgb(0, 0, 0);
+  width: 100%;
+  position: fixed;
+  z-index: 5;
+  transition: .3s;
+  top: 0;
+}
+.header__svg {
+  width: 24px;
+  height: 24px;
+  fill: #fff;
+}
+/*
+.header__toolbar {
+  & .mat-form-field-appearance-legacy .mat-form-field-underline {
+    background: #fff;
+  }
+  & .mat-form-field-appearance-legacy .mat-form-field-subscript-wrapper {
+
+  }
+}
+*/
+
+.header {
+  &__top-select {
+    color: #4e4e4e;
+    border: 0;
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 14px;
+    margin: 0 20px 0 0;
+
+  }
+  &__top-select-right {
+    display: inline-block;
+  }
+  &__top-select-wrapper {
+    display: inline-block;
+    position: relative;
+  }
+
+  .mat-icon {
+    vertical-align: middle;
+    color: #fff;
+  }
+  /*
+  .mat-select-value-text {
+    color: #fff;
+  }
+  .mat-select-arrow {
+    color: #fff;
+  }
+  */
+
+}
+.logo {
+  text-align: center;
+  margin: 40px 0;
+
+  &__description {
+    font-size: 14px;
+    text-align: center;
+    color: #545454;
+    margin: 0 0 30px 0;
+  }
+}
+.logo-link {
+  display: inline-block;
+}
+
+.header-account {
+
+  color: #fff;
+  transition: 0.3s;
+  text-decoration: none;
+  font-size: 16px;
+
+  &__registration {
+    color: #fff;
+    transition: 0.3s;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+
+.home-auto-category {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  align-items: stretch;
+  justify-content: space-between;
+/*
+  &_bg {
+    background: url(/assets/main/home-auto-category-bg.png);
+    background-size: cover;
+  }
+  &_bg-filter {
+    background: rgba(255,255,255,.8);
+    padding: 40px 0;
+  }
+*/
+
+&__item {
+ 
+  position: relative;
+  text-decoration: none;
+  font-weight: 100;
+  display: block;
+  min-height: 100px;
+  margin-bottom: 5px;
+  /*border-radius: 6px;*/
+
+  &_1 {
+    min-height: 157px;
+    width: 100%;    
+    padding: 25px 300px 25px 25px;
+    background: #39d053;
+    margin-left: 30px;
+  }
+
+  &_2 {
+    width: 100%;    
+    padding: 25px 200px 25px 25px;
+    background: #ff874e;
+    margin-right: 5px;
+  }
+
+  &_3 {
+    width: 100%;    
+    padding: 25px 200px 25px 25px;
+    background: #b34eff;
+
+  }
+} 
+&__item-title {
+  font-size: 28px;
+  margin: 0 0 20px 0;
+  color: #fff;
+  text-transform: uppercase;
+  display: block;
+}
+&__item-description {
+  font-size: 16px;
+  color: #fff;
+  display: block;
+}
+&__item-icon {
+  position: absolute;
+  right: 20px;
+  color: #fff;
+  font-size: 40px;
+  bottom: 23px;
+}
+
+}

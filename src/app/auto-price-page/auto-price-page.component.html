@@ -1,0 +1,49 @@
+<section class="container">
+<h1 class="auto-price-page__h1">Внесите параметры автомобиля:</h1>
+
+<form [formGroup]="form" (ngSubmit)="submit()">
+
+  <mat-form-field>
+    <mat-label>Марка</mat-label>
+    <mat-select required formControlName="mark">
+      <mat-option>Выбрать</mat-option>
+      <mat-option *ngFor="let mark of marks" [value]="mark">
+        {{mark.name}}
+      </mat-option>
+    </mat-select>  
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Модель</mat-label>
+    <mat-select required formControlName="model">
+      <mat-option>Выбрать</mat-option>
+      <mat-option *ngFor="let model of models" [value]="model">
+        {{model.name}}
+      </mat-option>
+    </mat-select>  
+  </mat-form-field>
+
+
+  <mat-form-field>
+    <mat-label>Тип кузова</mat-label>
+    <mat-select required formControlName="bodyType">
+      <mat-option>Выбрать</mat-option>
+      <mat-option *ngFor="let type of bodyTypes" [value]="bodyTypes">
+        {{type.name}}
+      </mat-option>
+    </mat-select>  
+  </mat-form-field>
+
+
+
+
+
+  <button type="submit"></button>
+
+</form>
+
+
+
+
+
+</section>
