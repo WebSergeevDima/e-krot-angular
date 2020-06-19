@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormControl, Validators} from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AutoService } from '../shared/services/auto.service';
 
 @Component({
@@ -25,6 +25,7 @@ export class AutoMarketPageComponent implements OnInit {
   ngOnInit(): void {
 
     this.autoService.getMarks().subscribe(response => {
+      //console.log('Result', response)
       this.marks = response
     })
 
@@ -38,26 +39,26 @@ export class AutoMarketPageComponent implements OnInit {
   }
 
 
-  getModels(value, selectModels) { 
+  getModels(value, selectModels) {
 
     console.log('selectModels', selectModels)
     const markId = {
       id: value
-    }  
+    }
 
     this.modelsValue = undefined
     this.models = null
 
-    if(!markId['id']) {
+    if (!markId['id']) {
       return false
     }
-    
-    this.autoService.getModels(markId).subscribe(response => {    
+
+    this.autoService.getModels(markId).subscribe(response => {
       this.models = response
     })
 
 
-  }  
+  }
 
   submit() {
     const formControls = this.form.controls
@@ -65,15 +66,15 @@ export class AutoMarketPageComponent implements OnInit {
     //console.log(this.form.value)
 
     if (this.form.invalid) {
-     /* Object.keys(formControls)
-       .forEach(controlName => formControls[controlName].markAsTouched());     */  
-       return;
-      }
+      /* Object.keys(formControls)
+        .forEach(controlName => formControls[controlName].markAsTouched());     */
+      return;
+    }
 
-      this.autoService.getSearchMarket(this.form.value).subscribe(response => {     
-        this.result = response['data']
-        this.oldCars = response['data']['oldCars']
-      })
+    this.autoService.getSearchMarket(this.form.value).subscribe(response => {
+      this.result = response['data']
+      this.oldCars = response['data']['oldCars']
+    })
 
   }
 

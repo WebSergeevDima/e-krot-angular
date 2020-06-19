@@ -1,8 +1,8 @@
 <section class="container">
   <h1 class="auto-price-page__h1">Внесите параметры автомобиля:</h1>
-  
+
   <form [formGroup]="form" (ngSubmit)="submit()">
-  
+
     <mat-form-field>
       <mat-label>Марка</mat-label>
       <mat-select required formControlName="mark" (ngModelChange)="getModels($event, selectModels)">
@@ -10,9 +10,9 @@
         <mat-option *ngFor="let mark of marks" [value]="mark.id">
           {{mark.title}}
         </mat-option>
-      </mat-select>  
+      </mat-select>
     </mat-form-field>
-  
+
     <mat-form-field>
       <mat-label>Модель</mat-label>
       <mat-select #selectModels required formControlName="model" [(ngModel)]="modelsValue">
@@ -20,9 +20,9 @@
         <mat-option *ngFor="let model of models" [value]="model.id">
           {{model.title}}
         </mat-option>
-      </mat-select>  
+      </mat-select>
     </mat-form-field>
-  
+
     <mat-form-field>
       <mat-label>Год выпуска</mat-label>
       <mat-select required formControlName="year">
@@ -30,7 +30,7 @@
         <mat-option *ngFor="let year of years" [value]="year">
           {{year}}
         </mat-option>
-      </mat-select>  
+      </mat-select>
     </mat-form-field>
 
 
@@ -45,9 +45,14 @@
         <li>средняя <strong>{{result.priceAvg}}</strong> USD</li>
         <li>максимальная <strong>{{result.priceMax}}</strong> USD</li>
       </ul>
-      <div>Средний пробег по рынку для <strong>{{result.titleMark}} {{result.titleModel}}</strong> <strong>{{result.year}}</strong> года составляет <strong>{{result.millageAvg}}</strong> км</div>
-      <div>Количество объявлений о продаже <strong>{{result.titleMark}}</strong> <strong>{{result.titleModel}}</strong> на 14.06.2020 составляет <strong>{{result.priceAvg}}</strong> шт</div>
-      <div>Количество <strong>{{result.titleMark}}</strong> <strong>{{result.titleModel}}</strong> проданных за последние 6 месяцев составляет <strong>{{result.quantity}}</strong> шт:</div>  
+      <div>Средний пробег по рынку для <strong>{{result.titleMark}} {{result.titleModel}} {{result.year}}</strong> года
+        составляет <strong>{{result.millageAvg}}</strong> км</div>
+      <div>Количество объявлений о продаже <strong>{{result.titleMark}}</strong>
+        <strong>{{result.titleModel}}</strong> на 14.06.2020 составляет <strong>{{result.quantity}}</strong>
+        шт</div>
+      <div>Количество <strong>{{result.titleMark}}</strong> <strong>{{result.titleModel}}</strong>
+        проданных за последние 6 месяцев составляет <strong>{{result.oldCarsQuantity}}</strong>
+        шт:</div>
 
 
     </section>
@@ -66,26 +71,25 @@
 
             </mat-panel-description>
           </mat-expansion-panel-header>
-      
-          <div *ngFor="let car of oldCars">
-            <strong>{{result.titleMark}} {{result.titleModel}}</strong> <strong>{{car.year}}</strong> г. с пробегом <strong>{{car.millage}}</strong> км за <strong>{{car.price}}</strong> USD
-          </div>
-      
-       
-        </mat-expansion-panel>
-      </mat-accordion>      
-    </section>
-  
-  
-  
-    <button mat-flat-button color="primary" type="submit">анализировать</button>
-  
 
-  
+          <div *ngFor="let car of oldCars">
+            <strong>{{result.titleMark}} {{result.titleModel}}</strong> <strong>{{car.year}}</strong>
+            г. с пробегом <strong>{{car.millage}}</strong> км за <strong>{{car.price}}</strong>
+            USD
+          </div>
+
+
+        </mat-expansion-panel>
+      </mat-accordion>
+    </section>
+
+
+
+    <button mat-flat-button color="primary" type="submit">анализировать</button>
   </form>
-  
-  
-  
-  
-  
-  </section>
+
+
+
+
+
+</section>
