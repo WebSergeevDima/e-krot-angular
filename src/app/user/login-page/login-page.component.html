@@ -1,0 +1,22 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <h2>Войти в личный кабинет</h2>
+  
+  
+  <mat-form-field>
+    <mat-label>Введите Email</mat-label>
+    <input matInput type="email" formControlName="email">
+  </mat-form-field>
+  
+  
+  <mat-form-field>
+    <mat-label>Введите пароль</mat-label>
+    <input matInput type="password" formControlName="password">
+  </mat-form-field>
+  
+  
+  <button mat-flat-button color="primary" type="submit">Войти</button>
+  
+  </form>
+  
+  
+  

@@ -9,10 +9,12 @@ import { MainLayoutComponent } from './shared/components/main-layout/main-layout
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { MaterialModule } from './shared/modules/material/material.module';
 import { AutoPricePageComponent } from './auto-price-page/auto-price-page.component';
 import { AutoMarketPageComponent } from './auto-market-page/auto-market-page.component';
-import { HttpClientModule } from '@angular/common/http';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { AutoService } from './shared/services/auto.service';
+import { SharedModule } from './shared/shared.module';
+import { AuthService } from './shared/services/auth.service';
 
 @NgModule({
   declarations: [
@@ -22,18 +24,20 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     HomePageComponent,
     AutoPricePageComponent,
-    AutoMarketPageComponent
+    AutoMarketPageComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SharedModule
   ],
-  providers: [],
+  providers: [
+    AutoService,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

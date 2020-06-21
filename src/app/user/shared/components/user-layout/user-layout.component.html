@@ -46,7 +46,8 @@
       
       <div>
         <div class="header-account">
-          <a href="/registration/" class="header-account__registration">Регистрация</a> | <a [routerLink]="['/login']" class="header-account__registration">Вход</a>
+          <a href="/registration/" class="header-account__registration">Регистрация</a> | <a [routerLink]="['/user/login']" class="header-account__registration">Вход</a> <div class="header-account__registration" (click)="logout()">Выход</div>
+          <a [routerLink]="['/user/panel']" class="header-account__registration">Панель</a>
       </div>
       </div>
           
@@ -54,3 +55,9 @@
       
   </div>
 </header>
+
+
+
+
+<p>user-layout works!</p>
+<router-outlet></router-outlet>
