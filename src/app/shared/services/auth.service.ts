@@ -4,18 +4,18 @@ import { map, tap } from 'rxjs/operators';
 import { BASE_URL } from 'src/app/api-config';
 import { User, Token } from '../interfaces';
 
-@Injectable ()
+@Injectable()
 
 export class AuthService {
 
   constructor(
     private http: HttpClient
-  ) {}
+  ) { }
 
   get token(): string {
     const expDate = new Date(localStorage.getItem('token-exp'))
 
-    if(new Date > expDate) {
+    if (new Date > expDate) {
       this.logout()
       return null
     }
@@ -25,11 +25,11 @@ export class AuthService {
   }
 
   private setToket(response: Token) {
-    
+
     console.log(response)
 
-    if(response) {
-      const expDate = new Date(new Date().getTime() + 3600 * 1000)
+    if (response) {
+      const expDate = new Date(new Date().getTime() + 55555000) // 5 second for use accaunt
       localStorage.setItem('token', response.idToken)
       localStorage.setItem('token-exp', expDate.toString())
     } else {
@@ -37,10 +37,11 @@ export class AuthService {
     }
 
   }
-    
+
   login(user: User) {
-    return this.http.post(`${BASE_URL}/auth/getToken/`, JSON.stringify(user)).pipe(
-      tap(this.setToket)
+    return this.http.post(`${BASE_URL}/auth/login/`, JSON.stringify(user)).pipe(
+      tap(this.setToket),
+      tap(this.setRefreshToket)
     )
     /*
     .pipe(
@@ -53,12 +54,49 @@ export class AuthService {
 
   }
 
+  verifyToken(): boolean {
+
+    const token = localStorage.getItem('accessToken')
+
+    if (token) {
+      /*
+            return this.http.post(`${BASE_URL}/auth/verify/`, JSON.stringify(token)).pipe(
+              map(response => {
+                console.log('VERIFY SERVER', response)
+                return response
+              })
+              // tap(this.setToket),
+              // tap(this.setRefreshToket)
+            )
+      */
+      return true
+    }
+
+
+    console.log('token', token);
+    return false
+
+  }
+
+  setRefreshToket(response) {
+    localStorage.setItem('refreshToken', response.refreshToken)
+  }
+
   logout() {
     this.setToket(null)
   }
 
   isAuthentificated(): boolean {
-    return !! this.token
+
+    const veryfay = this.verifyToken();
+
+    if (!veryfay) {
+      return veryfay
+    }
+
+    console.log('veryfay', veryfay)
+
+    return !!this.token
   }
 
 
