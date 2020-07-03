@@ -8,6 +8,9 @@ import { User, Token } from '../interfaces';
 
 export class AuthService {
 
+  tokenValid: boolean
+  testResult: any
+
   constructor(
     private http: HttpClient
   ) { }
@@ -41,7 +44,8 @@ export class AuthService {
   login(user: User) {
     return this.http.post(`${BASE_URL}/auth/login/`, JSON.stringify(user)).pipe(
       tap(this.setToket),
-      tap(this.setRefreshToket)
+      tap(this.setRefreshToken),
+      tap(this.setAccessToken)
     )
     /*
     .pipe(
@@ -54,13 +58,13 @@ export class AuthService {
 
   }
 
-  verifyToken(): boolean {
+  validateToken() {
 
-    const token = localStorage.getItem('accessToken')
+    const accessToken = localStorage.getItem('accessToken')
 
-    if (token) {
+    if (accessToken) {
       /*
-            return this.http.post(`${BASE_URL}/auth/verify/`, JSON.stringify(token)).pipe(
+            return this.http.post(`${BASE_URL}/auth/verify/`, JSON.stringify(accessToken)).pipe(
               map(response => {
                 console.log('VERIFY SERVER', response)
                 return response
@@ -69,17 +73,34 @@ export class AuthService {
               // tap(this.setRefreshToket)
             )
       */
-      return true
+
+      const validate = this.http.post(`${BASE_URL}/auth/validate_token/`, JSON.stringify({ accessToken: accessToken })).pipe(
+        map(response => {
+          this.testResult = response
+          return response['validateToken']
+        })
+      ).subscribe(response => {
+        this.tokenValid = response
+        console.log(response)
+      })
+
+      console.log('tokenValid', this.tokenValid)
+
+      return false
     }
 
 
-    console.log('token', token);
+    console.log('accessToken not have in LS', accessToken);
     return false
 
   }
 
-  setRefreshToket(response) {
+  setRefreshToken(response) {
     localStorage.setItem('refreshToken', response.refreshToken)
+  }
+
+  setAccessToken(response) {
+    localStorage.setItem('accessToken', response.accessToken)
   }
 
   logout() {
@@ -88,15 +109,11 @@ export class AuthService {
 
   isAuthentificated(): boolean {
 
-    const veryfay = this.verifyToken();
-
-    if (!veryfay) {
-      return veryfay
-    }
-
-    console.log('veryfay', veryfay)
-
-    return !!this.token
+    this.validateToken();
+    console.log('DEBUG', this.testResult)
+    console.log('tokenValid', this.tokenValid)
+    //return !!this.token && !!this.tokenValid
+    return true
   }
 
 
