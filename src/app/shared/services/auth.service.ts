@@ -9,7 +9,6 @@ import { User, Token } from '../interfaces';
 export class AuthService {
 
   tokenValid: boolean
-  testResult: any
 
   constructor(
     private http: HttpClient
@@ -28,17 +27,17 @@ export class AuthService {
   }
 
   private setToket(response: Token) {
-
-    console.log(response)
-
-    if (response) {
-      const expDate = new Date(new Date().getTime() + 55555000) // 5 second for use accaunt
-      localStorage.setItem('token', response.idToken)
-      localStorage.setItem('token-exp', expDate.toString())
-    } else {
-      localStorage.clear()
-    }
-
+    /*
+        console.log(response)
+    
+        if (response) {
+          const expDate = new Date(new Date().getTime() + 55555000) // 5 second for use accaunt
+          localStorage.setItem('token', response.idToken)
+          localStorage.setItem('token-exp', expDate.toString())
+        } else {
+          localStorage.clear()
+        }
+    */
   }
 
   login(user: User) {
@@ -63,28 +62,14 @@ export class AuthService {
     const accessToken = localStorage.getItem('accessToken')
 
     if (accessToken) {
-      /*
-            return this.http.post(`${BASE_URL}/auth/verify/`, JSON.stringify(accessToken)).pipe(
-              map(response => {
-                console.log('VERIFY SERVER', response)
-                return response
-              })
-              // tap(this.setToket),
-              // tap(this.setRefreshToket)
-            )
-      */
 
       const validate = this.http.post(`${BASE_URL}/auth/validate_token/`, JSON.stringify({ accessToken: accessToken })).pipe(
         map(response => {
-          this.testResult = response
           return response['validateToken']
         })
       ).subscribe(response => {
         this.tokenValid = response
-        console.log(response)
       })
-
-      console.log('tokenValid', this.tokenValid)
 
       return false
     }
@@ -110,8 +95,7 @@ export class AuthService {
   isAuthentificated(): boolean {
 
     this.validateToken();
-    console.log('DEBUG', this.testResult)
-    console.log('tokenValid', this.tokenValid)
+    console.log('tokenValid:::', this.tokenValid)
     //return !!this.token && !!this.tokenValid
     return true
   }
