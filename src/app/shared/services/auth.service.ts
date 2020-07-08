@@ -38,6 +38,10 @@ export class AuthService {
           localStorage.clear()
         }
     */
+
+    if (!response) {
+      localStorage.clear()
+    }
   }
 
   login(user: User) {
@@ -57,7 +61,7 @@ export class AuthService {
 
   }
 
-  validateToken() {
+  validateToken(): boolean {
 
     const accessToken = localStorage.getItem('accessToken')
 
@@ -65,10 +69,16 @@ export class AuthService {
 
       const validate = this.http.post(`${BASE_URL}/auth/validate_token/`, JSON.stringify({ accessToken: accessToken })).pipe(
         map(response => {
-          return response['validateToken']
+          return response
         })
       ).subscribe(response => {
-        this.tokenValid = response
+        console.log('DEBUG: ', response)
+
+        if (!response['validateToken']) {
+          this.updateToken();
+        }
+
+        this.tokenValid = response['validateToken']
       })
 
       return false
@@ -76,6 +86,32 @@ export class AuthService {
 
 
     console.log('accessToken not have in LS', accessToken);
+    return false
+
+  }
+
+
+  updateToken(): boolean {
+
+    const refreshToken = localStorage.getItem('refreshToken')
+
+    if (refreshToken) {
+
+      const validate = this.http.post(`${BASE_URL}/auth/update_token/`, JSON.stringify({ refreshToken: refreshToken })).pipe(
+        map(response => {
+          return response
+        })
+      ).subscribe(response => {
+        console.log('DEBUG refreshToken: ', response)
+
+        //this.tokenValid = response['validateToken']
+      })
+
+      return false
+    }
+
+
+    console.log('refreshToken not have in LS', refreshToken);
     return false
 
   }
