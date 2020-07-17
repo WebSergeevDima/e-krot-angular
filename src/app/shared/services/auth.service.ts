@@ -15,19 +15,6 @@ export class AuthService {
     private http: HttpClient
   ) { }
 
-
-  // get token(): string {
-  //   const expDate = new Date(localStorage.getItem('token-exp'))
-
-  //   if (new Date > expDate) {
-  //     this.logout()
-  //     return null
-  //   }
-
-  //   return localStorage.getItem('token')
-  // }
-
-
   private setToket() {
     //localStorage.clear()
     console.log('remove refreshToken')
@@ -65,7 +52,12 @@ export class AuthService {
 
     if (accessToken) {
       console.log('DEBUG NUM 3')
-      this.postValidateToken(accessToken).subscribe(response => {
+      this.postValidateToken(accessToken).pipe(
+        map(r => {
+          console.log('r', r['validateToken'])
+          this.tokenValid = r['validateToken']
+        })
+      ).subscribe(response => {
 
         console.log('DEBUG: ', response)
 
@@ -75,9 +67,11 @@ export class AuthService {
         }
 
         console.log('DEBUG NUM 4')
-        return response['validateToken']
+        return this.tokenValid
 
       })
+
+      return this.tokenValid
 
     } else {
       console.log('DEBUG NUM 6')
@@ -126,10 +120,12 @@ export class AuthService {
     this.setToket()
   }
 
-  isAuthentificated(): boolean {
+  isAuthentificated() {
     console.log('DEBUG NUM 1')
     //console.log('PAGE VALID', this.validateToken())
-    return this.validateToken()
+    return this.http.post(`${BASE_URL}/auth/validate_token/`, JSON.stringify({ accessToken: localStorage.getItem('accessToken') }))
+
+    //this.validateToken()
     //return true
   }
 
