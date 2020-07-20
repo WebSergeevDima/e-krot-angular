@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 
 export class AuthService {
 
-  private tokenValid: boolean
+  private tokenUpdateValid: Observable<boolean>
 
   constructor(
     private http: HttpClient
@@ -45,44 +45,44 @@ export class AuthService {
     }))
 
   }
-
-  validateToken() {
-    console.log('DEBUG NUM 2')
-    const accessToken = localStorage.getItem('accessToken')
-
-    if (accessToken) {
-      console.log('DEBUG NUM 3')
-      this.postValidateToken(accessToken).pipe(
-        map(r => {
-          console.log('r', r['validateToken'])
-          this.tokenValid = r['validateToken']
+  /*
+    validateToken() {
+      console.log('DEBUG NUM 2')
+      const accessToken = localStorage.getItem('accessToken')
+  
+      if (accessToken) {
+        console.log('DEBUG NUM 3')
+        this.postValidateToken(accessToken).pipe(
+          map(r => {
+            console.log('r', r['validateToken'])
+            this.tokenValid = r['validateToken']
+          })
+        ).subscribe(response => {
+  
+          console.log('DEBUG: ', response)
+  
+          if (!response['validateToken']) {
+            console.log('DEBUG NUM 5')
+            return this.updateToken();
+          }
+  
+          console.log('DEBUG NUM 4')
+          return this.tokenValid
+  
         })
-      ).subscribe(response => {
-
-        console.log('DEBUG: ', response)
-
-        if (!response['validateToken']) {
-          console.log('DEBUG NUM 5')
-          return this.updateToken();
-        }
-
-        console.log('DEBUG NUM 4')
+  
         return this.tokenValid
-
-      })
-
-      return this.tokenValid
-
-    } else {
-      console.log('DEBUG NUM 6')
-      console.log('accessToken not have in LS', accessToken);
-      //this.tokenValid = false
-      return false
-
+  
+      } else {
+        console.log('DEBUG NUM 6')
+        console.log('accessToken not have in LS', accessToken);
+        //this.tokenValid = false
+        return false
+  
+      }
+  
     }
-
-  }
-
+  */
 
   updateToken() {
 
@@ -120,13 +120,103 @@ export class AuthService {
     this.setToket()
   }
 
-  isAuthentificated() {
-    console.log('DEBUG NUM 1')
-    //console.log('PAGE VALID', this.validateToken())
-    return this.http.post(`${BASE_URL}/auth/validate_token/`, JSON.stringify({ accessToken: localStorage.getItem('accessToken') }))
 
-    //this.validateToken()
-    //return true
+
+
+
+
+
+  updateAccessToken() {
+
+    console.log('DEBUG NUM 31')
+
+    return this.http.post(`${BASE_URL}/auth/update_token/`, JSON.stringify({
+      refreshToken: localStorage.getItem('refreshToken'),
+      accessToken: localStorage.getItem('accessToken')
+    })).pipe(
+      map(resolve => {
+        console.log('DEBUG NUM 32')
+        console.log('resolve2', resolve)
+        console.log('r', resolve['validateToken'])
+        return resolve['validateToken']
+      })
+    )
+
+
+    /*
+    .pipe(
+      map(resolve => {
+        console.log('DEBUG NUM 32')
+        console.log('resolve', resolve)
+        return resolve['validateToken']
+      }),
+      tap(this.setAccessToken)
+    )
+    */
+
+    /*.subscribe(response => {
+  console.log('DEBUG refreshToken: ', response)
+  return response['validateToken']
+  })*/
+
+
+    /*
+    const accessToken = localStorage.getItem('accessToken')
+    const refreshToken = localStorage.getItem('refreshToken')
+
+    if (accessToken && refreshToken) {
+
+      this.postUpdateToken(accessToken, refreshToken).pipe(
+        tap(this.setAccessToken)
+      ).subscribe(response => {
+
+        console.log('DEBUG refreshToken: ', response)
+        return response['validateToken']
+
+      })
+
+      return false
+    }
+
+    console.log('Отсуствует RefreshToken', refreshToken);
+    return false
+*/
+  }
+
+
+
+  updateTokenAccess() {
+
+    console.log('updateTokenAccess START')
+
+    return this.http.post(`${BASE_URL}/auth/update_token/`, JSON.stringify({
+      refreshToken: localStorage.getItem('refreshToken'),
+      accessToken: localStorage.getItem('accessToken')
+    })).pipe(
+      map(resolve => {
+        console.log('DEBUG NUM 32')
+        console.log('resolve2', resolve)
+        console.log('r', resolve['validateToken'])
+        return resolve['validateToken']
+      })
+    )
+
+  }
+
+  isAuthentificated() {
+
+    console.log('isAuthentificated satrt')
+
+    return this.http.post(`${BASE_URL}/auth/validate_token/`, JSON.stringify({ accessToken: localStorage.getItem('accessToken') })).pipe(
+      map(resolve => {
+        console.log('isAuthentificated: ', resolve)
+        console.log('isAuthentificated true/false: ', resolve['validateToken'])
+
+        return resolve['validateToken']
+      })
+    )
+
+
   }
 
 }

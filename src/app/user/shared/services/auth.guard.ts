@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscriber } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { map } from 'rxjs/internal/operators/map';
 
@@ -8,7 +8,7 @@ import { map } from 'rxjs/internal/operators/map';
 
 export class AuthGuard implements CanActivate {
 
-  private tokenValid
+  private tokenValid: Observable<boolean>
 
   constructor(
     private auth: AuthService,
@@ -21,16 +21,7 @@ export class AuthGuard implements CanActivate {
   ): Observable<boolean> | Promise<boolean> | boolean {
 
 
-
-
-
-
-    this.tokenValid = this.auth.isAuthentificated().pipe(
-      map(r => {
-        console.log('r', r['validateToken'])
-        return r['validateToken']
-      })
-    )
+    this.tokenValid = this.auth.isAuthentificated()
 
     if (!this.tokenValid) {
       console.log('GUARD FALSE: ')
@@ -41,8 +32,6 @@ export class AuthGuard implements CanActivate {
         }
       })
     }
-
-
 
     return this.tokenValid
     /*.subscribe(response => {
