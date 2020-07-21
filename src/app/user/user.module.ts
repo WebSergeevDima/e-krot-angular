@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AuthService } from '../shared/services/auth.service';
 import { PanelComponent } from './panel/panel.component';
 import { AuthGuard } from './shared/services/auth.guard';
+import { RolesService } from '../shared/services/roles.service';
 
 @NgModule({
   declarations: [
@@ -17,24 +18,27 @@ import { AuthGuard } from './shared/services/auth.guard';
   imports: [
     CommonModule,
     RouterModule.forChild([
-      {path: '', component: UserLayoutComponent, children: [
-        {
-          path: '', redirectTo: 'login', pathMatch: 'full'
-        },
-        {
-          path: 'login', component: LoginPageComponent
-        },
-        {
-          path: 'panel', component: PanelComponent, canActivate: [AuthGuard]
-        }
-      ]}
+      {
+        path: '', component: UserLayoutComponent, children: [
+          {
+            path: '', redirectTo: 'login', pathMatch: 'full'
+          },
+          {
+            path: 'login', component: LoginPageComponent
+          },
+          {
+            path: 'panel', component: PanelComponent, canActivate: [AuthGuard]
+          }
+        ]
+      }
     ]),
     SharedModule
   ],
   exports: [RouterModule],
   providers: [
     AuthService,
-    AuthGuard
+    AuthGuard,
+    RolesService
   ]
 })
 

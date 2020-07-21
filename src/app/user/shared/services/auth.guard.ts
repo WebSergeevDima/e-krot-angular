@@ -1,8 +1,7 @@
 import { Injectable } from "@angular/core";
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { Observable, Subscriber } from 'rxjs';
+import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { map } from 'rxjs/internal/operators/map';
 
 @Injectable()
 
@@ -20,7 +19,6 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
 
-
     this.tokenValid = this.auth.isAuthentificated()
 
     if (!this.tokenValid) {
@@ -33,7 +31,10 @@ export class AuthGuard implements CanActivate {
       })
     }
 
+
+
     return this.tokenValid
+
     /*.subscribe(response => {
 
       console.log('DEBUG: ', response)
@@ -70,5 +71,6 @@ export class AuthGuard implements CanActivate {
 
 
   }
+
 
 }

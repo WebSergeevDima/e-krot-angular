@@ -60,10 +60,17 @@
 
             <div>
               <div class="header-account">
-                <a [routerLink]="['/registration']" class="header-account__registration">Регистрация</a> | <a
-                  [routerLink]="['/user/login']" class="header-account__registration">Вход</a>
-                <div class="header-account__registration" (click)="logout()">Выход</div>
-                <a [routerLink]="['/user/panel']" class="header-account__registration">Панель</a>
+
+                <div *ngIf="getRole('user'); else headerAccountNoAuth">
+                  <div class="header-account__registration" (click)="logout()">Выход</div>
+                  <a [routerLink]="['/user/panel']" class="header-account__registration">Панель</a>
+                </div>
+
+                <ng-template #headerAccountNoAuth>
+                  <a [routerLink]="['/registration']" class="header-account__registration">Регистрация</a> | <a
+                    [routerLink]="['/user/login']" class="header-account__registration">Вход</a>
+                </ng-template>
+
               </div>
             </div>
 
@@ -82,7 +89,7 @@
 
 
 
-
+      <div (click)="whatRole()">Узнать роль</div>
       <router-outlet></router-outlet>
 
 

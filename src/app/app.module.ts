@@ -18,6 +18,7 @@ import { AutoMarketPageComponent } from './auto-market-page/auto-market-page.com
 import { LoginPageComponent } from './login-page/login-page.component';
 import { SharedModule } from './shared/shared.module';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
+import { RolesService } from './shared/services/roles.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { RegistrationPageComponent } from './registration-page/registration-page
   providers: [
     AutoService,
     AuthService,
-    RegistrationService
+    RegistrationService,
+    RolesService
   ],
   bootstrap: [AppComponent]
 })
