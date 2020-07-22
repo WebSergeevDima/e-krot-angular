@@ -8,12 +8,14 @@ import { AuthService } from '../shared/services/auth.service';
 import { PanelComponent } from './panel/panel.component';
 import { AuthGuard } from './shared/services/auth.guard';
 import { RolesService } from '../shared/services/roles.service';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     UserLayoutComponent,
     LoginPageComponent,
-    PanelComponent
+    PanelComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,

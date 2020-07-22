@@ -6,7 +6,7 @@ import { MaterialModule } from './modules/material/material.module';
 const modules = [
   ReactiveFormsModule,
   HttpClientModule,
-  MaterialModule,
+  MaterialModule
 ]
 @NgModule({
   imports: modules,

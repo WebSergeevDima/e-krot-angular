@@ -12,72 +12,8 @@
         <mat-icon>menu</mat-icon>
       </button>
 
+      <app-header></app-header>
 
-      <header class="header">
-        <div class="header__toolbar">
-          <div class="container header-box">
-
-
-            <div>
-              <mat-icon>near_me</mat-icon>
-
-              <select class="header__top-select" data-select="city">
-                <option value="1" selected="selected">Беларусь</option>
-                <option value="2">Россия (Москва)</option>
-                <option value="3">Россия (СПб)</option>
-                <option value="4">Россия (Смоленск)</option>
-              </select>
-
-
-
-
-              <div class="header__top-select-right">
-                <mat-icon>attach_money</mat-icon>
-                <div class="header__top-select-wrapper">
-                  <select data-select="rate" class="header__top-select">
-                    <option value="1" selected="selected">USD</option>
-                    <option value="2">RUB</option>
-                    <option value="3">EUR</option>
-                    <option value="4">BYN</option>
-                    <option value="5">UAH</option>
-                  </select>
-                  <div class="header__top-select-loading">
-                    <div class="cssload-container">
-                      <div class="cssload-speeding-wheel"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-            </div>
-
-
-
-
-            <div>
-            </div>
-
-            <div>
-              <div class="header-account">
-
-                <div *ngIf="getRole('user'); else headerAccountNoAuth">
-                  <div class="header-account__registration" (click)="logout()">Выход</div>
-                  <a [routerLink]="['/user/panel']" class="header-account__registration">Панель</a>
-                </div>
-
-                <ng-template #headerAccountNoAuth>
-                  <a [routerLink]="['/registration']" class="header-account__registration">Регистрация</a> | <a
-                    [routerLink]="['/user/login']" class="header-account__registration">Вход</a>
-                </ng-template>
-
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </header>
 
       <div class="logo">
         <a [routerLink]="['/']" class="logo">

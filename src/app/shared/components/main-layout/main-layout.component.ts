@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { RolesService } from '../../services/roles.service';
 
 @Component({
@@ -24,7 +24,7 @@ export class MainLayoutComponent implements OnInit {
 
   ngOnInit(): void {
 
-
+    this.roles.getRole()
 
     /*
         const axi = this.http.get('https://jsonplaceholder.typicode.com/todos/1').subscribe(resolve => {

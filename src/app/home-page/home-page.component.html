@@ -1,41 +1,58 @@
+<div *ngIf="getRole('user')">
+
+  Информация для зарегистрированного польователя!!!!!!!!!!!!!
+</div>
+
+
+<div *ngIf="getRole('user')">
+
+  Информация для зарегистрированного польователя!!!!!!!!!!!!!
+</div>
+
+
+<div *ngIf="getRole('admin')">
+  Информация для зарегистрированного польователя!!!!!!!!!!!!!
+</div>
+
+
 
 <section class="home-auto-category_bg">
   <div class="home-auto-category_bg-filter">
-<div class="home-auto-category">
-  <div class="home-auto-category__item"><img src="/assets/main/car-and-boy.png" alt=""></div>
-  <a [routerLink]="['/auto']" class="home-auto-category__item home-auto-category__item_1">
-    <span class="home-auto-category__item-title">Оценить автомобиль</span>
-    <span class="home-auto-category__item-description">
-      
-  Необходимо узнать стоимость конкретного автомобиля при его покупке или продаже?
-  
-    </span>
-    <mat-icon class="home-auto-category__item-icon">keyboard_arrow_right</mat-icon>
-  </a>
-</div>
-<div class="home-auto-category">
-  <a [routerLink]="['/auto-market']" class="home-auto-category__item home-auto-category__item_2">
-    <span class="home-auto-category__item-title">Анализ рынка</span>
-    <span class="home-auto-category__item-description">
-      
-  Необходимо узнать диапазон цен по марке, модели и году выпуска автомобиля? 
-  
-    </span>
-    <mat-icon class="home-auto-category__item-icon">keyboard_arrow_right</mat-icon>
+    <div class="home-auto-category">
+      <div class="home-auto-category__item"><img src="/assets/main/car-and-boy.png" alt=""></div>
+      <a [routerLink]="['/auto']" class="home-auto-category__item home-auto-category__item_1">
+        <span class="home-auto-category__item-title">Оценить автомобиль</span>
+        <span class="home-auto-category__item-description">
 
-  </a>  
-  <a href="#" class="home-auto-category__item home-auto-category__item_3">
-    <span class="home-auto-category__item-title">Подбор по параметрам</span>
-    <span class="home-auto-category__item-description">
-      
-    Необходимо подобрать автомобиль исходя из вашего бюджета или других параметров?
-    
-    </span>
-    <mat-icon class="home-auto-category__item-icon">keyboard_arrow_right</mat-icon>
+          Необходимо узнать стоимость конкретного автомобиля при его покупке или продаже?
 
-  </a>
-</div>
-</div>
+        </span>
+        <mat-icon class="home-auto-category__item-icon">keyboard_arrow_right</mat-icon>
+      </a>
+    </div>
+    <div class="home-auto-category">
+      <a [routerLink]="['/auto-market']" class="home-auto-category__item home-auto-category__item_2">
+        <span class="home-auto-category__item-title">Анализ рынка</span>
+        <span class="home-auto-category__item-description">
+
+          Необходимо узнать диапазон цен по марке, модели и году выпуска автомобиля?
+
+        </span>
+        <mat-icon class="home-auto-category__item-icon">keyboard_arrow_right</mat-icon>
+
+      </a>
+      <a href="#" class="home-auto-category__item home-auto-category__item_3">
+        <span class="home-auto-category__item-title">Подбор по параметрам</span>
+        <span class="home-auto-category__item-description">
+
+          Необходимо подобрать автомобиль исходя из вашего бюджета или других параметров?
+
+        </span>
+        <mat-icon class="home-auto-category__item-icon">keyboard_arrow_right</mat-icon>
+
+      </a>
+    </div>
+  </div>
 </section>
 
 
@@ -48,22 +65,23 @@
 
 
 <div class="main-p">
-  <div class="main-h2"><strong>Электронный Крот</strong> – удобный и быстрый инструмент оценки стоимости Вашего автомобиля:</div>
+  <div class="main-h2"><strong>Электронный Крот</strong> – удобный и быстрый инструмент оценки стоимости Вашего
+    автомобиля:</div>
 
-<ul class="main-advantages__lists">
+  <ul class="main-advantages__lists">
     <li>развернутый список параметров автомобиля для точной оценки</li>
     <li>учет дополнительно установленного оборудования</li>
     <li>«умный» анализ автомобилей-аналогов</li>
     <li>детальный отчет и полезная статистика</li>
     <li>экспертиза качества оценки специалистами данного профиля</li>
     <li>время оценки не превышает 30 секунд</li>
-</ul>
+  </ul>
 </div>
 
 
 
 <div class="main-p">
- <h2 class="main-h2">Один из важных результатов оценки в ЭКрот:</h2>
+  <h2 class="main-h2">Один из важных результатов оценки в ЭКрот:</h2>
 
   Возможность понять и обосновать стоимость автомобиля при его
   покупке или продаже,<br>страховании, передаче в залог или trade-in.
@@ -71,7 +89,7 @@
   <br>
   <br>
   <br>
- <strong>Обратите внимание:</strong> оценка автомобилей в аварийном или разукомплектованном<br>
- состоянии не производится.
+  <strong>Обратите внимание:</strong> оценка автомобилей в аварийном или разукомплектованном<br>
+  состоянии не производится.
 
-    </div>
+</div>

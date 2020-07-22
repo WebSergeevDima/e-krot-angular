@@ -31,10 +31,6 @@ export class AuthGuard implements CanActivate {
       })
     }
 
-
-
-
-
     return this.tokenValid
 
     /*.subscribe(response => {

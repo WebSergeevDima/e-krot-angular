@@ -20,9 +20,7 @@ export class UserLayoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.roles.getRole()
-
   }
 
 
@@ -35,10 +33,5 @@ export class UserLayoutComponent implements OnInit {
     return this.roles.validateRole(role)
   }
 
-  logout() {
-    console.log('Click Logout()')
-    this.authService.logout()
-    this.router.navigate(['/user', 'login'])
-  }
 
 }

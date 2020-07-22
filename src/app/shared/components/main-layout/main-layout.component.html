@@ -12,63 +12,7 @@
         <mat-icon>menu</mat-icon>
       </button>
 
-
-      <header class="header">
-        <div class="header__toolbar">
-          <div class="container header-box">
-
-
-            <div>
-              <mat-icon>near_me</mat-icon>
-
-              <select class="header__top-select" data-select="city">
-                <option value="1" selected="selected">Беларусь</option>
-                <option value="2">Россия (Москва)</option>
-                <option value="3">Россия (СПб)</option>
-                <option value="4">Россия (Смоленск)</option>
-              </select>
-
-
-
-
-              <div class="header__top-select-right">
-                <mat-icon>attach_money</mat-icon>
-                <div class="header__top-select-wrapper">
-                  <select data-select="rate" class="header__top-select">
-                    <option value="1" selected="selected">USD</option>
-                    <option value="2">RUB</option>
-                    <option value="3">EUR</option>
-                    <option value="4">BYN</option>
-                    <option value="5">UAH</option>
-                  </select>
-                  <div class="header__top-select-loading">
-                    <div class="cssload-container">
-                      <div class="cssload-speeding-wheel"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-            </div>
-
-
-
-
-            <div>
-            </div>
-
-            <div>
-              <div class="header-account">
-                <a href="/registration/" class="header-account__registration">Регистрация</a> | <a
-                  [routerLink]="['user/login']" class="header-account__registration">Вход</a>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-      </header>
+      <app-header></app-header>
 
       <div class="logo">
         <a [routerLink]="['/']" class="logo">
