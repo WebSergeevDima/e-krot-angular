@@ -25,6 +25,9 @@ export class AuthService {
       tap(this.setAccessToken),
       map(response => {
         this.roles.setRole(response['role'])
+        if (!response['role'] && !response['accessToken']) {
+          alert('=(')
+        }
         this.router.navigate(['/user/panel'])
         return response['accessToken']
       })

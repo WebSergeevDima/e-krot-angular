@@ -14,7 +14,6 @@
 
       <app-header></app-header>
 
-
       <div class="logo">
         <a [routerLink]="['/']" class="logo">
           <img src="/assets/main/logo.png" alt="">
@@ -23,22 +22,13 @@
       </div>
 
 
-
-
       <div (click)="whatRole()">Узнать роль</div>
       <router-outlet></router-outlet>
-
-
-
-
-
-
 
 
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
-
 
 <button mat-icon-button (click)="snav.toggle()">
   <mat-icon>menu</mat-icon>

@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './modules/material/material.module';
+import { MatDialog } from '@angular/material/dialog';
 
 const modules = [
   ReactiveFormsModule,
   HttpClientModule,
-  MaterialModule
+  MaterialModule,
 ]
 @NgModule({
   imports: modules,
