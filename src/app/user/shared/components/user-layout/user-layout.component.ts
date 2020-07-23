@@ -15,7 +15,9 @@ export class UserLayoutComponent implements OnInit {
   ) { }
 
   openDialog() {
-    this.dialog.open(DialogMessageNoLoging);
+    this.dialog.open(DialogMessageNoLoging, {
+      panelClass: 'dialog_white'
+    });
   }
 
   ngOnInit(): void {
@@ -35,4 +37,7 @@ export class UserLayoutComponent implements OnInit {
 @Component({
   templateUrl: '../../../../shared/dialog/message-no-login/message-no-login.html'
 })
-export class DialogMessageNoLoging { }
+export class DialogMessageNoLoging {
+  title = 'Внимание!'
+  content = 'Введите корректные данные!'
+}

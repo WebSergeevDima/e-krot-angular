@@ -21,7 +21,9 @@ export class MainLayoutComponent implements OnInit {
     return this.roles.validateRole(role)
   }
   openDialog() {
-    this.dialog.open(DialogMessageNoLoging);
+    this.dialog.open(DialogMessageNoLoging, {
+      panelClass: 'dialog_white'
+    });
   }
 
   ngOnInit(): void {
@@ -70,4 +72,7 @@ export class MainLayoutComponent implements OnInit {
 @Component({
   templateUrl: '../../dialog/message-no-login/message-no-login.html'
 })
-export class DialogMessageNoLoging { }
+export class DialogMessageNoLoging {
+  title = 'Внимание!'
+  content = 'Введите корректные данные!'
+}
