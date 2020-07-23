@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/shared/services/auth.service';
-import { Router } from '@angular/router';
 import { RolesService } from 'src/app/shared/services/roles.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-layout',
@@ -11,19 +10,17 @@ import { RolesService } from 'src/app/shared/services/roles.service';
 export class UserLayoutComponent implements OnInit {
 
   constructor(
-    private router: Router,
-    private authService: AuthService,
-    private roles: RolesService
-  ) {
+    private roles: RolesService,
+    public dialog: MatDialog
+  ) { }
 
-
+  openDialog() {
+    this.dialog.open(DialogMessageNoLoging);
   }
 
   ngOnInit(): void {
     this.roles.getRole()
   }
-
-
 
   whatRole() {
     this.roles.whatRole()
@@ -33,5 +30,9 @@ export class UserLayoutComponent implements OnInit {
     return this.roles.validateRole(role)
   }
 
-
 }
+
+@Component({
+  templateUrl: '../../../../shared/dialog/message-no-login/message-no-login.html'
+})
+export class DialogMessageNoLoging { }

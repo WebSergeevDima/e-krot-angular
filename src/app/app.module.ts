@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { AutoService } from './shared/services/auto.service';
 import { AuthService } from './shared/services/auth.service';
@@ -9,7 +9,7 @@ import { RegistrationService } from './registration-page/services/registration.s
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
+import { MainLayoutComponent, DialogMessageNoLoging } from './shared/components/main-layout/main-layout.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -30,7 +30,8 @@ import { RolesService } from './shared/services/roles.service';
     AutoPricePageComponent,
     AutoMarketPageComponent,
     LoginPageComponent,
-    RegistrationPageComponent
+    RegistrationPageComponent,
+    DialogMessageNoLoging
   ],
   imports: [
     BrowserModule,

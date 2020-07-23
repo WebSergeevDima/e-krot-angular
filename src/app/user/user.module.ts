@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { UserLayoutComponent } from './shared/components/user-layout/user-layout.component';
+import { UserLayoutComponent, DialogMessageNoLoging } from './shared/components/user-layout/user-layout.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { SharedModule } from '../shared/shared.module';
 import { AuthService } from '../shared/services/auth.service';
@@ -15,7 +15,8 @@ import { HeaderComponent } from './header/header.component';
     UserLayoutComponent,
     LoginPageComponent,
     PanelComponent,
-    HeaderComponent
+    HeaderComponent,
+    DialogMessageNoLoging
   ],
   imports: [
     CommonModule,

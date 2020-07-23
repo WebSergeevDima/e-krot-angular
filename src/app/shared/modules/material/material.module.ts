@@ -8,17 +8,19 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const matModules = [
-  MatButtonModule, 
-  MatIconModule, 
+  MatButtonModule,
+  MatIconModule,
   MatGridListModule,
   MatToolbarModule,
   MatSidenavModule,
   MatSelectModule,
   MatExpansionModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+  MatDialogModule
 ]
 
 @NgModule({

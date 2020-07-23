@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RolesService } from '../../services/roles.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-main-layout',
@@ -8,10 +9,9 @@ import { RolesService } from '../../services/roles.service';
 })
 export class MainLayoutComponent implements OnInit {
 
-  selected: String = '2'
-
   constructor(
-    private roles: RolesService
+    private roles: RolesService,
+    public dialog: MatDialog
   ) { }
   whatRole() {
     this.roles.whatRole()
@@ -20,7 +20,9 @@ export class MainLayoutComponent implements OnInit {
   getRole(role: string): boolean {
     return this.roles.validateRole(role)
   }
-
+  openDialog() {
+    this.dialog.open(DialogMessageNoLoging);
+  }
 
   ngOnInit(): void {
 
@@ -61,8 +63,11 @@ export class MainLayoutComponent implements OnInit {
    });
  
  */
-
-
   }
 
 }
+
+@Component({
+  templateUrl: '../../dialog/message-no-login/message-no-login.html'
+})
+export class DialogMessageNoLoging { }
