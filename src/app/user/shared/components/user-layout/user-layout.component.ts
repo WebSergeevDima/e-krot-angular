@@ -38,6 +38,6 @@ export class UserLayoutComponent implements OnInit {
   templateUrl: '../../../../shared/dialog/message-no-login/message-no-login.html'
 })
 export class DialogMessageNoLoging {
-  title = 'Внимание!'
-  content = 'Введите корректные данные!'
+  title = 'Внимание!!'
+  content = 'Введите корректные данные!!'
 }
