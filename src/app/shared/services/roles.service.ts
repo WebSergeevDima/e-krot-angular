@@ -33,18 +33,25 @@ export class RolesService {
 
     }
 
-    validateRole(role: string): boolean {
+    validatePrivilege(privilege: string): boolean {
 
         const rols = {
-            4: 'user',
-            5: 'admin'
+            2: {
+                name: 'admin',
+                privilege: [
+                    'auth',
+                    'vip'
+                ]
+            },
+            4: {
+                name: 'user',
+                privilege: [
+                    'auth'
+                ]
+            }
         }
 
-        if (rols[this.role] === role) {
-            return true
-        }
-
-        return false
+        return !!rols[this.role] ? rols[this.role].privilege.indexOf(privilege) != -1 : false
 
     }
 

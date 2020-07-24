@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent implements OnInit {
-  
+
   form: FormGroup
 
   constructor(
@@ -30,21 +30,26 @@ export class LoginPageComponent implements OnInit {
 
     //console.log(this.form)
 
-    if(this.form.invalid) {
+    if (this.form.invalid) {
       return
     }
 
     const user: User = {
       email: this.form.value.email,
-      password: this.form.value.password 
+      password: this.form.value.password
     }
 
     //console.log(user)
 
     this.authService.login(user).subscribe(response => {
-   
+      console.log('response', response)
+      if (!response) {
+        alert('!!')
+      }
     })
 
   }
 
 }
+
+

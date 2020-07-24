@@ -15,8 +15,8 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getRole(role: string): boolean {
-    return this.roles.validateRole(role)
+  privilege(privelege: string): boolean {
+    return this.roles.validatePrivilege(privelege)
   }
 
 }

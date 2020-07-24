@@ -46,7 +46,7 @@
             <div>
                 <div class="header-account">
 
-                    <div *ngIf="getRole('user'); else headerAccountNoAuth">
+                    <div *ngIf="privilege('auth'); else headerAccountNoAuth">
                         <span class="header-account__registration" (click)="logout()">Выход</span> |
                         <a [routerLink]="['/user/panel']" class="header-account__registration">Панель</a>
                     </div>

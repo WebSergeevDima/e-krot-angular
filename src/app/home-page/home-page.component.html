@@ -1,17 +1,21 @@
-<div *ngIf="getRole('user')">
+<div *ngIf="privilege('auth')">
 
   Информация для зарегистрированного польователя!!!!!!!!!!!!!
 </div>
 
 
-<div *ngIf="getRole('user')">
+<div *ngIf="privilege('auth')">
 
   Информация для зарегистрированного польователя!!!!!!!!!!!!!
 </div>
 
-
-<div *ngIf="getRole('admin')">
+<div *ngIf="privilege('auth')">
   Информация для зарегистрированного польователя!!!!!!!!!!!!!
+</div>
+
+
+<div *ngIf="privilege('vip')">
+  ВЫ ВОШЛИ КАК АДМИНИСТРАТОР!!!!
 </div>
 
 

@@ -28,8 +28,8 @@ export class UserLayoutComponent implements OnInit {
     this.roles.whatRole()
   }
 
-  getRole(role: string): boolean {
-    return this.roles.validateRole(role)
+  privilege(privelege: string): boolean {
+    return this.roles.validatePrivilege(privelege)
   }
 
 }

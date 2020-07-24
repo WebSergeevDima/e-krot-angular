@@ -17,9 +17,10 @@ export class MainLayoutComponent implements OnInit {
     this.roles.whatRole()
   }
 
-  getRole(role: string): boolean {
-    return this.roles.validateRole(role)
+  privilege(privelege: string): boolean {
+    return this.roles.validatePrivilege(privelege)
   }
+
   openDialog() {
     this.dialog.open(DialogMessageNoLoging, {
       panelClass: 'dialog_white'
