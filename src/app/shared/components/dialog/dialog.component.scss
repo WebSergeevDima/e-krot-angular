@@ -1,0 +1,20 @@
+.dialog {
+
+  &_red {
+    
+    & .mat-dialog-title {
+      color: red;
+    }
+
+    & .buttons {
+      margin: 20px 0 0 0;
+    }
+    & .buttons_right {
+      text-align: right;
+    }    
+   
+  }
+
+
+}
+

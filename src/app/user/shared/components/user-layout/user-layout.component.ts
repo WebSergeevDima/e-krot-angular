@@ -16,21 +16,8 @@ export class UserLayoutComponent implements OnInit {
     public dialog: MatDialog
   ) { }
 
-  openDialog() {
-    this.dialog.open(DialogComponent);
-  }
-
   ngOnInit(): void {
     this.roles.getRole()
-    console.log('11111111111')
-
-    this.dialog.open(DialogComponent, {
-      data: {
-        title: 'Внимание!!'
-      }
-    });
-
-    console.log('222222222222')
   }
 
   whatRole() {
@@ -42,12 +29,3 @@ export class UserLayoutComponent implements OnInit {
   }
 
 }
-
-/*
-@Component({
-  templateUrl: '/src/app/shared/dialog/message-no-login/message-no-login.html'
-})
-export class DialogMessageNoLoging {
-  title = 'Внимание!!'
-  content = 'Введите корректные данные!!'
-}*/

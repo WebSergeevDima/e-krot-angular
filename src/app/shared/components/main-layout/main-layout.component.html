@@ -1,4 +1,21 @@
-<div class="example-container">
+<app-header></app-header>
+
+<div class="logo">
+  <a [routerLink]="['/']" class="logo">
+    <img src="/assets/main/logo.png" alt="">
+  </a>
+  <div class="logo__description">удобный и быстрый инструмент оценки автомобиля</div>
+</div>
+     
+<div *ngIf="privilege('vip')" (click)="whatRole()">Узнать роль</div>
+
+<router-outlet></router-outlet>
+
+
+
+<!--
+
+  <div class="example-container">
 
 
   <mat-sidenav-container class="example-sidenav-container">
@@ -21,15 +38,19 @@
         <div class="logo__description">удобный и быстрый инструмент оценки автомобиля</div>
       </div>
 
+     
+      <div *ngIf="privilege('vip')" (click)="whatRole()">Узнать роль</div>
 
-      <button mat-button (click)="openDialog()">Launch dialog</button>
-      <div (click)="whatRole()">Узнать роль</div>
       <router-outlet></router-outlet>
 
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
 
+<button mat-icon-button (click)="snav.toggle()">
+  <mat-icon>menu</mat-icon>
+</button>
+-->
 
 
 
@@ -150,6 +171,3 @@
 </mat-drawer-container>
 -->
 
-<button mat-icon-button (click)="snav.toggle()">
-  <mat-icon>menu</mat-icon>
-</button>

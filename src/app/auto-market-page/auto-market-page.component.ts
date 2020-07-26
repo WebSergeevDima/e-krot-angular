@@ -9,6 +9,9 @@ import { AutoService } from '../shared/services/auto.service';
 })
 export class AutoMarketPageComponent implements OnInit {
 
+  loadingModels = false
+  loadingBtn = false
+
   form: FormGroup
 
   years = this.autoService.generateArrayOfYears()
@@ -24,6 +27,7 @@ export class AutoMarketPageComponent implements OnInit {
 
   ngOnInit(): void {
 
+
     this.autoService.getMarks().subscribe(response => {
       //console.log('Result', response)
       this.marks = response
@@ -36,11 +40,13 @@ export class AutoMarketPageComponent implements OnInit {
       year: new FormControl('', Validators.required)
     })
 
+
+
   }
 
 
   getModels(value, selectModels) {
-
+    this.loadingModels = true
     console.log('selectModels', selectModels)
     const markId = {
       id: value
@@ -55,25 +61,25 @@ export class AutoMarketPageComponent implements OnInit {
 
     this.autoService.getModels(markId).subscribe(response => {
       this.models = response
+      this.loadingModels = false
     })
 
 
   }
 
   submit() {
-    const formControls = this.form.controls
-    //console.log('formControls:', formControls)
-    //console.log(this.form.value)
+   // const formControls = this.form.controls
 
     if (this.form.invalid) {
-      /* Object.keys(formControls)
-        .forEach(controlName => formControls[controlName].markAsTouched());     */
       return;
     }
+    this.loadingBtn = true
+   
 
     this.autoService.getSearchMarket(this.form.value).subscribe(response => {
       this.result = response['data']
       this.oldCars = response['data']['oldCars']
+      this.loadingBtn = false    
     })
 
   }

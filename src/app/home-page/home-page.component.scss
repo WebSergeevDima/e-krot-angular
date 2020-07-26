@@ -1,0 +1,21 @@
+.home-expansion-panel {
+  &__header {
+    min-height: 70px;
+    height: auto !important;
+    padding: 15px 24px;
+  }
+
+  &__title {
+    flex-direction: column;
+
+  }
+  &__title-h1 {
+    font-size: 24px;
+    margin: 0 0 5px 0;
+
+  }
+  &__title-h2 {    
+    font-size: 12px;
+  }
+ 
+}

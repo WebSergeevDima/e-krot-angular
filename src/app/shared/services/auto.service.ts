@@ -24,25 +24,6 @@ export class AutoService {
 
   getMarks() {
     return this.http.get(`${BASE_URL}/auto/getMarks/`)
-    /*
-    .pipe(
-      map(r => {
-        console.log(r)
-      })
-    )
-    */
-    /*
-    .pipe(
-      map((result: []) => {
-        return result.map(result => {
-          return {
-            id: result['id'],
-            title: result['title']
-          }
-        })
-      })
-    )
-    */
   }
 
   getModels(obj) {

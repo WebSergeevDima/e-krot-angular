@@ -1,5 +1,7 @@
-<div mat-dialog-title>{{data.title}}</div>
-<div mat-dialog-content>22222222222222222</div>
-<div *ngIf="!!btnClose" mat-dialog-actions>
-    <button mat-button mat-dialog-close>{{ btnClose }}</button>
+<div [class]="styles">
+    <div *ngIf="!!title" mat-dialog-title>{{ title }}</div>
+    <div *ngIf="!!content" mat-dialog-content>{{ content }}</div>
+    <div *ngIf="!!btnClose">
+        <div class="buttons buttons_right"><button mat-dialog-close mat-flat-button color="warn">{{ btnClose }}</button></div> 
+    </div>
 </div>

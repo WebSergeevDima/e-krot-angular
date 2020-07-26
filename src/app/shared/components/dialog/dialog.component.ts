@@ -8,13 +8,19 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class DialogComponent implements OnInit {
 
+  public title: string
+  public content: string
   public btnClose: string
+  public styles: string
 
   constructor(
     public dialogRef: MatDialogRef<DialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
 
-    this.btnClose = data.btnClose
+      this.title = data.title
+      this.content = data.content
+      this.btnClose = data.btnClose
+      this.styles = data.styles
 
   }
 

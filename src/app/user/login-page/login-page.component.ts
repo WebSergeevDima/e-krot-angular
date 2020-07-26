@@ -48,11 +48,11 @@ export class LoginPageComponent implements OnInit {
       console.log('response', response)
       if (!response) {
         this.dialog.open(DialogComponent, {
-          panelClass: 'dialog_white',
           data: {
-            title: 'СОРРИ',
-            content: '((((()))))',
-            btnClose: ''
+            title: 'Ошибка входа в личный кабинет',
+            content: 'Пожалуйста, проверьте корректность вводимых данных',
+            btnClose: 'Закрыть',
+            styles: 'dialog_red'
           }
         });
       }
