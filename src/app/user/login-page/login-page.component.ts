@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from 'src/app/shared/interfaces';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from 'src/app/shared/components/dialog/dialog.component';
 
 
 @Component({
@@ -14,7 +16,8 @@ export class LoginPageComponent implements OnInit {
   form: FormGroup
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -44,12 +47,17 @@ export class LoginPageComponent implements OnInit {
     this.authService.login(user).subscribe(response => {
       console.log('response', response)
       if (!response) {
-        alert('!!')
+        this.dialog.open(DialogComponent, {
+          panelClass: 'dialog_white',
+          data: {
+            title: 'СОРРИ',
+            content: '((((()))))',
+            btnClose: ''
+          }
+        });
       }
     })
 
   }
 
 }
-
-

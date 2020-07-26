@@ -9,7 +9,7 @@ import { RegistrationService } from './registration-page/services/registration.s
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MainLayoutComponent, DialogMessageNoLoging } from './shared/components/main-layout/main-layout.component';
+import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -30,8 +30,7 @@ import { RolesService } from './shared/services/roles.service';
     AutoPricePageComponent,
     AutoMarketPageComponent,
     LoginPageComponent,
-    RegistrationPageComponent,
-    DialogMessageNoLoging
+    RegistrationPageComponent
   ],
   imports: [
     BrowserModule,

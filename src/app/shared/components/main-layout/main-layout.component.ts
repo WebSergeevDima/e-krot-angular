@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RolesService } from '../../services/roles.service';
 import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-main-layout',
@@ -22,8 +23,13 @@ export class MainLayoutComponent implements OnInit {
   }
 
   openDialog() {
-    this.dialog.open(DialogMessageNoLoging, {
-      panelClass: 'dialog_white'
+    this.dialog.open(DialogComponent, {
+      panelClass: 'dialog_white',
+      data: {
+        title: 'Внимание!!',
+        content: 'Введите корректные данные!!',
+        btnClose: 'Закрыть'
+      }
     });
   }
 
@@ -68,12 +74,4 @@ export class MainLayoutComponent implements OnInit {
  */
   }
 
-}
-
-@Component({
-  templateUrl: '../../dialog/message-no-login/message-no-login.html'
-})
-export class DialogMessageNoLoging {
-  title = 'Внимание!'
-  content = 'Введите корректные данные!'
 }

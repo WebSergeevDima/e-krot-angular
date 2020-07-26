@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { RolesService } from 'src/app/shared/services/roles.service';
 import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from 'src/app/shared/components/dialog/dialog.component';
+
 
 @Component({
   selector: 'app-user-layout',
@@ -15,13 +17,20 @@ export class UserLayoutComponent implements OnInit {
   ) { }
 
   openDialog() {
-    this.dialog.open(DialogMessageNoLoging, {
-      panelClass: 'dialog_white'
-    });
+    this.dialog.open(DialogComponent);
   }
 
   ngOnInit(): void {
     this.roles.getRole()
+    console.log('11111111111')
+
+    this.dialog.open(DialogComponent, {
+      data: {
+        title: 'Внимание!!'
+      }
+    });
+
+    console.log('222222222222')
   }
 
   whatRole() {
@@ -34,10 +43,11 @@ export class UserLayoutComponent implements OnInit {
 
 }
 
+/*
 @Component({
-  templateUrl: '../../../../shared/dialog/message-no-login/message-no-login.html'
+  templateUrl: '/src/app/shared/dialog/message-no-login/message-no-login.html'
 })
 export class DialogMessageNoLoging {
   title = 'Внимание!!'
   content = 'Введите корректные данные!!'
-}
+}*/
