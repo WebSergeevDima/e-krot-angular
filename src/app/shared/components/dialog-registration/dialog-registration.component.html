@@ -1,0 +1,4 @@
+<div [class]="styles">
+    <div *ngIf="!!title" mat-dialog-title>{{ title }}</div>   
+    <div class="buttons buttons_center"><a mat-dialog-close mat-flat-button color="primary" [routerLink]="['/user/login']">Авторизоваться</a></div> 
+</div>

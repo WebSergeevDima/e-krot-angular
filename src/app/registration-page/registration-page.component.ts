@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RegistrationService } from './services/registration.service';
 import { NewUser } from '../shared/interfaces';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from 'src/app/shared/components/dialog/dialog.component';
+import { DialogRegistrationComponent } from 'src/app/shared/components/dialog-registration/dialog-registration.component';
 
 @Component({
   selector: 'app-registration-page',
@@ -13,7 +16,8 @@ export class RegistrationPageComponent implements OnInit {
   formRegistration: FormGroup
 
   constructor(
-    private registrationService: RegistrationService
+    private registrationService: RegistrationService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -43,6 +47,32 @@ export class RegistrationPageComponent implements OnInit {
 
     this.registrationService.createUser(user).subscribe(response => {
 
+      if(response) {
+
+        this.dialog.open(DialogRegistrationComponent, {
+          data: {
+            title: 'Вы успешно зарегистрировались!',
+            content: 'Теперь можете авторизоваться',
+            styles: 'dialog_blue'
+          }
+        });
+  
+
+      } else {
+      
+        
+        this.dialog.open(DialogComponent, {
+          data: {
+            title: 'Возникла ошибка при регистрации',
+            content: 'Возможно такой пользователь уже существует',
+            btnClose: 'Закрыть',
+            btnClosePosition: 'center',
+            styles: 'dialog_red'
+          }
+        });
+
+      }
+ 
     })
 
 

@@ -1,9 +1,10 @@
 .dialog {
 
-  &_red {
+
+  &_blue {
     
     & .mat-dialog-title {
-      color: red;
+      color: #673ab7;
     }
 
     & .buttons {
@@ -12,7 +13,7 @@
     & .buttons_right {
       text-align: right;
     }    
-    & .buttons_left{
+    & .buttons_left {
       text-align: left;
     }    
     & .buttons_center {

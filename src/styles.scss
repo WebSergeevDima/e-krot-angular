@@ -196,3 +196,55 @@ mat-spinner {
   grid-row-gap: 10px;
 }
 
+.form-footer__btns {
+  text-align: center;
+}
+.result {
+
+  &__old-cars {
+    margin: 0 0 20px 0;
+  }
+  &__more-details {
+    margin: 0 0 20px 0;
+  }
+
+}
+
+.flex-middle {
+  &_colum-2 {
+    display: flex;
+    width: auto;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+
+    @media only screen and (max-width: 700px) {
+      flex-direction: column;
+    }
+
+    & .flex-item {
+        margin: 0 10px;
+        width: 100%;
+
+    }
+  }
+
+  &_colum-3 {
+    display: flex;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    
+    @media only screen and (max-width: 700px) {
+      flex-direction: column;
+    }
+
+    & .flex-item {
+        margin: 0 10px;
+        width: 100%;
+    }
+  }
+  
+}
+

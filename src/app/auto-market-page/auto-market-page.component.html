@@ -40,7 +40,7 @@
   </section>
 
 
-    <section *ngIf="result">
+    <section *ngIf="result" class="result__more-details">
 
       <h2>Результат анализа рынка:</h2>
       <div>Стоимость данной модели на рынке:</div>
@@ -51,10 +51,9 @@
       </ul>
       <div>Средний пробег по рынку для <strong>{{result.titleMark}} {{result.titleModel}} {{result.year}}</strong> года
         составляет <strong>{{result.millageAvg}}</strong> км</div>
-      <div>Количество объявлений о продаже <strong>{{result.titleMark}}</strong>
-        <strong>{{result.titleModel}}</strong> на 14.06.2020 составляет <strong>{{result.quantity}}</strong>
+      <div>Количество объявлений о продаже <strong>{{result.titleMark}} {{result.titleModel}}</strong> на 14.06.2020 составляет <strong>{{result.quantity}}</strong>
         шт</div>
-      <div>Количество <strong>{{result.titleMark}}</strong> <strong>{{result.titleModel}}</strong>
+      <div>Количество <strong>{{result.titleMark}} {{result.titleModel}}</strong>
         проданных за последние 6 месяцев составляет <strong>{{result.oldCarsQuantity}}</strong>
         шт:</div>
 
@@ -62,7 +61,7 @@
     </section>
 
  
-      <section *ngIf="oldCars">
+      <section *ngIf="oldCars" class="result__old-cars">
 
 
         <mat-accordion class="example-headers-align" multi>
@@ -77,7 +76,7 @@
             </mat-expansion-panel-header>
 
             <div *ngFor="let car of oldCars">
-              <strong>{{result.titleMark}} {{result.titleModel}}</strong> <strong>{{car.year}}</strong>
+              <strong>{{result.titleMark}} {{result.titleModel}} {{car.year}}</strong>
               г. с пробегом <strong>{{car.millage}}</strong> км за <strong>{{car.price}}</strong>
               USD
             </div>
@@ -87,10 +86,14 @@
         </mat-accordion>
       </section>
 
+
+      <section class="form-footer__btns">
       <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid || loadingBtn">
       <mat-spinner class="loading-btn" *ngIf="loadingBtn" [diameter]="20"></mat-spinner>  
       анализировать
     </button>
+  </section>
+
   </form>
 
 

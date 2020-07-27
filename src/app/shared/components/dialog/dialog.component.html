@@ -2,6 +2,6 @@
     <div *ngIf="!!title" mat-dialog-title>{{ title }}</div>
     <div *ngIf="!!content" mat-dialog-content>{{ content }}</div>
     <div *ngIf="!!btnClose">
-        <div class="buttons buttons_right"><button mat-dialog-close mat-flat-button color="warn">{{ btnClose }}</button></div> 
+        <div class="buttons buttons_{{btnClosePosition}}"><button mat-dialog-close mat-flat-button color="warn">{{ btnClose }}</button></div> 
     </div>
 </div>

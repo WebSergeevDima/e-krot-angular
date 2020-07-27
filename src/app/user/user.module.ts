@@ -11,6 +11,7 @@ import { RolesService } from '../shared/services/roles.service';
 import { HeaderComponent } from './header/header.component';
 import { DialogComponent } from '../shared/components/dialog/dialog.component';
 import { MaterialModule } from '../shared/modules/material/material.module';
+import { DialogRegistrationComponent } from '../shared/components/dialog-registration/dialog-registration.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MaterialModule } from '../shared/modules/material/material.module';
     LoginPageComponent,
     PanelComponent,
     HeaderComponent,
-    DialogComponent
+    DialogComponent,
+    DialogRegistrationComponent
   ],
   imports: [
     CommonModule,

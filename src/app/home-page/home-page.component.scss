@@ -1,8 +1,11 @@
 .home-expansion-panel {
+margin: 0 0 20px 0;
+
   &__header {
     min-height: 70px;
     height: auto !important;
     padding: 15px 24px;
+    background: #f7f7f7;
   }
 
   &__title {
@@ -10,9 +13,9 @@
 
   }
   &__title-h1 {
-    font-size: 24px;
-    margin: 0 0 5px 0;
-
+    font-size: 26px;
+    margin: 0 0 10px 0;
+    font-weight: 500;
   }
   &__title-h2 {    
     font-size: 12px;

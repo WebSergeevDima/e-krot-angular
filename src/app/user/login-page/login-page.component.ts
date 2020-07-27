@@ -52,9 +52,10 @@ export class LoginPageComponent implements OnInit {
             title: 'Ошибка входа в личный кабинет',
             content: 'Пожалуйста, проверьте корректность вводимых данных',
             btnClose: 'Закрыть',
+            btnClosePosition: 'center',
             styles: 'dialog_red'
           }
-        });
+        })
       }
     })
 

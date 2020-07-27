@@ -1,7 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RolesService } from '../../services/roles.service';
-import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-main-layout',
@@ -11,8 +9,7 @@ import { DialogComponent } from '../dialog/dialog.component';
 export class MainLayoutComponent implements OnInit {
 
   constructor(
-    private roles: RolesService,
-    public dialog: MatDialog
+    private roles: RolesService
   ) { }
   whatRole() {
     this.roles.whatRole()
