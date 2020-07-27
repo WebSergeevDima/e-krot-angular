@@ -9,6 +9,7 @@ import { AutoService } from '../shared/services/auto.service';
 })
 export class AutoMarketPageComponent implements OnInit {
 
+  loadingMarks = true
   loadingModels = false
   loadingBtn = false
 
@@ -26,11 +27,12 @@ export class AutoMarketPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+    
 
     this.autoService.getMarks().subscribe(response => {
       //console.log('Result', response)
       this.marks = response
+      this.loadingMarks = false
     })
 
     //console.log(this.marks)
@@ -46,7 +48,7 @@ export class AutoMarketPageComponent implements OnInit {
 
 
   getModels(value, selectModels) {
-    this.loadingModels = true
+    
     console.log('selectModels', selectModels)
     const markId = {
       id: value
@@ -58,6 +60,8 @@ export class AutoMarketPageComponent implements OnInit {
     if (!markId['id']) {
       return false
     }
+
+    this.loadingModels = true
 
     this.autoService.getModels(markId).subscribe(response => {
       this.models = response

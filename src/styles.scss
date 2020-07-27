@@ -23,6 +23,41 @@ body, html {
   margin: 0;
   padding: 0;
 }
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+}
+
+html, body {
+  height: 100%;
+}
+.wrap {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+  .content {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: auto;
+}
+.footer {
+  height: 40px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  background: #4c8dff;
+
+  &__copy-left {
+    line-height: 40px;
+    color: #fff;
+}
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -245,6 +280,6 @@ mat-spinner {
         width: 100%;
     }
   }
-  
+
 }
 

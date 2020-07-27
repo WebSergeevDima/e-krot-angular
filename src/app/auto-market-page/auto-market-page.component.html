@@ -6,8 +6,10 @@
     <section class="grid-colums-3">
 
     <mat-form-field>
+
+      <mat-spinner class="loading-select" *ngIf="loadingMarks" [diameter]="20"></mat-spinner>  
       <mat-label>Марка</mat-label>
-      <mat-select required formControlName="mark" (ngModelChange)="getModels($event, selectModels)">
+      <mat-select #selectMarks required formControlName="mark" (ngModelChange)="getModels($event, selectModels)">
         <mat-option>Выбрать</mat-option>
         <mat-option *ngFor="let mark of marks" [value]="mark.id">
           {{mark.title}}
@@ -18,6 +20,7 @@
     <mat-form-field>      
       
       <mat-spinner class="loading-select" *ngIf="loadingModels" [diameter]="20"></mat-spinner>  
+
       <mat-label>Модель</mat-label>
       <mat-select #selectModels required formControlName="model" [(ngModel)]="modelsValue" [disabled]="loadingModels">
         <mat-option>Выбрать</mat-option>
