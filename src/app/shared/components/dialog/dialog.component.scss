@@ -21,6 +21,29 @@
    
   }
 
+  &_blue {
+    & .mat-dialog-title {
+      color: #673ab7;
+    }
+
+    & .mat-flat-button.mat-warn {
+      background: #673ab7;
+    }
+
+    & .buttons {
+      margin: 20px 0 0 0;
+    }
+    & .buttons_right {
+      text-align: right;
+    }    
+    & .buttons_left{
+      text-align: left;
+    }    
+    & .buttons_center {
+      text-align: center;
+    } 
+  }
+
 
 }
 

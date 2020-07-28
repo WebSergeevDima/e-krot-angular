@@ -1,0 +1,28 @@
+<section class="container">
+    <form [formGroup]="form" (ngSubmit)="submit()" class="support-form">
+        <h2>Техподдержка</h2>
+
+
+
+        <div class="support-form__grid">
+
+            <mat-form-field class="support-form__grid-item-1">
+                <mat-label>Ваше имя</mat-label>
+                <input matInput type="name" formControlName="name">
+            </mat-form-field>
+
+            <mat-form-field class="support-form__grid-item-2">
+                <mat-label>Ваш Email</mat-label>
+                <input matInput type="email" formControlName="email">
+            </mat-form-field>
+
+            <mat-form-field class="support-form__grid-item-3">
+                <mat-label>Сообщение</mat-label>
+                <textarea matInput formControlName="comment" maxlength="1000"></textarea>
+            </mat-form-field>
+
+        </div>
+
+        <button mat-flat-button color="primary" type="submit">Отправить сообщение</button>
+    </form>
+</section>

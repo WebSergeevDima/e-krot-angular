@@ -12,3 +12,11 @@ export interface NewUser {
 export interface Token {
   idToken: string
 }
+
+export interface FeedbackMessage {
+  message: string
+  name: string
+  email: string
+  tokenAccess: string
+}
+

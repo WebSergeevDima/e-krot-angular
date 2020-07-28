@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormControl, Validators} from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-auto-price-page',
@@ -11,19 +11,20 @@ export class AutoPricePageComponent implements OnInit {
   form: FormGroup
 
   marks = [
-    {name: '1'},    
-    {name: '2'}
+    { name: '1' },
+    { name: '2' }
   ]
   models = [
-    {name: '1'},    
-    {name: '2'}
+    { name: '1' },
+    { name: '2' }
   ]
   bodyTypes = [
-    {name: '1'},    
-    {name: '2'}
+    { name: '1' },
+    { name: '2' }
   ]
+
   //marksControl = new FormControl('', Validators.required);
- //selectFormControl = new FormControl('', Validators.required);
+  //selectFormControl = new FormControl('', Validators.required);
 
   constructor() { }
 

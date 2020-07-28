@@ -6,6 +6,7 @@ import { AutoPricePageComponent } from './auto-price-page/auto-price-page.compon
 import { AutoMarketPageComponent } from './auto-market-page/auto-market-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
+import { SupportComponent } from './support/support.component';
 
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
       { path: 'auto', component: AutoPricePageComponent },
       { path: 'auto-market', component: AutoMarketPageComponent },
       { path: 'login', component: LoginPageComponent },
-      { path: 'registration', component: RegistrationPageComponent }
+      { path: 'registration', component: RegistrationPageComponent },
+      { path: 'support', component: SupportComponent }
     ]
   },
   {

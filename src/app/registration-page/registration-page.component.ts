@@ -47,7 +47,9 @@ export class RegistrationPageComponent implements OnInit {
 
     this.registrationService.createUser(user).subscribe(response => {
 
-      if(response) {
+      console.log(response)
+
+      if (response['validation']) {
 
         this.dialog.open(DialogRegistrationComponent, {
           data: {
@@ -56,15 +58,15 @@ export class RegistrationPageComponent implements OnInit {
             styles: 'dialog_blue'
           }
         });
-  
+
 
       } else {
-      
-        
+
+
         this.dialog.open(DialogComponent, {
           data: {
-            title: 'Возникла ошибка при регистрации',
-            content: 'Возможно такой пользователь уже существует',
+            title: response['message'],
+            content: '',
             btnClose: 'Закрыть',
             btnClosePosition: 'center',
             styles: 'dialog_red'
@@ -72,7 +74,7 @@ export class RegistrationPageComponent implements OnInit {
         });
 
       }
- 
+
     })
 
 

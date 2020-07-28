@@ -19,6 +19,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { SharedModule } from './shared/shared.module';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import { RolesService } from './shared/services/roles.service';
+import { SupportComponent } from './support/support.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { RolesService } from './shared/services/roles.service';
     AutoPricePageComponent,
     AutoMarketPageComponent,
     LoginPageComponent,
-    RegistrationPageComponent
+    RegistrationPageComponent,
+    SupportComponent
   ],
   imports: [
     BrowserModule,
