@@ -10,6 +10,8 @@ import { map } from 'rxjs/operators';
 export class RolesService {
 
     private role: number
+    private name: string
+    private email: string
 
     constructor(
         private http: HttpClient
@@ -19,14 +21,27 @@ export class RolesService {
         console.log('Роль: ', this.role)
     }
 
+    userName() {
+        return this.name
+    }
+    userEmail() {
+        return this.email
+    }
+
     getRole() {
 
         const accessToken = localStorage.getItem('accessToken')
 
         this.http.post(`${BASE_URL}/auth/role/`, JSON.stringify({ accessToken: accessToken })).pipe(
             map(response => {
-                //console.log('ROLE: ', response)
-                this.role = response['role']
+                this.role = response['role']  
+                if(response['name'] && response['email']) {             
+                this.name = response['name']
+                this.email = response['email']
+                } else {
+                    this.name = ''
+                    this.email = ''
+                }
                 return response
             })
         ).subscribe(r => r)
@@ -50,6 +65,8 @@ export class RolesService {
                 ]
             }
         }
+
+        
 
         return !!rols[this.role] ? rols[this.role].privilege.indexOf(privilege) != -1 : false
 

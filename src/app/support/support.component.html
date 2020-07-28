@@ -6,14 +6,15 @@
 
         <div class="support-form__grid">
 
+
             <mat-form-field class="support-form__grid-item-1">
                 <mat-label>Ваше имя</mat-label>
-                <input matInput type="name" formControlName="name">
+                <input matInput type="name" formControlName="name" disabled [value]="userName()" disabled>
             </mat-form-field>
 
             <mat-form-field class="support-form__grid-item-2">
                 <mat-label>Ваш Email</mat-label>
-                <input matInput type="email" formControlName="email">
+                <input matInput type="email" formControlName="email" disabled [value]="userEmail()">
             </mat-form-field>
 
             <mat-form-field class="support-form__grid-item-3">

@@ -15,27 +15,48 @@ export class SupportComponent implements OnInit {
 
   form: FormGroup
 
+
   constructor(
     private support: SupportService,
     public dialog: MatDialog,
     private roles: RolesService
-  ) { }
+  ) { 
+  }
+
+
+  
+
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      name: new FormControl('', [Validators.required, Validators.minLength(2)]),
+      email: new FormControl({value: this.userEmail(), disabled: false}, [Validators.required, Validators.email]),
+      name: new FormControl({value: this.userName(), disabled: false}, [Validators.required, Validators.minLength(2)]),
       comment: new FormControl('', [Validators.required, Validators.maxLength(1000)])
     })
+
+    
+
   }
+
+  
+  userName() {
+    return this.roles.userName()
+  }
+  userEmail() {
+    return this.roles.userEmail()
+  }
+
+
 
   privilege(privelege: string): boolean {
     return this.roles.validatePrivilege(privelege)
   }
 
+ 
+
   submit() {
 
-    //console.log(this.form)
+    console.log(this.form.controls.email)
 
 
 

@@ -19,7 +19,11 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
   privilege(privelege: string): boolean {
-    return this.roles.validatePrivilege(privelege)
+    if(this.roles.validatePrivilege(privelege) === true) {
+      return true
+    } else {
+      return false
+    }
   }
 
 
