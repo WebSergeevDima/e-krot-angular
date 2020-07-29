@@ -1,1 +1,27 @@
-<p>panel works!</p>
+<div class="container">
+    <h1>Личный кабинет</h1>
+    <div class="grid">
+        <div>
+            <a [routerLink]="['/user/panel']">Сохраненные отчеты</a>
+        </div>
+        <div>
+
+
+            <div *ngFor="let report of reportPage; let i = index">
+                {{i + 1 + (pageIndex * pageSize)}}:
+                {{report.AQ_DATA_CREATE | date:'dd.MM.yyyy'}}
+                {{report.AQ_TITLE_MARK}}
+                {{report.AQ_TITLE_MODEL}}
+                {{report.AQ_YEAR}}
+                {{report.AQ_PRICE}}
+                {{report.AQ_LANG}}
+                {{report.AQ_UNIQID}}
+            </div>
+
+            <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[10, 25, 50, 100]"
+                (page)="paginatoreChange($event)">
+            </mat-paginator>
+
+        </div>
+    </div>
+</div>
