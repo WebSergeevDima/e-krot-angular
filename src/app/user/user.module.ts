@@ -12,6 +12,8 @@ import { HeaderComponent } from './header/header.component';
 import { DialogComponent } from '../shared/components/dialog/dialog.component';
 import { MaterialModule } from '../shared/modules/material/material.module';
 import { DialogRegistrationComponent } from '../shared/components/dialog-registration/dialog-registration.component';
+import { ReportComponent } from './report/report.component';
+import { ReportsComponent } from './reports/reports.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { DialogRegistrationComponent } from '../shared/components/dialog-registr
     PanelComponent,
     HeaderComponent,
     DialogComponent,
-    DialogRegistrationComponent
+    DialogRegistrationComponent,
+    ReportComponent,
+    ReportsComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +38,14 @@ import { DialogRegistrationComponent } from '../shared/components/dialog-registr
             path: 'login', component: LoginPageComponent
           },
           {
-            path: 'panel', component: PanelComponent, canActivate: [AuthGuard]
+            path: 'panel', component: PanelComponent, canActivate: [AuthGuard], children: [
+              {
+                path: 'reports', component: ReportsComponent, canActivate: [AuthGuard]  
+              },
+              {
+                path: 'report', component: ReportComponent, canActivate: [AuthGuard]  
+              }
+            ]
           }
         ]
       }
