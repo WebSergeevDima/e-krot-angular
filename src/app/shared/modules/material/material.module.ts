@@ -11,7 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
-
+import {MatTableModule} from '@angular/material/table';
 
 //for translate paginator
 import { TranslateRuPaginator } from 'src/app/shared/components/paginator/translate-ru-paginator';
@@ -29,7 +29,8 @@ const matModules = [
   MatInputModule,
   MatDialogModule,
   MatProgressSpinnerModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatTableModule
 ]
 
 @NgModule({

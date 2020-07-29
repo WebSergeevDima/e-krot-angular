@@ -2,27 +2,96 @@
     <h1>Личный кабинет</h1>
     <div class="grid">
         <div>
-            <a [routerLink]="['/user/panel']">Сохраненные отчеты</a>
+            <nav class="panel-nav">           
+                <a routerLinkActive="active" class="panel-nav__item" [routerLink]="['/user/panel']">Сохраненные отчеты</a>
+                <a routerLinkActive="active" class="panel-nav__item" [routerLink]="['/user/setting']">Настройки</a>
+             </nav>
+          
         </div>
-        <div>
+        <div class="grid-content">
 
 
-            <div></div>
-            <div *ngFor="let report of reportPage; let i = index">
-                {{i + 1 + (pageIndex * pageSize)}}:
-                {{report.AQ_DATA_CREATE | date:'dd.MM.yyyy'}}
-                {{report.AQ_TITLE_MARK}}
-                {{report.AQ_TITLE_MODEL}}
-                {{report.AQ_YEAR}}
-                {{report.AQ_PRICE}}
-                {{report.AQ_LANG}}
-                {{report.AQ_UNIQID}}
+
+
+
+
+
+
+
+            <div *ngIf="!!length; else noReports">
+
+                <div>
+                    <table class="table-wrap">
+                      <thead>
+
+                        
+                        <tr>
+                          <th>№</th>
+                          <th>Дата оценки</th>
+                          <th>Марка</th>
+                          <th>Модель</th>
+                          <th>Год</th>
+                          <th>Цена</th>
+                          <th>Локация</th>
+                          <th>Отчет</th>
+                          <th><svg class="user-report__svg-delete-title" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 172.541 172.541">
+                                  <path d="M166.797,25.078h-13.672h-29.971V0H49.388v25.078H19.417H5.744v15h14.806l10,132.463h111.443l10-132.463h14.805V25.078z
+                                       M64.388,15h43.766v10.078H64.388V15z M128.083,157.541H44.46L35.592,40.078h13.796h73.766h13.796L128.083,157.541z"></path>
+                                  <rect x="80.271" y="65.693" width="12" height="66.232"></rect>
+                                  <rect x="57.271" y="65.693" width="12" height="66.232"></rect>
+                                  <rect x="103.271" y="65.693" width="12" height="66.232"></rect>
+                              </svg></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+
+
+                          <tr  *ngFor="let report of reportPage; let i = index">
+                          <td data-label="№">{{i + 1 + (pageIndex * pageSize)}}</td>
+                          <td data-label="Дата:"> {{report.AQ_DATA_CREATE | date:'dd.MM.yyyy'}} <span class="user-report__date-line">|</span> {{report.AQ_DATA_CREATE | date:'hh:mm'}}</td>
+                          <td data-label="Марка:">{{report.AQ_TITLE_MARK}}</td>
+                          <td data-label="Модель:">{{report.AQ_TITLE_MODEL}}</td>
+                          <td data-label="Год:">{{report.AQ_YEAR}}</td>
+                          <td data-label="Цена:">{{report.AQ_PRICE}}</td>
+                          <td data-label="Локация:">{{report.AQ_LANG}}</td>
+                          <td data-label="Отчет:">
+                              <a href="/user/report/{{report.AQ_UNIQID}}/" class="user-saved-queries__link-report">
+                                 Подробнее
+                              </a>
+                          </td>
+                          <td data-label="">
+                              <svg class="user-report__svg-delete" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 357 357">
+      <polygon points="357,35.7 321.3,0 178.5,142.8 35.7,0 0,35.7 142.8,178.5 0,321.3 35.7,357 178.5,214.2 321.3,357 357,321.3
+          214.2,178.5 		"></polygon>
+</svg>
+
+                          </td>
+
+
+                        </tr>
+
+                        
+                      </tbody>
+                  </table>
+
+
+
+                  
+                                    
+
+
+                  </div>
+
+
+                <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[10, 25, 50, 100]"
+                    (page)="paginatoreChange($event)">
+                </mat-paginator>
             </div>
+            <ng-template #noReports>
 
-            <mat-paginator #paginators [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[10, 25, 50, 100]"
-                (page)="paginatoreChange($event)">
-            </mat-paginator>
+                <div>У вас нет отчётов</div>
 
+            </ng-template>
         </div>
     </div>
 </div>

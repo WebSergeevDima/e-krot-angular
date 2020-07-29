@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, ViewRef } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { PanelService } from '../shared/services/panel.service';
 //import { MatPaginatorIntl } from '@angular/material/paginator';
 //import { TranslateRuPaginator } from 'src/app/shared/components/paginator/translate-ru-paginator';
@@ -18,7 +18,9 @@ export class PanelComponent implements OnInit {
   public reportPage
   pageIndex: number = 0;
   pageSize: number = 10;
-  length: number;
+  length: number
+
+  links
 
   constructor(
     private panelService: PanelService,
@@ -26,6 +28,8 @@ export class PanelComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+
+   
 
     this.panelService.getUserAllReports(localStorage.getItem('accessToken')).subscribe(resolve => {
       this.allReports = resolve['allReports']
