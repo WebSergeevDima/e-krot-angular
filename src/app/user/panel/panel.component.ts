@@ -1,11 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, ViewRef } from '@angular/core';
 import { PanelService } from '../shared/services/panel.service';
+//import { MatPaginatorIntl } from '@angular/material/paginator';
+//import { TranslateRuPaginator } from 'src/app/shared/components/paginator/translate-ru-paginator';
 
 
 @Component({
   selector: 'app-panel',
   templateUrl: './panel.component.html',
-  styleUrls: ['./panel.component.scss']
+  styleUrls: ['./panel.component.scss'],
+  /*providers: [
+    { provide: MatPaginatorIntl, useValue: TranslateRuPaginator() }
+  ]*/
 })
 export class PanelComponent implements OnInit {
 
@@ -15,12 +20,12 @@ export class PanelComponent implements OnInit {
   pageSize: number = 10;
   length: number;
 
-
-  constructor(private panelService: PanelService) { }
+  constructor(
+    private panelService: PanelService,
+    
+    ) { }
 
   ngOnInit(): void {
-
-
 
     this.panelService.getUserAllReports(localStorage.getItem('accessToken')).subscribe(resolve => {
       this.allReports = resolve['allReports']
@@ -29,7 +34,9 @@ export class PanelComponent implements OnInit {
     })
 
   }
-
+  ngAfterContentInit() {
+   
+ } 
   paginatoreChange(event) {
     console.log('event', event)
     this.pageSize = event.pageSize
@@ -49,3 +56,4 @@ export class PanelComponent implements OnInit {
 
 
 }
+

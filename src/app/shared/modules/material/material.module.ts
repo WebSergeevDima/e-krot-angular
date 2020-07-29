@@ -10,7 +10,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
+
+
+//for translate paginator
+import { TranslateRuPaginator } from 'src/app/shared/components/paginator/translate-ru-paginator';
+
 
 const matModules = [
   MatButtonModule,
@@ -30,6 +35,9 @@ const matModules = [
 @NgModule({
   declarations: [],
   imports: matModules,
-  exports: matModules
+  exports: matModules,
+  providers: [
+    { provide: MatPaginatorIntl, useValue: TranslateRuPaginator() }
+  ]
 })
 export class MaterialModule { }
