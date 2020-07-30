@@ -1,4 +1,5 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { RolesService } from 'src/app/shared/services/roles.service';
 
 @Component({
   selector: 'app-panel',
@@ -9,14 +10,21 @@ export class PanelComponent implements OnInit {
 
 
   constructor(
-    
-    ) { }
+    private roles: RolesService
+  ) { }
 
-  ngOnInit(): void {   
+  ngOnInit(): void {
 
 
   }
 
+  whatRole() {
+    this.roles.whatRole()
+  }
+
+  privilege(privelege: string): boolean {
+    return this.roles.validatePrivilege(privelege)
+  }
 
 }
 

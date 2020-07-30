@@ -45,7 +45,7 @@ export class LoginPageComponent implements OnInit {
     //console.log(user)
 
     this.authService.login(user).subscribe(response => {
-      console.log('response', response)
+
       if (!response) {
         this.dialog.open(DialogComponent, {
           data: {

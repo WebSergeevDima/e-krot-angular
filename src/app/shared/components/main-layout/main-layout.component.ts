@@ -11,13 +11,8 @@ export class MainLayoutComponent implements OnInit {
   constructor(
     private roles: RolesService
   ) { }
-  whatRole() {
-    this.roles.whatRole()
-  }
 
-  privilege(privelege: string): boolean {
-    return this.roles.validatePrivilege(privelege)
-  }
+
 
   /*
   openDialog() {
