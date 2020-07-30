@@ -23,4 +23,16 @@ export class PanelService {
     )
   }
 
+  getUserReport(uniqId: string, accessToken: string) {
+
+    return this.http.post(`${BASE_URL}/panel/user_report/`, JSON.stringify({ uniqId: uniqId, accessToken: accessToken })).pipe(
+      map(resolve => {
+        console.log('test uniqId', resolve)
+        return resolve
+      }
+      )
+    )
+
+  }
+
 }

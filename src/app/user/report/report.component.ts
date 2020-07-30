@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { PanelService } from '../shared/services/panel.service';
 
 @Component({
   selector: 'app-report',
@@ -7,9 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportComponent implements OnInit {
 
-  constructor() { }
+  public report = {
+    tradeIn: {},
+    oldCars: {}
+  }
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private panelService: PanelService
+  ) {
+
+  }
 
   ngOnInit(): void {
+
+    this.activatedRoute.paramMap.subscribe(params => {
+
+      console.log('uniqId', params.get('uniqId'));
+
+      this.panelService.getUserReport(params.get('uniqId'), localStorage.getItem('accessToken')).subscribe(resolve => {
+        this.report = resolve['report']
+      })
+
+    });
+
   }
 
 }

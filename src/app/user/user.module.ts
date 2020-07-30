@@ -40,10 +40,10 @@ import { ReportsComponent } from './reports/reports.component';
           {
             path: 'panel', component: PanelComponent, canActivate: [AuthGuard], children: [
               {
-                path: 'reports', component: ReportsComponent, canActivate: [AuthGuard]  
+                path: 'reports', component: ReportsComponent, canActivate: [AuthGuard]
               },
               {
-                path: 'report', component: ReportComponent, canActivate: [AuthGuard]  
+                path: 'reports/report/:uniqId', component: ReportComponent, canActivate: [AuthGuard]
               }
             ]
           }
