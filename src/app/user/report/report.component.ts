@@ -9,9 +9,11 @@ import { PanelService } from '../shared/services/panel.service';
 })
 export class ReportComponent implements OnInit {
 
+  showOldCars: boolean = false
+
   public report = {
     tradeIn: {},
-    oldCars: {}
+    oldCars: []
   }
 
   constructor(
@@ -29,6 +31,11 @@ export class ReportComponent implements OnInit {
 
       this.panelService.getUserReport(params.get('uniqId'), localStorage.getItem('accessToken')).subscribe(resolve => {
         this.report = resolve['report']
+
+        if (!!resolve['report']['oldCars']) {
+          this.showOldCars = true
+        }
+
       })
 
     });

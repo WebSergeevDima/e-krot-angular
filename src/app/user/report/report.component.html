@@ -1,11 +1,32 @@
+<div class="report__header-block">
+    <div class="report__header">
+
+        <div class="report__header-title">
+            <div class="report__header-title-mark">{{report['titleMark']}} {{report['titleModel']}}
+            </div>
+            <div class="report__header-location">
+                {{report['dateCreate'] | date:'dd.MM.yyy' + ' | ' + report['location']}}</div>
+        </div>
+
+
+    </div>
+
+    <div class="report__header-price">
+        {{report['price'] || report['priceAvg']}}
+    </div>
+</div>
+
+<!--
+
 <div class="report__info-item">
     Дата формирования отчета: <strong>{{report['dateCreate'] | date:'dd.MM.yyyy'}}</strong>
 </div>
 <div class="report__info-item">
     Локация: <strong>{{report['location']}}</strong>
 </div>
+-->
 
-<mat-divider class="divider"></mat-divider>
+
 
 
 <section *ngIf="report['price']; else reportAutoMarket">
@@ -41,13 +62,13 @@
     <div>- минимальная <strong> {{report['priceMin']}} </strong> <span>USD</span></div>
     <div>- средняя <strong> {{report['priceAvg']}} </strong> <span>USD</span></div>
     <div>- максимальная <strong> {{report['priceMax']}} </strong> <span>USD</span></div>
-    <div>Стоимость вашего автомобиля на <strong> {{report['priceDifference']}} </strong> %
+    <div>Стоимость вашего автомобиля на <strong> {{report['priceDifference'] | percent}} </strong>
         {{(report['price'] < report['priceAvg']) ? 'ниже' : 'выше'}}
         среднерыночной</div>
     <div>Средний пробег по рынку составляет <strong> {{report['mileageAvg']}} </strong> км</div>
     <div>Количество объявлений о продаже составляет <strong>{{report['carsQuantity']}}</strong> шт</div>
 
-    <section *ngIf="report['oldCars']" class="result__old-cars">
+    <ng-container *ngIf="showOldCars" class="result__old-cars">
         <mat-divider class="divider"></mat-divider>
 
         <mat-accordion class="example-headers-align" multi>
@@ -71,7 +92,7 @@
 
             </mat-expansion-panel>
         </mat-accordion>
-    </section>
+    </ng-container>
 
 
 </section>
@@ -79,24 +100,54 @@
 
 <ng-template #reportAutoMarket>
 
-    <section>
-        <div class="grid grid_column-3">
-            <div>
-                <div>Марка: <strong>{{report['titleMark']}}</strong></div>
-                <div>Модель: <strong>{{report['titleModel']}}</strong></div>
-                <div>Год выпуска: <strong>{{report['year']}}</strong></div>
-            </div>
+
+    <div class="grid grid_column-3">
+        <div>
+            <div>Марка: <strong>{{report['titleMark']}}</strong></div>
+            <div>Модель: <strong>{{report['titleModel']}}</strong></div>
+            <div>Год выпуска: <strong>{{report['year']}}</strong></div>
         </div>
+    </div>
+    <mat-divider class="divider"></mat-divider>
+
+    <div>Стоимость данной модели со схожими характеристиками на рынке:</div>
+    <div>- минимальная <strong>{{report['priceMin']}}</strong> <span>USD</span></div>
+    <div>- средняя <strong>{{report['priceAvg']}}</strong> <span>USD</span></div>
+    <div>- максимальная <strong>{{report['priceMax']}}</strong> <span>USD</span></div>
+    <div>Средний пробег по рынку составляет <strong>{{report['mileageAvg']}}</strong> км</div>
+    <div>Количество объявлений о продаже составляет <strong>{{report['carsQuantity']}}</strong> шт</div>
+    <div>Количество проданных схожих автомобилей за последние <strong>6</strong> месяцев составляет
+        <strong>{{report['oldCarsQuantity']}}</strong> шт:
+    </div>
+
+    <ng-container *ngIf="showOldCars" class="result__old-cars">
         <mat-divider class="divider"></mat-divider>
 
-        <div>Стоимость данной модели со схожими характеристиками на рынке:</div>
-        <div>- минимальная <strong>{{report['priceMin']}}</strong> <span>USD</span></div>
-        <div>- средняя <strong>{{report['priceAvg']}}</strong> <span>USD</span></div>
-        <div>- максимальная <strong>{{report['priceMax']}}</strong> <span>USD</span></div>
-        <div>Средний пробег по рынку составляет <strong>{{report['mileageAvg']}}</strong> км</div>
-        <div>Количество объявлений о продаже составляет <strong>{{report['carsQuantity']}}</strong> шт</div>
-        <div>Количество проданных схожих автомобилей за последние <strong>6</strong> месяцев составляет
-            <strong>{{report['oldCarsQuantity']}}</strong> шт:
-        </div>
-    </section>
+        <mat-accordion class="example-headers-align" multi>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Список проданных автомобилей за последние <strong>&nbsp;6 месяцев&nbsp;</strong>
+                        (<strong>{{report['oldCarsQuantity']}}&nbsp;шт</strong>)
+                    </mat-panel-title>
+                    <mat-panel-description>
+
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <div *ngFor="let car of report['oldCars']">
+                    <strong>{{report['titleMark']}} {{report['titleModel']}} {{car.year}}</strong>
+                    г. с пробегом <strong>{{car.millage}}</strong> км за <strong>{{car.price}}</strong>
+                    USD
+                </div>
+
+
+            </mat-expansion-panel>
+        </mat-accordion>
+    </ng-container>
+
+
+
+
+
 </ng-template>
