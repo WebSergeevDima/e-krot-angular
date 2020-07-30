@@ -68,10 +68,10 @@
     <div>Средний пробег по рынку составляет <strong> {{report['mileageAvg']}} </strong> км</div>
     <div>Количество объявлений о продаже составляет <strong>{{report['carsQuantity']}}</strong> шт</div>
 
-    <ng-container *ngIf="showOldCars" class="result__old-cars">
+    <ng-container *ngIf="showOldCars">
         <mat-divider class="divider"></mat-divider>
 
-        <mat-accordion class="example-headers-align" multi>
+        <mat-accordion class="example-headers-align result__old-cars" multi>
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
@@ -120,10 +120,10 @@
         <strong>{{report['oldCarsQuantity']}}</strong> шт:
     </div>
 
-    <ng-container *ngIf="showOldCars" class="result__old-cars">
+    <ng-container *ngIf="showOldCars">
         <mat-divider class="divider"></mat-divider>
 
-        <mat-accordion class="example-headers-align" multi>
+        <mat-accordion class="example-headers-align result__old-cars" multi>
             <mat-expansion-panel>
                 <mat-expansion-panel-header>
                     <mat-panel-title>
