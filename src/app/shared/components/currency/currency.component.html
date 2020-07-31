@@ -1,0 +1,6 @@
+<mat-form-field appearance="">
+    <mat-select [(value)]="currencySelected" (selectionChange)="currencyChange()">
+        <mat-option *ngFor="let currency of currencyList" [(value)]="currency.value">
+            {{ currency.name }}</mat-option>
+    </mat-select>
+</mat-form-field>
