@@ -17,11 +17,7 @@ export class CurrencyComponent implements OnInit {
 
   ngOnInit(): void {
     this.currencyList = this.currency.getCurrencyList()
-
-    if (!this.currency.validate(localStorage.getItem('currency'))) {
-      this.currency.setCurrencySelected('USD')
-      this.currencySelected = 'USD'
-    }
+    this.currencySelected = this.currency.getCurrency()
   }
 
   currencyChange() {

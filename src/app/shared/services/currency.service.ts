@@ -19,6 +19,17 @@ export class CurrencyService {
     return this.currencyList
   }
 
+  getCurrency() {
+
+    if (!this.validate(localStorage.getItem('currency'))) {
+      this.setCurrencySelected('USD')
+      return localStorage.getItem('currency')
+    }
+
+    return localStorage.getItem('currency')
+
+  }
+
   setCurrencySelected(currency) {
     localStorage.setItem('currency', currency)
   }
@@ -26,5 +37,7 @@ export class CurrencyService {
   validate(currency) {
     return ['USD', 'RUB', 'EUR', 'BYN', 'UAH'].indexOf(currency) != -1 ? true : false
   }
+
+
 
 }

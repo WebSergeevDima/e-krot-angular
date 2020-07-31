@@ -1,4 +1,5 @@
-<section>
+<section [class]="loadingBlock ? 'loading-block' : 'loading-block-test'">
+  <mat-spinner class="loading-select" *ngIf="!loadingBlock" [diameter]="50"></mat-spinner>
   <h1 class="auto-price-page__h1">Внесите параметры автомобиля:</h1>
 
   <form [formGroup]="form" (ngSubmit)="submit()">
@@ -48,9 +49,9 @@
       <h2>Результат анализа рынка:</h2>
       <div>Стоимость данной модели на рынке:</div>
       <ul>
-        <li>минимальная <strong>{{result.priceMin}}</strong> USD</li>
-        <li>средняя <strong>{{result.priceAvg}}</strong> USD</li>
-        <li>максимальная <strong>{{result.priceMax}}</strong> USD</li>
+        <li>минимальная <strong>{{result.priceMin}}</strong> {{cur}}</li>
+        <li>средняя <strong>{{result.priceAvg}}</strong> {{cur}}</li>
+        <li>максимальная <strong>{{result.priceMax}}</strong> {{cur}}</li>
       </ul>
       <div>Средний пробег по рынку для <strong>{{result.titleMark}} {{result.titleModel}} {{result.year}}</strong> года
         составляет <strong>{{result.millageAvg}}</strong> км</div>

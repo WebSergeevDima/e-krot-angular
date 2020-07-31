@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AutoService } from '../shared/services/auto.service';
+import { CurrencyService } from '../shared/services/currency.service';
 
 @Component({
   selector: 'app-auto-market-page',
@@ -9,9 +10,12 @@ import { AutoService } from '../shared/services/auto.service';
 })
 export class AutoMarketPageComponent implements OnInit {
 
+  cur = this.currencyService.getCurrency()
+
   loadingMarks = true
   loadingModels = false
   loadingBtn = false
+  loadingBlock = false
 
   form: FormGroup
 
@@ -23,8 +27,11 @@ export class AutoMarketPageComponent implements OnInit {
   result
   oldCars
 
+
+
   constructor(
-    private autoService: AutoService
+    private autoService: AutoService,
+    private currencyService: CurrencyService
   ) { }
 
   ngOnInit(): void {
@@ -79,12 +86,14 @@ export class AutoMarketPageComponent implements OnInit {
       return;
     }
     this.loadingBtn = true
-
+    this.loadingBlock = true
 
     this.autoService.getSearchMarket(this.form.value).subscribe(response => {
       this.result = response['data']
       this.oldCars = response['data']['oldCars']
+      this.cur = this.currencyService.getCurrency()
       this.loadingBtn = false
+      this.loadingBlock = false
     })
 
   }

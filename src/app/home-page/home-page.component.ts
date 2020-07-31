@@ -8,9 +8,12 @@ import { RolesService } from '../shared/services/roles.service';
 })
 export class HomePageComponent implements OnInit {
 
+
+
   constructor(
-    private roles: RolesService
-  ) { }
+    private roles: RolesService,
+  ) {
+  }
 
   ngOnInit(): void {
   }
