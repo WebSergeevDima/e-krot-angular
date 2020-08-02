@@ -1,8 +1,11 @@
-<section [class]="loadingBlock ? 'loading-block' : 'loading-block-test'">
-  <mat-spinner class="loading-select" *ngIf="!loadingBlock" [diameter]="50"></mat-spinner>
-  <h1 class="auto-price-page__h1">Внесите параметры автомобиля:</h1>
+<section [class]="loadingBlock ? 'loading-block' : ''">
 
   <form [formGroup]="form" (ngSubmit)="submit()">
+
+    <div class="loading-block__layout">
+    <mat-spinner class="spinner-loading-block" *ngIf="loadingBlock" [diameter]="50"></mat-spinner>
+
+    <h1 class="auto-price-page__h1">Внесите параметры автомобиля:</h1>
 
     <section class="grid-colums-3">
 
@@ -86,14 +89,14 @@
           <div *ngFor="let car of oldCars">
             <strong>{{result.titleMark}} {{result.titleModel}} {{car.year}}</strong>
             г. с пробегом <strong>{{car.millage}}</strong> км за <strong>{{car.price}}</strong>
-            USD
+            {{cur}}
           </div>
 
 
         </mat-expansion-panel>
       </mat-accordion>
     </section>
-
+  </div>
 
     <section class="form-footer__btns">
       <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid || loadingBtn">

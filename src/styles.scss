@@ -83,26 +83,20 @@ mat-spinner {
     left: calc(50% - 10px);
     top: 8px;
   }
+  &.spinner-loading-block {
+    position: absolute;
+    left: calc(50% - 25px);
+    top: calc(50% - 25px);
+  }
 
 }
 .mat-expansion-panel-body {
   position: relative;
 }
 .loading-block {
-  opacity: 0.5;
 
   &:after {
-    content: '';
-    display: block;
-    width: 100;
-    }
-}
-
-.loading-block-test {
-   opacity: 0.5;
-
-  &:after {
-content: "";
+    content: "";
     display: block;
     background: rgba(255, 255, 255, 0.48);
     position: absolute;
@@ -111,6 +105,11 @@ content: "";
     left: 0;
     right: 0;
     z-index: 2;
+    }
+
+    & &__layout {
+      opacity: 0.5;
+      position: relative;
     }
 }
 

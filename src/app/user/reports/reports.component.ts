@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { PanelService } from '../shared/services/panel.service';
+import { CurrencyService } from 'src/app/shared/services/currency.service';
 
 @Component({
   selector: 'app-reports',
@@ -8,6 +9,7 @@ import { PanelService } from '../shared/services/panel.service';
 })
 export class ReportsComponent implements OnInit {
 
+  public cur
   public allReports = []
   public reportPage = []
   public pageIndex: number = 0
@@ -16,7 +18,7 @@ export class ReportsComponent implements OnInit {
 
   constructor(
     private panelService: PanelService,
-    
+    private currencyService: CurrencyService
     ) { }
 
   ngOnInit(): void {   
@@ -26,6 +28,8 @@ export class ReportsComponent implements OnInit {
       this.reportPage = this.allReports.slice(0, 10)
       this.length = resolve['allReports'].length
     })
+
+    this.cur = this.currencyService.getCurrency()
 
   }
   ngAfterContentInit() {

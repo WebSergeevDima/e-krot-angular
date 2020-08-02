@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RolesService } from 'src/app/shared/services/roles.service';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from 'src/app/shared/components/dialog/dialog.component';
-
 
 @Component({
   selector: 'app-user-layout',

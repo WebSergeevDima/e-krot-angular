@@ -80,7 +80,7 @@ export class AutoMarketPageComponent implements OnInit {
   }
 
   submit() {
-    // const formControls = this.form.controls
+    
 
     if (this.form.invalid) {
       return;
@@ -88,12 +88,13 @@ export class AutoMarketPageComponent implements OnInit {
     this.loadingBtn = true
     this.loadingBlock = true
 
-    this.autoService.getSearchMarket(this.form.value).subscribe(response => {
+    this.autoService.getSearchMarket(this.form.value, this.currencyService.getCurrency()).subscribe(response => {
       this.result = response['data']
       this.oldCars = response['data']['oldCars']
       this.cur = this.currencyService.getCurrency()
       this.loadingBtn = false
       this.loadingBlock = false
+      
     })
 
   }

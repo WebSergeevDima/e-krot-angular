@@ -8,20 +8,31 @@ import { CurrencyService } from '../../services/currency.service';
 })
 export class CurrencyComponent implements OnInit {
 
-  currencyList = []
+  currencyList = [{name: 'jj'},{name: 'jj2'},{name: 'jj3'}]
   currencySelected = localStorage.getItem('currency')
+  appTitle: string = 'Welcome';
+  appList: any[] = [ {
+     "ID": "1",
+     "Name" : "One"
+  },
+
+  {
+     "ID": "2",
+     "Name" : "Two"
+  } ];
 
   constructor(
-    private currency: CurrencyService
+    private currencyService: CurrencyService
   ) { }
 
   ngOnInit(): void {
-    this.currencyList = this.currency.getCurrencyList()
-    this.currencySelected = this.currency.getCurrency()
+   // console.log('debug', this.currencyService.getCurrencyList())
+    //this.currencyList = this.currencyService.getCurrencyList()
+    //this.currencySelected = this.currencyService.getCurrency()
   }
 
   currencyChange() {
-    this.currency.setCurrencySelected(this.currencySelected)
+    this.currencyService.setCurrencySelected(this.currencySelected)
   }
 
 }

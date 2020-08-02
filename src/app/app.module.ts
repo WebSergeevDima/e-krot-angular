@@ -20,7 +20,6 @@ import { SharedModule } from './shared/shared.module';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import { RolesService } from './shared/services/roles.service';
 import { SupportComponent } from './support/support.component';
-import { CurrencyComponent } from './shared/components/currency/currency.component';
 
 @NgModule({
   declarations: [
@@ -33,8 +32,8 @@ import { CurrencyComponent } from './shared/components/currency/currency.compone
     AutoMarketPageComponent,
     LoginPageComponent,
     RegistrationPageComponent,
-    SupportComponent,
-    CurrencyComponent
+    SupportComponent
+    
   ],
   imports: [
     BrowserModule,

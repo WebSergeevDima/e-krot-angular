@@ -1,6 +1,24 @@
+111
+<div *ngFor = 'let lst of appList'> 
+   <ul> 
+      <li>{{lst.ID}}</li> 
+      <li>{{lst.Name}}</li> 
+   </ul> 
+</div> 222
+<!--
+<div>DEBUG: {{currencySelected}}</div>
+
+<ul>
+    <li *ngFor="let test of currencyList">
+        11
+    </li>
+</ul>
+
+
 <mat-form-field appearance="">
     <mat-select [(value)]="currencySelected" (selectionChange)="currencyChange()">
         <mat-option *ngFor="let currency of currencyList" [(value)]="currency.value">
             {{ currency.name }}</mat-option>
     </mat-select>
 </mat-form-field>
+-->

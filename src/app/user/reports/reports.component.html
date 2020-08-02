@@ -36,7 +36,7 @@
           <td data-label="Марка:">{{report.AQ_TITLE_MARK}}</td>
           <td data-label="Модель:">{{report.AQ_TITLE_MODEL}}</td>
           <td data-label="Год:">{{report.AQ_YEAR}}</td>
-          <td data-label="Цена:">{{report.AQ_PRICE}}</td>
+          <td data-label="Цена:">{{report.AQ_PRICE}} {{report.AQ_PRICE != '-' ? cur : ''}}</td>
           <td data-label="Локация:">{{report.AQ_LANG}}</td>
           <td data-label="Отчет:">
             <a [routerLink]="['report', report.AQ_UNIQID]" class="user-saved-queries__link-report">
