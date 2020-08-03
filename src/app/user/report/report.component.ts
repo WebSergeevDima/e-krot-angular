@@ -22,9 +22,7 @@ export class ReportComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private panelService: PanelService,
     public currencyService: CurrencyService
-  ) {
-
-  }
+  ) { }
 
   ngOnInit(): void {
 

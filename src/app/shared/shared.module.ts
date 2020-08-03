@@ -6,6 +6,8 @@ import { CurrencyComponent } from './components/currency/currency.component';
 import { CommonModule } from '@angular/common';
 import { MatCommonModule } from '@angular/material/core';
 import { LocationComponent } from './components/location/location.component';
+import { AgChartsAngularModule } from 'ag-charts-angular';
+import { ChartComponent } from './components/chart/chart.component';
 
 @NgModule({
   imports: [
@@ -13,6 +15,7 @@ import { LocationComponent } from './components/location/location.component';
     HttpClientModule,
     MaterialModule,
     CommonModule,
+    AgChartsAngularModule,
     MatCommonModule
   ],
   exports: [
@@ -21,10 +24,12 @@ import { LocationComponent } from './components/location/location.component';
     MaterialModule,
     CurrencyComponent,
     CommonModule,
+    AgChartsAngularModule,
     MatCommonModule,
-    LocationComponent
+    LocationComponent,
+    ChartComponent
   ],
-  declarations: [CurrencyComponent, LocationComponent]
+  declarations: [CurrencyComponent, LocationComponent, ChartComponent]
 })
 export class SharedModule {
 
