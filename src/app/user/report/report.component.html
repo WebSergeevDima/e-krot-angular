@@ -1,3 +1,5 @@
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+
 <div class="report__header-block">
     <div class="report__header">
 
@@ -15,19 +17,6 @@
         {{report['price'] || report['priceAvg']}} {{cur}}
     </div>
 </div>
-
-<!--
-
-<div class="report__info-item">
-    Дата формирования отчета: <strong>{{report['dateCreate'] | date:'dd.MM.yyyy'}}</strong>
-</div>
-<div class="report__info-item">
-    Локация: <strong>{{report['location']}}</strong>
-</div>
--->
-
-
-
 
 <section *ngIf="report['price']; else reportAutoMarket">
 

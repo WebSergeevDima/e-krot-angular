@@ -33,7 +33,7 @@ import { SupportComponent } from './support/support.component';
     LoginPageComponent,
     RegistrationPageComponent,
     SupportComponent
-    
+
   ],
   imports: [
     BrowserModule,

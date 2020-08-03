@@ -1,5 +1,4 @@
 import { NgModule } from "@angular/core";
-import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { UserLayoutComponent } from './shared/components/user-layout/user-layout.component';
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -27,7 +26,6 @@ import { ReportsComponent } from './reports/reports.component';
     ReportsComponent
   ],
   imports: [
-    CommonModule,
     RouterModule.forChild([
       {
         path: '', component: UserLayoutComponent, children: [

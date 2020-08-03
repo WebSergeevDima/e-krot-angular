@@ -28,8 +28,6 @@ export class ReportComponent implements OnInit {
 
   ngOnInit(): void {
 
-   // this.cur = this.currencyService.getCurrency()
-
     this.activatedRoute.paramMap.subscribe(params => {
 
       console.log('uniqId', params.get('uniqId'));

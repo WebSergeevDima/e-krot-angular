@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AutoService } from '../shared/services/auto.service';
 import { CurrencyService } from '../shared/services/currency.service';
+import { LocationService } from '../shared/services/location.service';
 
 @Component({
   selector: 'app-auto-market-page',
@@ -31,7 +32,8 @@ export class AutoMarketPageComponent implements OnInit {
 
   constructor(
     private autoService: AutoService,
-    private currencyService: CurrencyService
+    private currencyService: CurrencyService,
+    private locationService: LocationService
   ) { }
 
   ngOnInit(): void {
@@ -80,7 +82,7 @@ export class AutoMarketPageComponent implements OnInit {
   }
 
   submit() {
-    
+
 
     if (this.form.invalid) {
       return;
@@ -88,13 +90,13 @@ export class AutoMarketPageComponent implements OnInit {
     this.loadingBtn = true
     this.loadingBlock = true
 
-    this.autoService.getSearchMarket(this.form.value, this.currencyService.getCurrency()).subscribe(response => {
+    this.autoService.getSearchMarket(this.form.value, this.currencyService.getCurrency(), this.locationService.getLocation()).subscribe(response => {
       this.result = response['data']
       this.oldCars = response['data']['oldCars']
       this.cur = this.currencyService.getCurrency()
       this.loadingBtn = false
       this.loadingBlock = false
-      
+
     })
 
   }

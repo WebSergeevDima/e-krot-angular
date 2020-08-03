@@ -34,9 +34,10 @@ export class AutoService {
     )
   }
 
-  getSearchMarket(obj, cur) {
+  getSearchMarket(obj, cur, location) {
 
     obj['currency'] = cur
+    obj['location'] = location
     obj['accessToken'] = localStorage.getItem('accessToken')
 
     return this.http.post(`${BASE_URL}/auto/searchMarket/`, JSON.stringify(obj)).pipe(
