@@ -15,11 +15,7 @@ export class ChartService {
 
 
   userReport(obj) {
-    return this.http.post(`${BASE_URL}/chart/user-report/`, JSON.stringify(obj)).pipe(
-      map(response => {
-        return response['chart']
-      })
-    )
+    return this.http.post(`${BASE_URL}/chart/user-report/`, JSON.stringify(obj))
   }
 
 

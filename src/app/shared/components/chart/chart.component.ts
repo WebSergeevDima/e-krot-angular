@@ -9,15 +9,16 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ChartComponent implements OnInit {
 
-
+public cur
+public chartPriceHistoryShow = false
 
 
 
   lineChartData = [
-    { data: [85, 72, 78, 75, 77, 75], label: 'Crude oil prices' },
+    { data: [], label: 'Crude oil prices' },
   ];
 
-  lineChartLabels = ['January', 'February', 'March', 'April', 'May', 'June'];
+  lineChartLabels = [];
 
   lineChartOptions = {
     responsive: true,
@@ -25,12 +26,13 @@ export class ChartComponent implements OnInit {
 
   lineChartColors = [
     {
-      borderColor: 'black',
+      //backgroundColor:[],
+      borderColor: 'rgba(66, 165, 245, 0.7)',
       backgroundColor: 'rgba(255,255,0,0.28)',
     },
   ];
 
-  lineChartLegend = true;
+  lineChartLegend = false;
   lineChartPlugins = [];
   lineChartType = 'line';
 
@@ -42,17 +44,27 @@ export class ChartComponent implements OnInit {
 
 
 
-  barChartOptions = {
+  public barChartOptions = {
     responsive: true,
-  };
-  barChartLabels = ['Apple', 'Banana', 'Kiwifruit', 'Blueberry', 'Orange', 'Grapes'];
-  barChartType = 'bar';
-  barChartLegend = true;
-  barChartPlugins = [];
+  }
+  public barChartLabels = [];
+  public barChartType = 'line';
+  public barChartLegend = false;
+  public barChartPlugins = [];
+  public barChartData = [
+    { data: [], label: 'Средняя стоимость' }
+  ]
 
-  barChartData = [
-    { data: [45, 37, 60, 70, 46, 33], label: 'Best Fruits' }
-  ];
+  public chartColors: Array<any> = [
+    { 
+      //backgroundColor: 'rgba(66, 165, 245, 0.5)',
+      backgroundColor:[],
+      //borderColor: '#000000',
+      //pointBackgroundColor: 'rgba(225,10,24,0.8)',
+      //pointBorderColor: '#fff',
+      //pointHoverBackgroundColor: '#fff',
+      //pointHoverBorderColor: 'rgba(225,10,24,0.2)'
+    }];
 
 
 
@@ -64,68 +76,18 @@ export class ChartComponent implements OnInit {
 
 
 
-
-  public options: any;
-
-  data = [
-    {
-      quarter: 'Q1',
-      spending: 450,
-    },
-    {
-      quarter: 'Q2',
-      spending: 560,
-    },
-    {
-      quarter: 'Q3',
-      spending: 600,
-    },
-    {
-      quarter: 'Q4',
-      spending: 700,
-    },
-  ];
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private chartService: ChartService
   ) {
 
-
-    this.options = {
-      data: this.data,
-      series: [{
-        xKey: 'quarter',
-        yKey: 'spending',
-      }],
-    };
-
   }
 
 
   ngOnInit(): void {
 
-
-
-    /*
-        this.options.data = [
-          { year: '2009', priceAvg: 40973087 },
-          { year: '2010', priceAvg: 42998338 },
-          { year: '2011', priceAvg: 44934839 },
-          { year: '2012', priceAvg: 46636720 },
-          { year: '2013', priceAvg: 48772922 },
-          { year: '2014', priceAvg: 50800193 },
-          { year: '2015', priceAvg: 48023342 },
-          { year: '2016', priceAvg: 47271912 },
-          { year: '2017', priceAvg: 47155093 },
-          { year: '2018', priceAvg: 49441678 },
-          { year: '2019', priceAvg: 50368190 },
-        ];
-    */
-
     this.activatedRoute.paramMap.subscribe(params => {
-
-      console.log('uniqId2222:', params.get('uniqId'));
 
       const obj = {
         accessToken: localStorage.getItem('accessToken'),
@@ -136,10 +98,31 @@ export class ChartComponent implements OnInit {
       this.chartService.userReport(obj).subscribe(response => {
         console.log(response)
 
+        this.cur = response['currency']
 
-        for (let item of response) {
-          console.log(item)
+
+        for (let car of response['chartPriceMarkYears']) {
+          this.barChartLabels.push(car['year'])
+          this.barChartData[0]['data'].push(car['priceAvg'])
+          if(car['userYear']) {
+            this.chartColors[0]['backgroundColor'].push('rgba(66, 165, 245, 0.7)')
+          } else {
+            this.chartColors[0]['backgroundColor'].push('rgba(255,255,0,0.28)')
+          }
         }
+
+        for (let month of response['chartPriceHistory']['month']) {
+          this.lineChartLabels.push(month)
+        }    
+        for (let priceAvg of response['chartPriceHistory']['priceAvg']) {
+          this.lineChartData[0]['data'].push(priceAvg)
+        }
+
+        if(response['chartPriceHistory']['month'].length > 1) {
+          this.chartPriceHistoryShow = true
+        }
+
+      
 
       })
 
