@@ -8,7 +8,6 @@ import { MatCommonModule } from '@angular/material/core';
 import { LocationComponent } from './components/location/location.component';
 import { AgChartsAngularModule } from 'ag-charts-angular';
 import { ChartComponent } from './components/chart/chart.component';
-
 @NgModule({
   imports: [
     ReactiveFormsModule,
