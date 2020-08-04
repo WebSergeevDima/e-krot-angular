@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartService } from '../../services/chart.service';
 import { ActivatedRoute } from '@angular/router';
-import { MAT_GRID_LIST } from '@angular/material/grid-list/grid-list-base';
 
 @Component({
   selector: 'app-chart',
@@ -9,6 +8,61 @@ import { MAT_GRID_LIST } from '@angular/material/grid-list/grid-list-base';
   styleUrls: ['./chart.component.scss']
 })
 export class ChartComponent implements OnInit {
+
+
+
+
+
+  lineChartData = [
+    { data: [85, 72, 78, 75, 77, 75], label: 'Crude oil prices' },
+  ];
+
+  lineChartLabels = ['January', 'February', 'March', 'April', 'May', 'June'];
+
+  lineChartOptions = {
+    responsive: true,
+  };
+
+  lineChartColors = [
+    {
+      borderColor: 'black',
+      backgroundColor: 'rgba(255,255,0,0.28)',
+    },
+  ];
+
+  lineChartLegend = true;
+  lineChartPlugins = [];
+  lineChartType = 'line';
+
+
+
+
+
+
+
+
+
+  barChartOptions = {
+    responsive: true,
+  };
+  barChartLabels = ['Apple', 'Banana', 'Kiwifruit', 'Blueberry', 'Orange', 'Grapes'];
+  barChartType = 'bar';
+  barChartLegend = true;
+  barChartPlugins = [];
+
+  barChartData = [
+    { data: [45, 37, 60, 70, 46, 33], label: 'Best Fruits' }
+  ];
+
+
+
+
+
+
+
+
+
+
 
 
   public options: any;
@@ -45,73 +99,6 @@ export class ChartComponent implements OnInit {
         yKey: 'spending',
       }],
     };
-
-
-    /*
-        this.options = {
-          container: document.querySelector('#myChart'),
-          data: [{ year: '2010', priceAvg: 42998338 }],
-          title: {
-            text: 'Total priceAvg to Museums and Galleries',
-            fontSize: 18,
-          },
-          subtitle: {
-            text: 'Source: Department for Digital, Culture, Media & Sport',
-          },
-          series: [
-            {
-              type: 'column',
-              xKey: 'year',
-              yKeys: ['priceAvg'],
-              fills: ['#0084e7'],
-              strokes: ['#00407f'],
-              shadow: {
-                enabled: true,
-                xOffset: 3,
-              },
-            },
-          ],
-          axes: [
-            {
-              type: 'category',
-              position: 'bottom',
-              title: {
-                text: 'Year',
-              },
-            },
-            {
-              type: 'number',
-              position: 'left',
-              title: {
-                text: 'Total priceAvg',
-              },
-              label: {
-                formatter: function (params) {
-                  return params.value / 1000000 + 'M';
-                },
-              },
-            },
-          ],
-          legend: {
-            enabled: false,
-          },
-        };
-    */
-
-
-    /*
-    this.options = {
-      data: this.data,
-      series: [{
-        xKey: 'quarter',
-        yKey: 'spending',
-        yName: 'Coffee Spending',
-      }],
-      legend: {
-        position: 'bottom',
-      },
-    };
-  */
 
   }
 
@@ -188,10 +175,11 @@ export class ChartComponent implements OnInit {
 
 
   dataUpdate() {
-    this.options.data.push({
-      quarter: 'Q99',
-      spending: 777,
-    })
+
+    this.barChartData = [
+      { data: [55, 55, 60, 70, 46, 33], label: 'Best Fruits' }
+    ];
+
   }
 
 }

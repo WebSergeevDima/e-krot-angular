@@ -6,16 +6,16 @@ import { CurrencyComponent } from './components/currency/currency.component';
 import { CommonModule } from '@angular/common';
 import { MatCommonModule } from '@angular/material/core';
 import { LocationComponent } from './components/location/location.component';
-import { AgChartsAngularModule } from 'ag-charts-angular';
 import { ChartComponent } from './components/chart/chart.component';
+import { ChartsModule } from 'ng2-charts';
 @NgModule({
   imports: [
     ReactiveFormsModule,
     HttpClientModule,
     MaterialModule,
     CommonModule,
-    AgChartsAngularModule,
-    MatCommonModule
+    MatCommonModule,
+    ChartsModule
   ],
   exports: [
     ReactiveFormsModule,
@@ -23,10 +23,10 @@ import { ChartComponent } from './components/chart/chart.component';
     MaterialModule,
     CurrencyComponent,
     CommonModule,
-    AgChartsAngularModule,
     MatCommonModule,
     LocationComponent,
-    ChartComponent
+    ChartComponent,
+    ChartsModule
   ],
   declarations: [CurrencyComponent, LocationComponent, ChartComponent]
 })
