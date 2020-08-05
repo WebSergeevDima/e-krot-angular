@@ -10,7 +10,8 @@ import { CurrencyService } from 'src/app/shared/services/currency.service';
 })
 export class ReportComponent implements OnInit {
 
-  public cur = this.currencyService.getCurrency()
+  //public cur = this.currencyService.getCurrency()
+  public cur = 'usd'
   showOldCars: boolean = false
 
   public report = {
@@ -30,8 +31,9 @@ export class ReportComponent implements OnInit {
 
       console.log('uniqId', params.get('uniqId'));
 
-      this.panelService.getUserReport(params.get('uniqId'), localStorage.getItem('accessToken')).subscribe(resolve => {
+      this.panelService.getUserReport(params.get('uniqId'), localStorage.getItem('accessToken'), this.currencyService.getCurrency()).subscribe(resolve => {
         this.report = resolve['report']
+        this.cur = resolve['currency']
 
         if (!!resolve['report']['oldCars']) {
           this.showOldCars = true

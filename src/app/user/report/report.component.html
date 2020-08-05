@@ -38,7 +38,7 @@
 
     <mat-divider class="divider"></mat-divider>
 
-    <div>Стоимость вашего автомобиля <strong>{{report['price']}}</strong> <span>USD</span></div>
+    <div>Стоимость вашего автомобиля <strong>{{report['price']}}</strong> <span> {{cur}}</span></div>
     <div>Стоимость по trade-in составит <strong>{{report['tradeIn']['priceMin']}}</strong> -
         <strong>{{report['tradeIn']['priceMax']}}</strong>
         <span>USD</span></div>
@@ -50,19 +50,19 @@
     <div class="report-prices">
         <div class="report-prices__item report-prices__item_min">
             <div>
-                <div class="report-prices__price">{{report['priceMin']| number:'':'en'}} USD</div>
+                <div class="report-prices__price">{{report['priceMin']| number:'':'en'}}  {{cur}}</div>
                 <div>минимальная</div>
             </div>
         </div>
         <div class="report-prices__item report-prices__item_avg">
             <div>
-                <div class="report-prices__price">{{report['priceAvg']| number:'':'en'}} USD</div>
+                <div class="report-prices__price"><span data-currency="price">{{report['priceAvg']| number:'':'en'}}</span>  {{cur}}</div>
                 <div>средняя</div>
             </div>
         </div>
         <div class="report-prices__item report-prices__item_max">
             <div>
-                <div class="report-prices__price">{{report['priceMax']| number:'':'en'}} USD</div>
+                <div class="report-prices__price"><span data-currency="price">{{report['priceMax']| number:'':'en'}}</span>  {{cur}}</div>
                 <div>максимальная</div>
             </div>
         </div>
@@ -93,8 +93,8 @@
                 <div *ngFor="let car of report['oldCars']">
                     <strong>{{report['titleMark']}} {{report['titleModel']}} {{car.year}}</strong>
                     г. с пробегом <strong>{{car.millage| number:'':'en'}}</strong> км за
-                    <strong>{{car.price| number:'':'en'}}</strong>
-                    USD
+                    <strong>{{car.price | number:'':'en'}}</strong>
+                    {{cur}}
                 </div>
 
 

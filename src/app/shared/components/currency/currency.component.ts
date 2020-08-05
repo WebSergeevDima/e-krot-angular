@@ -22,7 +22,22 @@ export class CurrencyComponent implements OnInit {
   }
 
   currencyChange() {
+    
     this.currencyService.setCurrencySelected(this.currencySelected)
+
+    let allCurrencyPrice = document.querySelectorAll('[data-currency="price"]')
+    console.log('allCurrencyPrice', allCurrencyPrice)
+
+    const arrPrices = []
+    for (var i = 0; i < allCurrencyPrice.length; i++) {
+
+      let price = parseInt(allCurrencyPrice[i].innerHTML.replace(/\D+/g,""))
+      arrPrices.push(price)
+    }
+
+    console.log('arrPrices', arrPrices)
+
+
   }
 
 
