@@ -1,40 +1,28 @@
 <div *ngIf="chartPriceHistoryShow">
-    <div class="chart-wrapper__title">Тенденция изменения стоимости модели</div>
+    <div class="chart-wrapper__title">Тенденция изменения стоимости модели <mat-icon
+            class="chart-wrapper__btn-change-view" (click)="changeTypePriceHistory()">sync_alt</mat-icon>
+    </div>
 
     <div class="chart-wrapper">
         <div class="chart-wrapper__description-left">Стоимость модели ({{cur}})</div>
-        <canvas 
-        baseChart 
-        [datasets]="lineChartData" 
-        [labels]="lineChartLabels" 
-        [options]="lineChartOptions"
-            [colors]="lineChartColors" 
-            [legend]="lineChartLegend" 
-            [chartType]="lineChartType" 
-            [plugins]="lineChartPlugins">
+        <canvas baseChart [datasets]="chartPriceHistoryData" [labels]="chartPriceHistoryLabels"
+            [options]="chartPriceHistoryOptions" [colors]="chartPriceHistoryColors" [legend]="chartPriceHistoryLegend"
+            [chartType]="chartPriceHistoryType" [plugins]="chartPriceHistoryPlugins">
         </canvas>
         <div class="chart-wrapper__description-footer">Период (в месяцах)</div>
     </div>
-    </div>
-
-    <div class="chart-wrapper__title">Зависимость стоимости модели от года выпуска</div>
-
-    <div class="chart-wrapper">
-        <div class="chart-wrapper__description-left">Стоимость модели {{cur}}</div>
-        <canvas 
-        baseChart [datasets]="barChartData" 
-        [labels]="barChartLabels" 
-        [options]="barChartOptions"
-        [plugins]="barChartPlugins" 
-        [legend]="barChartLegend" 
-        [chartType]="barChartType" 
-        [colors]="chartColors"
-        >
-        </canvas>
-    <div class="chart-wrapper__description-footer">Год выпуска модели</div>
-  
 </div>
 
+<div class="chart-wrapper__title">Зависимость стоимости модели от года выпуска <mat-icon
+        class="chart-wrapper__btn-change-view" (click)="changeTypePriceMarkYears()">sync_alt</mat-icon>
+</div>
 
+<div class="chart-wrapper">
+    <div class="chart-wrapper__description-left">Стоимость модели ({{cur}})</div>
+    <canvas baseChart [datasets]="chartPriceMarkYearsData" [labels]="chartPriceMarkYearsLabels"
+        [options]="chartPriceMarkYearsOptions" [plugins]="chartPriceMarkYearsPlugins"
+        [legend]="chartPriceMarkYearsLegend" [chartType]="chartPriceMarkYearsType" [colors]="chartColors">
+    </canvas>
+    <div class="chart-wrapper__description-footer">Год выпуска модели</div>
 
-<div (click)="dataUpdate()">ADD</div>
+</div>

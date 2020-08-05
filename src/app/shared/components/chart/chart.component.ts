@@ -9,32 +9,37 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ChartComponent implements OnInit {
 
-public cur
-public chartPriceHistoryShow = false
+
+  public cur
+  public chartPriceHistoryShow = false
 
 
 
-  lineChartData = [
-    { data: [], label: 'Crude oil prices' },
+  chartPriceHistoryData = [
+    { data: [], label: 'Средняя стоимость' },
   ];
 
-  lineChartLabels = [];
+  chartPriceHistoryLabels = [];
 
-  lineChartOptions = {
+  chartPriceHistoryOptions = {
     responsive: true,
   };
 
-  lineChartColors = [
+  chartPriceHistoryColors = [
     {
       //backgroundColor:[],
-      borderColor: 'rgba(66, 165, 245, 0.7)',
-      backgroundColor: 'rgba(255,255,0,0.28)',
+      //borderColor: 'rgba(255, 87, 34, 0.6)',
+      backgroundColor: 'rgba(66, 165, 245, 0.7)',
     },
   ];
 
-  lineChartLegend = false;
-  lineChartPlugins = [];
-  lineChartType = 'line';
+  chartPriceHistoryLegend = false;
+  chartPriceHistoryPlugins = [];
+  chartPriceHistoryType = 'line';
+
+  public changeTypePriceHistory(): void {
+    this.chartPriceHistoryType = this.chartPriceHistoryType === 'bar' ? 'line' : 'bar';
+  }
 
 
 
@@ -43,22 +48,21 @@ public chartPriceHistoryShow = false
 
 
 
-
-  public barChartOptions = {
+  public chartPriceMarkYearsOptions = {
     responsive: true,
   }
-  public barChartLabels = [];
-  public barChartType = 'line';
-  public barChartLegend = false;
-  public barChartPlugins = [];
-  public barChartData = [
+  public chartPriceMarkYearsLabels = [];
+  public chartPriceMarkYearsType = 'bar';
+  public chartPriceMarkYearsLegend = false;
+  public chartPriceMarkYearsPlugins = [];
+  public chartPriceMarkYearsData = [
     { data: [], label: 'Средняя стоимость' }
   ]
 
   public chartColors: Array<any> = [
-    { 
+    {
       //backgroundColor: 'rgba(66, 165, 245, 0.5)',
-      backgroundColor:[],
+      backgroundColor: [],
       //borderColor: '#000000',
       //pointBackgroundColor: 'rgba(225,10,24,0.8)',
       //pointBorderColor: '#fff',
@@ -67,6 +71,9 @@ public chartPriceHistoryShow = false
     }];
 
 
+  public changeTypePriceMarkYears(): void {
+    this.chartPriceMarkYearsType = this.chartPriceMarkYearsType === 'bar' ? 'line' : 'bar';
+  }
 
 
 
@@ -102,27 +109,27 @@ public chartPriceHistoryShow = false
 
 
         for (let car of response['chartPriceMarkYears']) {
-          this.barChartLabels.push(car['year'])
-          this.barChartData[0]['data'].push(car['priceAvg'])
-          if(car['userYear']) {
+          this.chartPriceMarkYearsLabels.push(car['year'])
+          this.chartPriceMarkYearsData[0]['data'].push(car['priceAvg'])
+          if (car['userYear']) {
             this.chartColors[0]['backgroundColor'].push('rgba(66, 165, 245, 0.7)')
           } else {
-            this.chartColors[0]['backgroundColor'].push('rgba(255,255,0,0.28)')
+            this.chartColors[0]['backgroundColor'].push('rgba(255, 87, 34, 0.6)')
           }
         }
 
         for (let month of response['chartPriceHistory']['month']) {
-          this.lineChartLabels.push(month)
-        }    
+          this.chartPriceHistoryLabels.push(month)
+        }
         for (let priceAvg of response['chartPriceHistory']['priceAvg']) {
-          this.lineChartData[0]['data'].push(priceAvg)
+          this.chartPriceHistoryData[0]['data'].push(priceAvg)
         }
 
-        if(response['chartPriceHistory']['month'].length > 1) {
+        if (response['chartPriceHistory']['month'].length > 1) {
           this.chartPriceHistoryShow = true
         }
 
-      
+
 
       })
 
@@ -159,7 +166,7 @@ public chartPriceHistoryShow = false
 
   dataUpdate() {
 
-    this.barChartData = [
+    this.chartPriceMarkYearsData = [
       { data: [55, 55, 60, 70, 46, 33], label: 'Best Fruits' }
     ];
 

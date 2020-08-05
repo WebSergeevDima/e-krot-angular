@@ -21,7 +21,7 @@
                     <div class="header__top-select-wrapper">
 
 
-                        
+
                         <select data-select="rate" class="header__top-select">
                             <option value="1" selected="selected">USD</option>
                             <option value="2">RUB</option>
@@ -54,7 +54,8 @@
 
                     <div *ngIf="privilege('auth'); else headerAccountNoAuth">
                         <span class="header-account__registration" (click)="logout()">Выход</span> |
-                        <a [routerLink]="['/user/panel/reports']" class="header-account__registration">Панель</a>
+                        <a [routerLink]="['/user/panel/reports']" class="header-account__registration">Личный
+                            кабинет</a>
                     </div>
 
                     <ng-template #headerAccountNoAuth>

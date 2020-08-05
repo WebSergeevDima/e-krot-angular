@@ -48,7 +48,7 @@
 
           <div *ngIf="privilege('auth'); else headerAccountNoAuth">
             <span class="header-account__registration" (click)="logout()">Выход</span> |
-            <a [routerLink]="['/user/panel/reports']" class="header-account__registration">Панель</a>
+            <a [routerLink]="['/user/panel/reports']" class="header-account__registration">Личный кабинет</a>
           </div>
 
           <ng-template #headerAccountNoAuth>

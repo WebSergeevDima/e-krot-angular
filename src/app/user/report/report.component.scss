@@ -86,3 +86,50 @@ font-size: 16px;
 .divider {
     margin: 20px 0;
 }
+
+
+.report-prices {
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0 0 40px 0;
+
+    &__title {
+    text-align: center;
+    font-size: 18px;
+    margin: 30px 0 40px 0;
+    }
+    &__price {
+        font-size: 20px;
+        margin: 0 0 5px 0;
+            font-weight: 400;
+    }
+    &__item {
+
+    background: #c5e1a5;
+    height: 190px;
+    width: 190px;
+    margin: 0 auto;
+    border-radius: 200px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    color: #000;
+    font-size: 14px;
+    font-weight: 100;
+
+        &_min {
+            background: #c5e1a5;
+        }
+        &_avg {
+            
+            background: #ffe082;
+        }
+        &_max {
+            
+            background: #ffab91;
+        }
+}
+}
+
