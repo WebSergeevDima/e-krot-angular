@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { BASE_URL } from 'src/app/api-config';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,9 @@ export class CurrencyService {
     { value: 'UAH', name: 'UAH' }
   ]
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   getCurrencyList() {
     return this.currencyList
@@ -36,6 +40,10 @@ export class CurrencyService {
 
   validate(currency) {
     return ['USD', 'RUB', 'EUR', 'BYN', 'UAH'].indexOf(currency) != -1 ? true : false
+  }
+
+  converterPrice(obj) {
+    return this.http.post(`${BASE_URL}/currency/converter-price/`, JSON.stringify(obj))
   }
 
 

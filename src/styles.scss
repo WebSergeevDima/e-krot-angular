@@ -331,3 +331,46 @@ mat-spinner {
 
 }
 
+[data-currency-unit] {
+  margin: 0 0 0 5px;
+  display: inline-block;
+
+  &.margin-initial {
+      margin: 0;
+  }
+}
+
+[data-currency-unit="USD"] {
+  &:after {
+    content: 'USD';
+  }
+}
+
+[data-currency-unit="RUB"] {
+  &:after {
+    content: 'RUB';
+  }
+}
+
+[data-currency-unit="EUR"] {
+  &:after {
+    content: 'EUR';
+  }
+}
+
+[data-currency-unit="BYN"] {
+  &:after {
+    content: 'BYN';
+  }
+}
+
+[data-currency-unit="UAH"] {
+  &:after {
+    content: 'UAH';
+  }
+}
+
+
+
+
+  

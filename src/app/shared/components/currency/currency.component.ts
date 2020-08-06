@@ -22,20 +22,52 @@ export class CurrencyComponent implements OnInit {
   }
 
   currencyChange() {
-    
+
     this.currencyService.setCurrencySelected(this.currencySelected)
 
-    let allCurrencyPrice = document.querySelectorAll('[data-currency="price"]')
+    let allCurrencyPrice = document.querySelectorAll('[data-currency-price]')
     console.log('allCurrencyPrice', allCurrencyPrice)
 
     const arrPrices = []
     for (var i = 0; i < allCurrencyPrice.length; i++) {
 
-      let price = parseInt(allCurrencyPrice[i].innerHTML.replace(/\D+/g,""))
+      let price = parseInt(allCurrencyPrice[i].getAttribute('data-currency-price').replace(/\D+/g, ""))
       arrPrices.push(price)
+
     }
 
     console.log('arrPrices', arrPrices)
+
+    this.currencyService.converterPrice({ prices: arrPrices, currency: this.currencyService.getCurrency() }).subscribe(response => {
+      console.log('coverter: ', response)
+
+      for (var i = 0; i < response['prices'].length; i++) {
+
+        //console.log(response['prices'][i])
+
+        //let price = parseInt(allCurrencyPrice[i].getAttribute('data-currency-price').replace(/\D+/g, ""))
+        //arrPrices.push(price)
+
+      }
+
+      for (var i = 0; i < allCurrencyPrice.length; i++) {
+
+        allCurrencyPrice[i].innerHTML = response['prices'][i]
+
+      }
+
+
+      let allCurrencyUnit = document.querySelectorAll('[data-currency-unit]')
+
+      for (var i = 0; i < allCurrencyUnit.length; i++) {
+
+        allCurrencyUnit[i].setAttribute('data-currency-unit', response['currency'])
+
+      }
+
+
+
+    })
 
 
   }

@@ -12,7 +12,9 @@
     </div>
 
     <div class="report__header-price">
-        {{report['price'] || report['priceAvg']| number:'':'en'}} {{cur}}
+        <span
+            [attr.data-currency-price]="report['price'] || report['priceAvg']">{{report['priceCur'] || report['priceAvgCur']| number:'':'en'}}</span>
+        <span [attr.data-currency-unit]="cur"></span>
     </div>
 </div>
 
@@ -38,10 +40,13 @@
 
     <mat-divider class="divider"></mat-divider>
 
-    <div>Стоимость вашего автомобиля <strong>{{report['price']}}</strong> <span> {{cur}}</span></div>
-    <div>Стоимость по trade-in составит <strong>{{report['tradeIn']['priceMin']}}</strong> -
-        <strong>{{report['tradeIn']['priceMax']}}</strong>
-        <span>USD</span></div>
+    <div>Стоимость вашего автомобиля <strong
+            [attr.data-currency-price]="report['price']">{{report['priceCur']}}</strong><span
+            [attr.data-currency-unit]="cur"></span></div>
+    <div>Стоимость по trade-in составит <strong
+            [attr.data-currency-price]="report['priceMin']">{{report['tradeIn']['priceMinCur']}}</strong> - <strong
+            [attr.data-currency-price]="report['priceMin']">{{report['tradeIn']['priceMaxCur']}}</strong><span
+            [attr.data-currency-unit]="cur"></span></div>
 
     <mat-divider class="divider"></mat-divider>
 
@@ -50,19 +55,31 @@
     <div class="report-prices">
         <div class="report-prices__item report-prices__item_min">
             <div>
-                <div class="report-prices__price">{{report['priceMin']| number:'':'en'}}  {{cur}}</div>
+                <div class="report-prices__price">
+                    <span
+                        [attr.data-currency-price]="report['priceMin']">{{report['priceMinCur']| number:'':'en'}}</span><span
+                        [attr.data-currency-unit]="cur"></span>
+                </div>
                 <div>минимальная</div>
             </div>
         </div>
         <div class="report-prices__item report-prices__item_avg">
             <div>
-                <div class="report-prices__price"><span data-currency="price">{{report['priceAvg']| number:'':'en'}}</span>  {{cur}}</div>
+                <div class="report-prices__price">
+                    <span
+                        [attr.data-currency-price]="report['priceAvg']">{{report['priceAvgCur']| number:'':'en'}}</span><span
+                        [attr.data-currency-unit]="cur"></span>
+                </div>
                 <div>средняя</div>
             </div>
         </div>
         <div class="report-prices__item report-prices__item_max">
             <div>
-                <div class="report-prices__price"><span data-currency="price">{{report['priceMax']| number:'':'en'}}</span>  {{cur}}</div>
+                <div class="report-prices__price">
+                    <span
+                        [attr.data-currency-price]="report['priceMax']">{{report['priceMaxCur']| number:'':'en'}}</span>
+                    <span [attr.data-currency-unit]="cur"></span>
+                </div>
                 <div>максимальная</div>
             </div>
         </div>
@@ -70,7 +87,7 @@
 
 
     <div>Стоимость вашего автомобиля на <strong> {{report['priceDifference'] | percent}} </strong>
-        {{(report['price'] < report['priceAvg']) ? 'ниже' : 'выше' | number:'':'en'}}
+        {{(report['price'] < report['priceAvg']) ? 'ниже' : 'выше'}}
         среднерыночной</div>
     <div>Средний пробег по рынку составляет <strong> {{report['mileageAvg']| number:'':'en'}} </strong> км</div>
     <div>Количество объявлений о продаже составляет <strong>{{report['carsQuantity']}}</strong> шт</div>
@@ -85,18 +102,15 @@
                         Список проданных автомобилей за последние <strong>&nbsp;6 месяцев&nbsp;</strong>
                         (<strong>{{report['oldCarsQuantity']}}&nbsp;шт</strong>)
                     </mat-panel-title>
-                    <mat-panel-description>
-
-                    </mat-panel-description>
+                    <mat-panel-description></mat-panel-description>
                 </mat-expansion-panel-header>
 
                 <div *ngFor="let car of report['oldCars']">
                     <strong>{{report['titleMark']}} {{report['titleModel']}} {{car.year}}</strong>
                     г. с пробегом <strong>{{car.millage| number:'':'en'}}</strong> км за
                     <strong>{{car.price | number:'':'en'}}</strong>
-                    {{cur}}
+                    <span [attr.data-currency-unit]="cur"></span>
                 </div>
-
 
             </mat-expansion-panel>
         </mat-accordion>
@@ -124,19 +138,22 @@
     <div class="report-prices">
         <div class="report-prices__item report-prices__item_min">
             <div>
-                <div class="report-prices__price">{{report['priceMin'] | number:'':'en'}} USD</div>
+                <div class="report-prices__price">{{report['priceMin'] | number:'':'en'}}<span
+                        [attr.data-currency-unit]="cur"></span></div>
                 <div>минимальная</div>
             </div>
         </div>
         <div class="report-prices__item report-prices__item_avg">
             <div>
-                <div class="report-prices__price">{{report['priceAvg']| number:'':'en'}} USD</div>
+                <div class="report-prices__price">{{report['priceAvg']| number:'':'en'}}<span
+                        [attr.data-currency-unit]="cur"></span></div>
                 <div>средняя</div>
             </div>
         </div>
         <div class="report-prices__item report-prices__item_max">
             <div>
-                <div class="report-prices__price">{{report['priceMax']| number:'':'en'}} USD</div>
+                <div class="report-prices__price">{{report['priceMax']| number:'':'en'}}<span
+                        [attr.data-currency-unit]="cur"></span></div>
                 <div>максимальная</div>
             </div>
         </div>
