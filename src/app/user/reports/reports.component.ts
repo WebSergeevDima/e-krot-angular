@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { PanelService } from '../shared/services/panel.service';
 import { CurrencyService } from 'src/app/shared/services/currency.service';
 
@@ -8,6 +8,7 @@ import { CurrencyService } from 'src/app/shared/services/currency.service';
   styleUrls: ['./reports.component.scss'],
 })
 export class ReportsComponent implements OnInit {
+  
 
   public cur
   public allReports = []

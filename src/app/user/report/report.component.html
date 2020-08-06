@@ -11,9 +11,16 @@
 
     </div>
 
-    <div class="report__header-price">
+    <div class="report__header-price" *ngIf="report['price'] && report['priceAvg']">
         <span
-            [attr.data-currency-price]="report['price'] || report['priceAvg']">{{report['priceCur'] || report['priceAvgCur']| number:'':'en'}}</span>
+            [attr.data-currency-price]="report['price']">{{report['priceCur']}}</span>
+        <span [attr.data-currency-unit]="cur"></span>
+    </div>
+
+    
+    <div class="report__header-price" *ngIf="!report['price'] && report['priceAvg']">
+        <span
+            [attr.data-currency-price]="report['priceAvg']">{{report['priceAvgCur']}}</span>
         <span [attr.data-currency-unit]="cur"></span>
     </div>
 </div>
@@ -57,7 +64,7 @@
             <div>
                 <div class="report-prices__price">
                     <span
-                        [attr.data-currency-price]="report['priceMin']">{{report['priceMinCur']| number:'':'en'}}</span><span
+                        [attr.data-currency-price]="report['priceMin']">{{report['priceMinCur']}}</span><span
                         [attr.data-currency-unit]="cur"></span>
                 </div>
                 <div>минимальная</div>
@@ -67,7 +74,7 @@
             <div>
                 <div class="report-prices__price">
                     <span
-                        [attr.data-currency-price]="report['priceAvg']">{{report['priceAvgCur']| number:'':'en'}}</span><span
+                        [attr.data-currency-price]="report['priceAvg']">{{report['priceAvgCur']}}</span><span
                         [attr.data-currency-unit]="cur"></span>
                 </div>
                 <div>средняя</div>
@@ -77,7 +84,7 @@
             <div>
                 <div class="report-prices__price">
                     <span
-                        [attr.data-currency-price]="report['priceMax']">{{report['priceMaxCur']| number:'':'en'}}</span>
+                        [attr.data-currency-price]="report['priceMax']">{{report['priceMaxCur']}}</span>
                     <span [attr.data-currency-unit]="cur"></span>
                 </div>
                 <div>максимальная</div>
@@ -85,11 +92,12 @@
         </div>
     </div>
 
-
-    <div>Стоимость вашего автомобиля на <strong> {{report['priceDifference'] | percent}} </strong>
+    <mat-divider class="divider"></mat-divider>
+    
+    <div>Стоимость вашего автомобиля на <strong> {{report['priceDifference']}}% </strong>
         {{(report['price'] < report['priceAvg']) ? 'ниже' : 'выше'}}
         среднерыночной</div>
-    <div>Средний пробег по рынку составляет <strong> {{report['mileageAvg']| number:'':'en'}} </strong> км</div>
+    <div>Средний пробег по рынку составляет <strong> {{report['mileageAvg']}} </strong> км</div>
     <div>Количество объявлений о продаже составляет <strong>{{report['carsQuantity']}}</strong> шт</div>
 
     <ng-container *ngIf="showOldCars">
@@ -107,8 +115,8 @@
 
                 <div *ngFor="let car of report['oldCars']">
                     <strong>{{report['titleMark']}} {{report['titleModel']}} {{car.year}}</strong>
-                    г. с пробегом <strong>{{car.millage| number:'':'en'}}</strong> км за
-                    <strong>{{car.price | number:'':'en'}}</strong>
+                    г. с пробегом <strong>{{car.millage}}</strong> км за
+                    <strong [attr.data-currency-price]="car.price">{{car.priceCur}}</strong>
                     <span [attr.data-currency-unit]="cur"></span>
                 </div>
 
@@ -138,33 +146,40 @@
     <div class="report-prices">
         <div class="report-prices__item report-prices__item_min">
             <div>
-                <div class="report-prices__price">{{report['priceMin'] | number:'':'en'}}<span
-                        [attr.data-currency-unit]="cur"></span></div>
+                <div class="report-prices__price">
+                    <span
+                        [attr.data-currency-price]="report['priceMin']">{{report['priceMinCur']}}</span><span
+                        [attr.data-currency-unit]="cur"></span>
+                </div>
                 <div>минимальная</div>
             </div>
         </div>
         <div class="report-prices__item report-prices__item_avg">
             <div>
-                <div class="report-prices__price">{{report['priceAvg']| number:'':'en'}}<span
-                        [attr.data-currency-unit]="cur"></span></div>
+                <div class="report-prices__price">
+                    <span
+                        [attr.data-currency-price]="report['priceAvg']">{{report['priceAvgCur']}}</span><span
+                        [attr.data-currency-unit]="cur"></span>
+                </div>
                 <div>средняя</div>
             </div>
         </div>
         <div class="report-prices__item report-prices__item_max">
             <div>
-                <div class="report-prices__price">{{report['priceMax']| number:'':'en'}}<span
-                        [attr.data-currency-unit]="cur"></span></div>
+                <div class="report-prices__price">
+                    <span
+                        [attr.data-currency-price]="report['priceMax']">{{report['priceMaxCur']}}</span>
+                    <span [attr.data-currency-unit]="cur"></span>
+                </div>
                 <div>максимальная</div>
             </div>
         </div>
     </div>
 
+    <mat-divider class="divider"></mat-divider>
 
-    <div>Средний пробег по рынку составляет <strong>{{report['mileageAvg']| number:'':'en'}}</strong> км</div>
+    <div>Средний пробег по рынку составляет <strong> {{report['mileageAvg']}} </strong> км</div>
     <div>Количество объявлений о продаже составляет <strong>{{report['carsQuantity']}}</strong> шт</div>
-    <div>Количество проданных схожих автомобилей за последние <strong>6</strong> месяцев составляет
-        <strong>{{report['oldCarsQuantity']}}</strong> шт:
-    </div>
 
     <ng-container *ngIf="showOldCars">
         <mat-divider class="divider"></mat-divider>
@@ -183,9 +198,9 @@
 
                 <div *ngFor="let car of report['oldCars']">
                     <strong>{{report['titleMark']}} {{report['titleModel']}} {{car.year}}</strong>
-                    г. с пробегом <strong>{{car.millage| number:'':'en'}}</strong> км за
-                    <strong>{{car.price| number:'':'en'}}</strong>
-                    USD
+                    г. с пробегом <strong>{{car.millage}}</strong> км за
+                    <strong [attr.data-currency-price]="car.price">{{car.priceCur}}</strong>
+                    <span [attr.data-currency-unit]="cur"></span>
                 </div>
 
 

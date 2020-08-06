@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CurrencyService } from '../../services/currency.service';
 
 @Component({
@@ -7,6 +7,8 @@ import { CurrencyService } from '../../services/currency.service';
   styleUrls: ['./currency.component.scss']
 })
 export class CurrencyComponent implements OnInit {
+  
+  @Output() customName = new EventEmitter()
 
   currencyList: any[]
   currencySelected = localStorage.getItem('currency')
@@ -21,7 +23,12 @@ export class CurrencyComponent implements OnInit {
     this.currencySelected = this.currencyService.getCurrency()
   }
 
+
+
   currencyChange() {
+
+this.customName.emit('Hi iz componenta Currency)')
+
 
     this.currencyService.setCurrencySelected(this.currencySelected)
 
@@ -40,15 +47,6 @@ export class CurrencyComponent implements OnInit {
 
     this.currencyService.converterPrice({ prices: arrPrices, currency: this.currencyService.getCurrency() }).subscribe(response => {
       console.log('coverter: ', response)
-
-      for (var i = 0; i < response['prices'].length; i++) {
-
-        //console.log(response['prices'][i])
-
-        //let price = parseInt(allCurrencyPrice[i].getAttribute('data-currency-price').replace(/\D+/g, ""))
-        //arrPrices.push(price)
-
-      }
 
       for (var i = 0; i < allCurrencyPrice.length; i++) {
 

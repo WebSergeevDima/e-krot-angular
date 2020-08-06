@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ChartService } from '../../services/chart.service';
 import { ActivatedRoute } from '@angular/router';
+import { CurrencyService } from '../../services/currency.service';
 
 @Component({
   selector: 'app-chart',
@@ -8,7 +9,6 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./chart.component.scss']
 })
 export class ChartComponent implements OnInit {
-
 
   public cur
   public chartPriceHistoryShow = false
@@ -76,17 +76,10 @@ export class ChartComponent implements OnInit {
   }
 
 
-
-
-
-
-
-
-
-
   constructor(
     private activatedRoute: ActivatedRoute,
-    private chartService: ChartService
+    private chartService: ChartService,
+    private currencyService: CurrencyService
   ) {
 
   }
@@ -106,7 +99,6 @@ export class ChartComponent implements OnInit {
         console.log(response)
 
         this.cur = response['currency']
-
 
         for (let car of response['chartPriceMarkYears']) {
           this.chartPriceMarkYearsLabels.push(car['year'])
@@ -163,6 +155,9 @@ export class ChartComponent implements OnInit {
   }
 
 
+  doSomething() {
+    console.log('doSomething!!!!!!!!!!!')
+  }
 
   dataUpdate() {
 

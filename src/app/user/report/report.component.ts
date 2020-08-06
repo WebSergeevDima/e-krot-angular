@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PanelService } from '../shared/services/panel.service';
 import { CurrencyService } from 'src/app/shared/services/currency.service';
@@ -11,7 +11,7 @@ import { CurrencyService } from 'src/app/shared/services/currency.service';
 export class ReportComponent implements OnInit {
 
   //public cur = this.currencyService.getCurrency()
-  public cur = 'usd'
+  public cur 
   showOldCars: boolean = false
 
   public report = {
@@ -26,6 +26,8 @@ export class ReportComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+
 
     this.activatedRoute.paramMap.subscribe(params => {
 

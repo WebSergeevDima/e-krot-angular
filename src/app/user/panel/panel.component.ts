@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { RolesService } from 'src/app/shared/services/roles.service';
 
 @Component({
@@ -25,6 +25,8 @@ export class PanelComponent implements OnInit {
   privilege(privelege: string): boolean {
     return this.roles.validatePrivilege(privelege)
   }
-
+  myMethod(e) {
+    console.log('принято: ' + e)
+  }
 }
 
