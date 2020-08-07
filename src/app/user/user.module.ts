@@ -11,7 +11,6 @@ import { HeaderComponent } from './header/header.component';
 import { DialogComponent } from '../shared/components/dialog/dialog.component';
 import { MaterialModule } from '../shared/modules/material/material.module';
 import { DialogRegistrationComponent } from '../shared/components/dialog-registration/dialog-registration.component';
-import { ReportComponent } from './report/report.component';
 import { ReportsComponent } from './reports/reports.component';
 import { ReportPageComponent } from './report-page/report-page.component';
 
@@ -23,7 +22,6 @@ import { ReportPageComponent } from './report-page/report-page.component';
     HeaderComponent,
     DialogComponent,
     DialogRegistrationComponent,
-    ReportComponent,
     ReportsComponent,
     ReportPageComponent
   ],
@@ -43,7 +41,7 @@ import { ReportPageComponent } from './report-page/report-page.component';
                 path: 'reports', component: ReportsComponent, canActivate: [AuthGuard]
               },
               {
-                path: 'reports/report/:uniqId', component: ReportComponent, canActivate: [AuthGuard]
+                path: 'reports/report/:uniqId', component: ReportPageComponent, canActivate: [AuthGuard]
               }
             ]
           }
