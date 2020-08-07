@@ -12,15 +12,13 @@
     </div>
 
     <div class="report__header-price" *ngIf="report['price'] && report['priceAvg']">
-        <span
-            [attr.data-currency-price]="report['price']">{{report['priceCur']}}</span>
+        <span [attr.data-currency-price]="report['price']">{{report['priceCur']}}</span>
         <span [attr.data-currency-unit]="cur"></span>
     </div>
 
-    
+
     <div class="report__header-price" *ngIf="!report['price'] && report['priceAvg']">
-        <span
-            [attr.data-currency-price]="report['priceAvg']">{{report['priceAvgCur']}}</span>
+        <span [attr.data-currency-price]="report['priceAvg']">{{report['priceAvgCur']}}</span>
         <span [attr.data-currency-unit]="cur"></span>
     </div>
 </div>
@@ -63,8 +61,7 @@
         <div class="report-prices__item report-prices__item_min">
             <div>
                 <div class="report-prices__price">
-                    <span
-                        [attr.data-currency-price]="report['priceMin']">{{report['priceMinCur']}}</span><span
+                    <span [attr.data-currency-price]="report['priceMin']">{{report['priceMinCur']}}</span><span
                         [attr.data-currency-unit]="cur"></span>
                 </div>
                 <div>минимальная</div>
@@ -73,8 +70,7 @@
         <div class="report-prices__item report-prices__item_avg">
             <div>
                 <div class="report-prices__price">
-                    <span
-                        [attr.data-currency-price]="report['priceAvg']">{{report['priceAvgCur']}}</span><span
+                    <span [attr.data-currency-price]="report['priceAvg']">{{report['priceAvgCur']}}</span><span
                         [attr.data-currency-unit]="cur"></span>
                 </div>
                 <div>средняя</div>
@@ -83,8 +79,7 @@
         <div class="report-prices__item report-prices__item_max">
             <div>
                 <div class="report-prices__price">
-                    <span
-                        [attr.data-currency-price]="report['priceMax']">{{report['priceMaxCur']}}</span>
+                    <span [attr.data-currency-price]="report['priceMax']">{{report['priceMaxCur']}}</span>
                     <span [attr.data-currency-unit]="cur"></span>
                 </div>
                 <div>максимальная</div>
@@ -93,7 +88,7 @@
     </div>
 
     <mat-divider class="divider"></mat-divider>
-    
+
     <div>Стоимость вашего автомобиля на <strong> {{report['priceDifference']}}% </strong>
         {{(report['price'] < report['priceAvg']) ? 'ниже' : 'выше'}}
         среднерыночной</div>
@@ -147,8 +142,7 @@
         <div class="report-prices__item report-prices__item_min">
             <div>
                 <div class="report-prices__price">
-                    <span
-                        [attr.data-currency-price]="report['priceMin']">{{report['priceMinCur']}}</span><span
+                    <span [attr.data-currency-price]="report['priceMin']">{{report['priceMinCur']}}</span><span
                         [attr.data-currency-unit]="cur"></span>
                 </div>
                 <div>минимальная</div>
@@ -157,8 +151,7 @@
         <div class="report-prices__item report-prices__item_avg">
             <div>
                 <div class="report-prices__price">
-                    <span
-                        [attr.data-currency-price]="report['priceAvg']">{{report['priceAvgCur']}}</span><span
+                    <span [attr.data-currency-price]="report['priceAvg']">{{report['priceAvgCur']}}</span><span
                         [attr.data-currency-unit]="cur"></span>
                 </div>
                 <div>средняя</div>
@@ -167,8 +160,7 @@
         <div class="report-prices__item report-prices__item_max">
             <div>
                 <div class="report-prices__price">
-                    <span
-                        [attr.data-currency-price]="report['priceMax']">{{report['priceMaxCur']}}</span>
+                    <span [attr.data-currency-price]="report['priceMax']">{{report['priceMaxCur']}}</span>
                     <span [attr.data-currency-unit]="cur"></span>
                 </div>
                 <div>максимальная</div>

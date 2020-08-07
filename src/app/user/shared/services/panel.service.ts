@@ -23,7 +23,7 @@ export class PanelService {
     )
   }
 
-  getUserReport(uniqId: string, accessToken: string, currency: string) {
+  getUserReport(uniqId: string, accessToken: string, currency) {
 
     return this.http.post(`${BASE_URL}/panel/user_report/`, JSON.stringify({ uniqId: uniqId, accessToken: accessToken, currency: currency })).pipe(
       map(resolve => {

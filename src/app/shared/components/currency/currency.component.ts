@@ -7,7 +7,13 @@ import { CurrencyService } from '../../services/currency.service';
   styleUrls: ['./currency.component.scss']
 })
 export class CurrencyComponent implements OnInit {
-  
+
+  onGetDataInCur = 111
+
+
+
+
+
   @Output() customName = new EventEmitter()
 
   currencyList: any[]
@@ -15,7 +21,11 @@ export class CurrencyComponent implements OnInit {
 
   constructor(
     private currencyService: CurrencyService
-  ) { }
+  ) {
+
+
+
+  }
 
   ngOnInit(): void {
     console.log('debug', this.currencyService.getCurrencyList())
@@ -27,7 +37,7 @@ export class CurrencyComponent implements OnInit {
 
   currencyChange() {
 
-this.customName.emit('Hi iz componenta Currency)')
+    this.customName.emit('Hi iz componenta Currency)')
 
 
     this.currencyService.setCurrencySelected(this.currencySelected)
@@ -65,6 +75,7 @@ this.customName.emit('Hi iz componenta Currency)')
 
 
 
+      this.currencyService.carrencyChangeEmitter.emit(this.currencyService.getCurrency());
     })
 
 

@@ -13,18 +13,14 @@ export class ChartComponent implements OnInit {
   public cur
   public chartPriceHistoryShow = false
 
-
-
   chartPriceHistoryData = [
     { data: [], label: 'Средняя стоимость' },
   ];
 
   chartPriceHistoryLabels = [];
-
   chartPriceHistoryOptions = {
     responsive: true,
   };
-
   chartPriceHistoryColors = [
     {
       //backgroundColor:[],
@@ -32,7 +28,6 @@ export class ChartComponent implements OnInit {
       backgroundColor: 'rgba(66, 165, 245, 0.7)',
     },
   ];
-
   chartPriceHistoryLegend = false;
   chartPriceHistoryPlugins = [];
   chartPriceHistoryType = 'line';
@@ -40,13 +35,6 @@ export class ChartComponent implements OnInit {
   public changeTypePriceHistory(): void {
     this.chartPriceHistoryType = this.chartPriceHistoryType === 'bar' ? 'line' : 'bar';
   }
-
-
-
-
-
-
-
 
   public chartPriceMarkYearsOptions = {
     responsive: true,
@@ -81,11 +69,22 @@ export class ChartComponent implements OnInit {
     private chartService: ChartService,
     private currencyService: CurrencyService
   ) {
-
+    this.currencyService.carrencyChangeEmitter.subscribe(res => {
+      console.log('RESS:', res)
+      this.showCharts()
+    })
   }
 
 
+
+
   ngOnInit(): void {
+    this.showCharts()
+  }
+
+  showCharts() {
+
+    this.clearCharts()
 
     this.activatedRoute.paramMap.subscribe(params => {
 
@@ -127,33 +126,40 @@ export class ChartComponent implements OnInit {
 
     })
 
-
-
-    /*
-  
-    this.activatedRoute.paramMap.subscribe(params => {
-  
-      console.log('uniqId2222:', params.get('uniqId'));
-  
-      const obj = {
-        accessToken: localStorage.getItem('accessToken'),
-        currency: localStorage.getItem('currency'),
-        uniqId: params.get('uniqId')
-      }
-  
-      this.chartService.userReport(obj).subscribe(response => {
-        console.log('chart: ', response)
-  
-        for (let item of response['chart']) {
-          console.log('item', item)
-        }
-        this.data = response['chart']
-      })
-  
-    })*/
-
   }
 
+
+  clearCharts() {
+    this.chartPriceMarkYearsOptions = {
+      responsive: true,
+    }
+    this.chartPriceMarkYearsLabels = [];
+    this.chartPriceMarkYearsType = 'bar';
+    this.chartPriceMarkYearsLegend = false;
+    this.chartPriceMarkYearsPlugins = [];
+    this.chartPriceMarkYearsData = [
+      { data: [], label: 'Средняя стоимость' }
+    ]
+
+    this.chartPriceHistoryData = [
+      { data: [], label: 'Средняя стоимость' },
+    ];
+
+    this.chartPriceHistoryLabels = [];
+    this.chartPriceHistoryOptions = {
+      responsive: true,
+    };
+    this.chartPriceHistoryColors = [
+      {
+        //backgroundColor:[],
+        //borderColor: 'rgba(255, 87, 34, 0.6)',
+        backgroundColor: 'rgba(66, 165, 245, 0.7)',
+      },
+    ];
+    this.chartPriceHistoryLegend = false;
+    this.chartPriceHistoryPlugins = [];
+    this.chartPriceHistoryType = 'line';
+  }
 
   doSomething() {
     console.log('doSomething!!!!!!!!!!!')

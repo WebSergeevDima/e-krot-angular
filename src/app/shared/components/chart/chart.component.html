@@ -4,7 +4,8 @@
     </div>
 
     <div class="chart-wrapper">
-        <div class="chart-wrapper__description-left">Стоимость модели (<span class="margin-initial" [attr.data-currency-unit]="cur"></span>)</div>
+        <div class="chart-wrapper__description-left">Стоимость модели (<span class="margin-initial"
+                [attr.data-currency-unit]="cur"></span>)</div>
         <canvas baseChart [datasets]="chartPriceHistoryData" [labels]="chartPriceHistoryLabels"
             [options]="chartPriceHistoryOptions" [colors]="chartPriceHistoryColors" [legend]="chartPriceHistoryLegend"
             [chartType]="chartPriceHistoryType" [plugins]="chartPriceHistoryPlugins">
@@ -18,7 +19,8 @@
 </div>
 
 <div class="chart-wrapper">
-    <div class="chart-wrapper__description-left">Стоимость модели (<span [attr.data-currency-unit]="cur"></span>)</div>
+    <div class="chart-wrapper__description-left">Стоимость модели (<span class="margin-initial"
+            [attr.data-currency-unit]="cur"></span>)</div>
     <canvas baseChart [datasets]="chartPriceMarkYearsData" [labels]="chartPriceMarkYearsLabels"
         [options]="chartPriceMarkYearsOptions" [plugins]="chartPriceMarkYearsPlugins"
         [legend]="chartPriceMarkYearsLegend" [chartType]="chartPriceMarkYearsType" [colors]="chartColors">

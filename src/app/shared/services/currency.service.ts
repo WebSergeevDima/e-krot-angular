@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BASE_URL } from 'src/app/api-config';
 
@@ -6,6 +6,8 @@ import { BASE_URL } from 'src/app/api-config';
   providedIn: 'root'
 })
 export class CurrencyService {
+
+  public carrencyChangeEmitter = new EventEmitter();
 
   private currencyList = [
     { value: 'USD', name: 'USD' },
