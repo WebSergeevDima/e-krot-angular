@@ -13,6 +13,7 @@ import { MaterialModule } from '../shared/modules/material/material.module';
 import { DialogRegistrationComponent } from '../shared/components/dialog-registration/dialog-registration.component';
 import { ReportComponent } from './report/report.component';
 import { ReportsComponent } from './reports/reports.component';
+import { ReportPageComponent } from './report-page/report-page.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ReportsComponent } from './reports/reports.component';
     DialogComponent,
     DialogRegistrationComponent,
     ReportComponent,
-    ReportsComponent
+    ReportsComponent,
+    ReportPageComponent
   ],
   imports: [
     RouterModule.forChild([

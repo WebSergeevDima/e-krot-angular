@@ -8,6 +8,7 @@ import { MatCommonModule } from '@angular/material/core';
 import { LocationComponent } from './components/location/location.component';
 import { ChartComponent } from './components/chart/chart.component';
 import { ChartsModule } from 'ng2-charts';
+import { ReportComponent } from '../user/report/report.component';
 @NgModule({
   imports: [
     ReactiveFormsModule,
@@ -26,9 +27,10 @@ import { ChartsModule } from 'ng2-charts';
     MatCommonModule,
     LocationComponent,
     ChartComponent,
-    ChartsModule
+    ChartsModule,
+    ReportComponent
   ],
-  declarations: [CurrencyComponent, LocationComponent, ChartComponent]
+  declarations: [CurrencyComponent, ReportComponent, LocationComponent, ChartComponent]
 })
 export class SharedModule {
 

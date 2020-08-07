@@ -12,9 +12,9 @@ export class PanelService {
 
   constructor(private http: HttpClient) { }
 
-  getUserAllReports(accessToken: string) {
+  getUserAllReports(accessToken: string, currency) {
 
-    return this.http.post(`${BASE_URL}/panel/userAllReports/`, JSON.stringify({ accessToken: accessToken })).pipe(
+    return this.http.post(`${BASE_URL}/panel/userAllReports/`, JSON.stringify({ accessToken: accessToken, currency: currency })).pipe(
       map(resolve => {
         console.log('test rep', resolve)
         return resolve

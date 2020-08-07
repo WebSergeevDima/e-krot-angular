@@ -69,8 +69,7 @@ export class ChartComponent implements OnInit {
     private chartService: ChartService,
     private currencyService: CurrencyService
   ) {
-    this.currencyService.carrencyChangeEmitter.subscribe(res => {
-      console.log('RESS:', res)
+    this.currencyService.carrencyChangeEmitter.subscribe(response => {
       this.showCharts()
     })
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PanelService } from '../shared/services/panel.service';
 import { CurrencyService } from 'src/app/shared/services/currency.service';
 
@@ -8,7 +8,7 @@ import { CurrencyService } from 'src/app/shared/services/currency.service';
   styleUrls: ['./reports.component.scss'],
 })
 export class ReportsComponent implements OnInit {
-  
+
 
   public cur
   public allReports = []
@@ -20,24 +20,34 @@ export class ReportsComponent implements OnInit {
   constructor(
     private panelService: PanelService,
     private currencyService: CurrencyService
-    ) { }
+  ) {
 
-  ngOnInit(): void {   
+    this.currencyService.carrencyChangeEmitter.subscribe(response => {
+      this.showReports()
+    })
 
-    this.panelService.getUserAllReports(localStorage.getItem('accessToken')).subscribe(resolve => {
+  }
+
+  ngOnInit(): void {
+
+    this.showReports()
+
+  }
+
+  showReports() {
+
+    this.panelService.getUserAllReports(localStorage.getItem('accessToken'), this.currencyService.getCurrency()).subscribe(resolve => {
       this.allReports = resolve['allReports']
       this.reportPage = this.allReports.slice(0, 10)
       this.length = resolve['allReports'].length
     })
 
     this.cur = this.currencyService.getCurrency()
-
   }
-  ngAfterContentInit() {
-   
- } 
+
+
   paginatoreChange(event) {
-    console.log('event', event)
+
     this.pageSize = event.pageSize
     this.pageIndex = event.pageIndex
 

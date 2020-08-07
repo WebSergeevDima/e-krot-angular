@@ -3,100 +3,104 @@
   <form [formGroup]="form" (ngSubmit)="submit()">
 
     <div class="loading-block__layout">
-    <mat-spinner class="spinner-loading-block" *ngIf="loadingBlock" [diameter]="50"></mat-spinner>
+      <mat-spinner class="spinner-loading-block" *ngIf="loadingBlock" [diameter]="50"></mat-spinner>
 
-    <h1 class="auto-price-page__h1">Внесите параметры автомобиля:</h1>
+      <h1 class="auto-price-page__h1">Внесите параметры автомобиля:</h1>
 
-    <section class="grid-colums-3">
+      <section class="grid-colums-3">
 
-      <mat-form-field>
+        <mat-form-field>
 
-        <mat-spinner class="loading-select" *ngIf="loadingMarks" [diameter]="20"></mat-spinner>
-        <mat-label>Марка</mat-label>
-        <mat-select #selectMarksId required formControlName="mark" (ngModelChange)="getModels($event, selectModels)">
-          <mat-option>Выбрать</mat-option>
-          <mat-option *ngFor="let mark of marks" [value]="mark.id">
-            {{mark.title}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+          <mat-spinner class="loading-select" *ngIf="loadingMarks" [diameter]="20"></mat-spinner>
+          <mat-label>Марка</mat-label>
+          <mat-select #selectMarksId required formControlName="mark" (ngModelChange)="getModels($event, selectModels)">
+            <mat-option>Выбрать</mat-option>
+            <mat-option *ngFor="let mark of marks" [value]="mark.id">
+              {{mark.title}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-      <mat-form-field>
+        <mat-form-field>
 
-        <mat-spinner class="loading-select" *ngIf="loadingModels" [diameter]="20"></mat-spinner>
+          <mat-spinner class="loading-select" *ngIf="loadingModels" [diameter]="20"></mat-spinner>
 
-        <mat-label>Модель</mat-label>
-        <mat-select #selectModels required formControlName="model" [(ngModel)]="modelsValue" [disabled]="loadingModels">
-          <mat-option>Выбрать</mat-option>
-          <mat-option *ngFor="let model of models" [value]="model.id">
-            {{model.title}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+          <mat-label>Модель</mat-label>
+          <mat-select #selectModels required formControlName="model" [(ngModel)]="modelsValue"
+            [disabled]="loadingModels">
+            <mat-option>Выбрать</mat-option>
+            <mat-option *ngFor="let model of models" [value]="model.id">
+              {{model.title}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Год выпуска</mat-label>
-        <mat-select required formControlName="year">
-          <mat-option>Выбрать</mat-option>
-          <mat-option *ngFor="let year of years" [value]="year">
-            {{year}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+        <mat-form-field>
+          <mat-label>Год выпуска</mat-label>
+          <mat-select required formControlName="year">
+            <mat-option>Выбрать</mat-option>
+            <mat-option *ngFor="let year of years" [value]="year">
+              {{year}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-    </section>
+      </section>
 
 
-    <section *ngIf="result" class="result__more-details">
+      <section *ngIf="result" class="result__more-details">
 
-      <h2>Результат анализа рынка:</h2>
-      <div>Стоимость данной модели на рынке:</div>
-      <ul>
-        <li>минимальная <strong>{{result.priceMin}}</strong> {{cur}}</li>
-        <li>средняя <strong>{{result.priceAvg}}</strong> {{cur}}</li>
-        <li>максимальная <strong>{{result.priceMax}}</strong> {{cur}}</li>
-      </ul>
-      <div>Средний пробег по рынку для <strong>{{result.titleMark}} {{result.titleModel}} {{result.year}}</strong> года
-        составляет <strong>{{result.millageAvg}}</strong> км</div>
-      <div>Количество объявлений о продаже <strong>{{result.titleMark}} {{result.titleModel}}</strong> на
-        <strong>{{date | date:'dd.MM.yyyy'}}</strong>
-        составляет <strong>{{result.quantity}}</strong>
-        шт</div>
-      <!--
+        <!--<app-report></app-report>-->
+
+        <h2>Результат анализа рынка:</h2>
+        <div>Стоимость данной модели на рынке:</div>
+        <ul>
+          <li>минимальная <strong>{{result.priceMin}}</strong> {{cur}}</li>
+          <li>средняя <strong>{{result.priceAvg}}</strong> {{cur}}</li>
+          <li>максимальная <strong>{{result.priceMax}}</strong> {{cur}}</li>
+        </ul>
+        <div>Средний пробег по рынку для <strong>{{result.titleMark}} {{result.titleModel}} {{result.year}}</strong>
+          года
+          составляет <strong>{{result.millageAvg}}</strong> км</div>
+        <div>Количество объявлений о продаже <strong>{{result.titleMark}} {{result.titleModel}}</strong> на
+          <strong>{{date | date:'dd.MM.yyyy'}}</strong>
+          составляет <strong>{{result.quantity}}</strong>
+          шт</div>
+        <!--
       <div>Количество <strong>{{result.titleMark}} {{result.titleModel}}</strong>
         проданных за последние 6 месяцев составляет 
         шт:</div>
 -->
 
-    </section>
+      </section>
 
 
-    <section *ngIf="oldCars" class="result__old-cars">
+      <section *ngIf="oldCars" class="result__old-cars">
 
 
-      <mat-accordion class="example-headers-align" multi>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Список проданных автомобилей за последние <strong>&nbsp;6 месяцев&nbsp;</strong>
-              (<strong>{{result.oldCarsQuantity}}&nbsp;шт</strong>)
-            </mat-panel-title>
-            <mat-panel-description>
+        <mat-accordion class="example-headers-align" multi>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Список проданных автомобилей за последние <strong>&nbsp;6 месяцев&nbsp;</strong>
+                (<strong>{{result.oldCarsQuantity}}&nbsp;шт</strong>)
+              </mat-panel-title>
+              <mat-panel-description>
 
-            </mat-panel-description>
-          </mat-expansion-panel-header>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
 
-          <div *ngFor="let car of oldCars">
-            <strong>{{result.titleMark}} {{result.titleModel}} {{car.year}}</strong>
-            г. с пробегом <strong>{{car.millage}}</strong> км за <strong>{{car.price}}</strong>
-            {{cur}}
-          </div>
+            <div *ngFor="let car of oldCars">
+              <strong>{{result.titleMark}} {{result.titleModel}} {{car.year}}</strong>
+              г. с пробегом <strong>{{car.millage}}</strong> км за <strong>{{car.price}}</strong>
+              {{cur}}
+            </div>
 
 
-        </mat-expansion-panel>
-      </mat-accordion>
-    </section>
-  </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </section>
+    </div>
 
     <section class="form-footer__btns">
       <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid || loadingBtn">

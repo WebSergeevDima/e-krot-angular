@@ -14,7 +14,7 @@
           <th>Цена</th>
           <th>Локация</th>
           <th>Отчет</th>
-          <th><svg class="user-report__svg-delete-title" version="1.1" xmlns="http://www.w3.org/2000/svg"
+          <!--<th><svg class="user-report__svg-delete-title" version="1.1" xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 172.541 172.541">
               <path
                 d="M166.797,25.078h-13.672h-29.971V0H49.388v25.078H19.417H5.744v15h14.806l10,132.463h111.443l10-132.463h14.805V25.078z
@@ -23,7 +23,7 @@
               <rect x="80.271" y="65.693" width="12" height="66.232"></rect>
               <rect x="57.271" y="65.693" width="12" height="66.232"></rect>
               <rect x="103.271" y="65.693" width="12" height="66.232"></rect>
-            </svg></th>
+            </svg></th>-->
         </tr>
       </thead>
       <tbody>
@@ -31,18 +31,19 @@
 
         <tr *ngFor="let report of reportPage; let i = index">
           <td data-label="№">{{i + 1 + (pageIndex * pageSize)}}</td>
-          <td data-label="Дата:">{{report.AQ_DATA_CREATE | date:'dd.MM.yyyy'}} <span
-              class="user-report__date-line">|</span> {{report.AQ_DATA_CREATE | date:'hh:mm'}}</td>
-          <td data-label="Марка:">{{report.AQ_TITLE_MARK}}</td>
-          <td data-label="Модель:">{{report.AQ_TITLE_MODEL}}</td>
-          <td data-label="Год:">{{report.AQ_YEAR}}</td>
-          <td data-label="Цена:">{{report.AQ_PRICE}} {{report.AQ_PRICE != '-' ? cur : ''}}</td>
-          <td data-label="Локация:">{{report.AQ_LANG}}</td>
+          <td data-label="Дата:">{{report.dateCreate | date:'dd.MM.yyyy'}} <span class="user-report__date-line">|</span>
+            {{report.dateCreate | date:'hh:mm'}}</td>
+          <td data-label="Марка:">{{report.titleMark}}</td>
+          <td data-label="Модель:">{{report.titleModel}}</td>
+          <td data-label="Год:">{{report.year}}</td>
+          <td data-label="Цена:">{{report.priceCur}} {{report.priceCur != '-' ? cur : ''}}</td>
+          <td data-label="Локация:">{{report.lang}}</td>
           <td data-label="Отчет:">
-            <a [routerLink]="['report', report.AQ_UNIQID]" class="user-saved-queries__link-report">
+            <a [routerLink]="['report', report.uniqId]" class="user-saved-queries__link-report">
               Подробнее
             </a>
           </td>
+          <!--
           <td data-label="">
             <svg class="user-report__svg-delete" version="1.1" xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 357 357">
@@ -51,7 +52,7 @@
             </svg>
 
           </td>
-
+-->
 
         </tr>
 
