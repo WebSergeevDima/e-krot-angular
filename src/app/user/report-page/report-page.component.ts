@@ -10,6 +10,9 @@ export class ReportPageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
+    
   }
+  
 
 }

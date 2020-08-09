@@ -97,6 +97,7 @@ export class AutoMarketPageComponent implements OnInit {
       this.loadingBtn = false
       this.loadingBlock = false
 
+      console.log(response['uniqId'])
     })
 
   }
