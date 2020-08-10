@@ -190,8 +190,8 @@
 
                 <div *ngFor="let car of report['oldCars']">
                     <strong>{{report['titleMark']}} {{report['titleModel']}} {{car.year}}</strong>
-                    г. с пробегом <strong>{{car.millage}}</strong> км за
-                    <strong [attr.data-currency-price]="car.price">{{car.priceCur}}</strong>
+                    г. с пробегом <strong>{{car['millage']}}</strong> км за
+                    <strong [attr.data-currency-price]="car.price">{{car['priceCur']}}</strong>
                     <span [attr.data-currency-unit]="cur"></span>
                 </div>
 
@@ -203,8 +203,11 @@
 </ng-template>
 
 <div *ngIf="chartPriceHistoryShow">
-    <div class="chart-wrapper__title">Тенденция изменения стоимости модели <mat-icon
-            class="chart-wrapper__btn-change-view" (click)="changeTypePriceHistory()">sync_alt</mat-icon>
+    <div class="chart-wrapper__title">Тенденция изменения стоимости модели <mat-icon *ngIf="chartPriceHistoryType == 'bar'"
+        class="chart-wrapper__btn-change-view" (click)="changeTypePriceHistory()">timeline</mat-icon>
+        <mat-icon *ngIf="chartPriceHistoryType == 'line'"
+        class="chart-wrapper__btn-change-view" (click)="changeTypePriceHistory()">leaderboard</mat-icon>
+
     </div>
 
     <div class="chart-wrapper">
@@ -218,8 +221,10 @@
     </div>
 </div>
 
-<div class="chart-wrapper__title">Зависимость стоимости модели от года выпуска <mat-icon
-        class="chart-wrapper__btn-change-view" (click)="changeTypePriceMarkYears()">sync_alt</mat-icon>
+<div class="chart-wrapper__title">Зависимость стоимости модели от года выпуска <mat-icon *ngIf="chartPriceMarkYearsType == 'bar'"
+        class="chart-wrapper__btn-change-view" (click)="changeTypePriceMarkYears()">timeline</mat-icon>
+        <mat-icon *ngIf="chartPriceMarkYearsType == 'line'"
+        class="chart-wrapper__btn-change-view" (click)="changeTypePriceMarkYears()">leaderboard</mat-icon>
 </div>
 
 <div class="chart-wrapper">
