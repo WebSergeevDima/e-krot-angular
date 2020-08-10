@@ -25,6 +25,10 @@ export class PanelService {
 
   getUserReport(uniqId: string, accessToken: string, currency) {
 
+    console.log('auto market service uniqId: ', uniqId)
+    console.log('auto market service accessToken: ', accessToken)
+    console.log('auto market service currency: ', currency)
+
     return this.http.post(`${BASE_URL}/panel/user_report/`, JSON.stringify({ uniqId: uniqId, accessToken: accessToken, currency: currency })).pipe(
       map(resolve => {
         console.log('test uniqId', resolve)

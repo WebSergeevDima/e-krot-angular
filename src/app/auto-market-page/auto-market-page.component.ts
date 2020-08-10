@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AutoService } from '../shared/services/auto.service';
 import { CurrencyService } from '../shared/services/currency.service';
 import { LocationService } from '../shared/services/location.service';
+import { PanelService } from '../user/shared/services/panel.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-auto-market-page',
@@ -10,6 +12,14 @@ import { LocationService } from '../shared/services/location.service';
   styleUrls: ['./auto-market-page.component.scss']
 })
 export class AutoMarketPageComponent implements OnInit {
+
+  public report = {
+    tradeIn: {},
+    oldCars: []
+  }
+  showOldCars: boolean = false
+  uniqId
+
 
   cur = this.currencyService.getCurrency()
 
@@ -33,7 +43,8 @@ export class AutoMarketPageComponent implements OnInit {
   constructor(
     private autoService: AutoService,
     private currencyService: CurrencyService,
-    private locationService: LocationService
+    private locationService: LocationService,
+    private panelService: PanelService
   ) { }
 
   ngOnInit(): void {
@@ -90,14 +101,33 @@ export class AutoMarketPageComponent implements OnInit {
     this.loadingBtn = true
     this.loadingBlock = true
 
-    this.autoService.getSearchMarket(this.form.value, this.currencyService.getCurrency(), this.locationService.getLocation()).subscribe(response => {
+    this.autoService.getSearchMarket(this.form.value, this.currencyService.getCurrency(), this.locationService.getLocation()).pipe(map(response => {
+      console.log('MAP uniqId: ', response['uniqId'])
+      return response
+    })).subscribe(response => {
       this.result = response['data']
       this.oldCars = response['data']['oldCars']
       this.cur = this.currencyService.getCurrency()
       this.loadingBtn = false
       this.loadingBlock = false
 
-      console.log(response['uniqId'])
+      //let uniqId = response['uniqId']
+      //console.log('uniqId in AUTO MARKET', response['uniqId'])
+
+      this.panelService.getUserReport(response['uniqId'], localStorage.getItem('accessToken'), this.currencyService.getCurrency()).subscribe(resolve => {
+
+        console.log('resolve REPORT: ', resolve)
+        this.report = resolve['report']
+        this.cur = resolve['currency']
+        //this.uniqId = uniqId
+
+        if (!!resolve['report']['oldCars']) {
+          this.showOldCars = true
+        }
+
+      })
+
+
     })
 
   }

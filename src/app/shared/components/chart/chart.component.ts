@@ -10,7 +10,9 @@ import { CurrencyService } from '../../services/currency.service';
 })
 export class ChartComponent implements OnInit {
 
-  public cur
+  @Input() cur
+  @Input() uniqId
+
   public chartPriceHistoryShow = false
 
   chartPriceHistoryData = [
@@ -83,47 +85,48 @@ export class ChartComponent implements OnInit {
 
   showCharts() {
 
+    console.log('this.uniqId in CHART: ', this.uniqId)
+
     this.clearCharts()
 
-    this.activatedRoute.paramMap.subscribe(params => {
 
-      const obj = {
-        accessToken: localStorage.getItem('accessToken'),
-        currency: localStorage.getItem('currency'),
-        uniqId: params.get('uniqId')
+    const obj = {
+      accessToken: localStorage.getItem('accessToken'),
+      currency: localStorage.getItem('currency'),
+      uniqId: this.uniqId
+    }
+
+    this.chartService.userReport(obj).subscribe(response => {
+      console.log(response)
+
+      this.cur = response['currency']
+
+      for (let car of response['chartPriceMarkYears']) {
+        this.chartPriceMarkYearsLabels.push(car['year'])
+        this.chartPriceMarkYearsData[0]['data'].push(car['priceAvg'])
+        if (car['userYear']) {
+          this.chartColors[0]['backgroundColor'].push('rgba(66, 165, 245, 0.7)')
+        } else {
+          this.chartColors[0]['backgroundColor'].push('rgba(255, 87, 34, 0.6)')
+        }
       }
 
-      this.chartService.userReport(obj).subscribe(response => {
-        console.log(response)
+      for (let month of response['chartPriceHistory']['month']) {
+        this.chartPriceHistoryLabels.push(month)
+      }
+      for (let priceAvg of response['chartPriceHistory']['priceAvg']) {
+        this.chartPriceHistoryData[0]['data'].push(priceAvg)
+      }
 
-        this.cur = response['currency']
-
-        for (let car of response['chartPriceMarkYears']) {
-          this.chartPriceMarkYearsLabels.push(car['year'])
-          this.chartPriceMarkYearsData[0]['data'].push(car['priceAvg'])
-          if (car['userYear']) {
-            this.chartColors[0]['backgroundColor'].push('rgba(66, 165, 245, 0.7)')
-          } else {
-            this.chartColors[0]['backgroundColor'].push('rgba(255, 87, 34, 0.6)')
-          }
-        }
-
-        for (let month of response['chartPriceHistory']['month']) {
-          this.chartPriceHistoryLabels.push(month)
-        }
-        for (let priceAvg of response['chartPriceHistory']['priceAvg']) {
-          this.chartPriceHistoryData[0]['data'].push(priceAvg)
-        }
-
-        if (response['chartPriceHistory']['month'].length > 1) {
-          this.chartPriceHistoryShow = true
-        }
+      if (response['chartPriceHistory']['month'].length > 1) {
+        this.chartPriceHistoryShow = true
+      }
 
 
-
-      })
 
     })
+
+
 
   }
 
