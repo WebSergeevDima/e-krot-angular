@@ -67,13 +67,14 @@ export class ChartComponent implements OnInit {
 
 
   constructor(
-    private activatedRoute: ActivatedRoute,
-    private chartService: ChartService,
-    private currencyService: CurrencyService
+    private chartService: ChartService
   ) {
+    /*
     this.currencyService.carrencyChangeEmitter.subscribe(response => {
       this.showCharts()
     })
+    */
+
   }
 
 
@@ -163,16 +164,6 @@ export class ChartComponent implements OnInit {
     this.chartPriceHistoryType = 'line';
   }
 
-  doSomething() {
-    console.log('doSomething!!!!!!!!!!!')
-  }
 
-  dataUpdate() {
-
-    this.chartPriceMarkYearsData = [
-      { data: [55, 55, 60, 70, 46, 33], label: 'Best Fruits' }
-    ];
-
-  }
 
 }

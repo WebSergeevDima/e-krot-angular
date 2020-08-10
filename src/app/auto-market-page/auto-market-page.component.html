@@ -49,8 +49,13 @@
 
 
       <section *ngIf="result" class="result__more-details">
-
         <app-report [report]="report" [showOldCars]="showOldCars" [uniqId]="uniqId" [cur]="cur"></app-report>
+      </section>
+
+      <!--
+      <section *ngIf="result" class="result__more-details">
+
+       
 
         <h2>Результат анализа рынка:</h2>
         <div>Стоимость данной модели на рынке:</div>
@@ -66,11 +71,6 @@
           <strong>{{date | date:'dd.MM.yyyy'}}</strong>
           составляет <strong>{{result.quantity}}</strong>
           шт</div>
-        <!--
-      <div>Количество <strong>{{result.titleMark}} {{result.titleModel}}</strong>
-        проданных за последние 6 месяцев составляет 
-        шт:</div>
--->
 
       </section>
 
@@ -96,10 +96,11 @@
               {{cur}}
             </div>
 
-
           </mat-expansion-panel>
         </mat-accordion>
       </section>
+
+    -->
     </div>
 
     <section class="form-footer__btns">
@@ -110,10 +111,6 @@
     </section>
 
   </form>
-
-
-
-
 
 </section>
 

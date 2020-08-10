@@ -135,8 +135,6 @@ font-size: 16px;
 
 
 
-
-
 .chart-wrapper {
   padding: 0 0 0 40px;
   position: relative;
@@ -178,5 +176,9 @@ font-size: 16px;
       cursor: pointer;
     }
 }
+
+  &__help {
+        background: #000;
+  }
 }
 

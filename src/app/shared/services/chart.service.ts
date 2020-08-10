@@ -1,5 +1,4 @@
-import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { Injectable, EventEmitter } from '@angular/core';
 import { BASE_URL } from 'src/app/api-config';
 import { HttpClient } from '@angular/common/http';
 
@@ -8,11 +7,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ChartService {
 
+  public resetChartsEmitter = new EventEmitter();
+
   constructor(
     private http: HttpClient
   ) { }
-
-
 
   userReport(obj) {
     return this.http.post(`${BASE_URL}/chart/user-report/`, JSON.stringify(obj))
