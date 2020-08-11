@@ -52,8 +52,6 @@ export class AutoComponent implements OnInit {
       year: 2020
     }
   ]
-  allCurrency = 'USD'
-  basicYear = 2020
   currencyList
 
   constructor(
