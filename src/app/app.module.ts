@@ -20,6 +20,7 @@ import { SharedModule } from './shared/shared.module';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import { RolesService } from './shared/services/roles.service';
 import { SupportComponent } from './support/support.component';
+import { AutoComponent } from './auto/auto.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { SupportComponent } from './support/support.component';
     AutoMarketPageComponent,
     LoginPageComponent,
     RegistrationPageComponent,
-    SupportComponent
+    SupportComponent,
+    AutoComponent
 
   ],
   imports: [

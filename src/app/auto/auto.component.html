@@ -1,0 +1,235 @@
+<section [class]="loadingBlock ? 'loading-block' : ''">
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+        <div class="loading-block__layout">
+            <mat-spinner class="spinner-loading-block" *ngIf="loadingBlock" [diameter]="50"></mat-spinner>
+
+            <h1 class="auto-price-page__h1">Внесите параметры автомобиля:</h1>
+
+            <section class="grid-colums-3">
+
+                <mat-form-field>
+
+                    <mat-spinner class="loading-select" *ngIf="loadingMarks" [diameter]="20"></mat-spinner>
+                    <mat-label>Марка</mat-label>
+                    <mat-select #selectMarksId required formControlName="mark"
+                        (ngModelChange)="getModels($event, selectModels)">
+                        <mat-option>Выбрать</mat-option>
+                        <mat-option *ngFor="let mark of marks" [value]="mark.id">
+                            {{mark.title}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+
+                    <mat-spinner class="loading-select" *ngIf="loadingModels" [diameter]="20"></mat-spinner>
+
+                    <mat-label>Модель</mat-label>
+                    <mat-select #selectModels required formControlName="model" [(ngModel)]="modelsValue"
+                        [disabled]="loadingModels">
+                        <mat-option>Выбрать</mat-option>
+                        <mat-option *ngFor="let item of models" [value]="item.id">
+                            {{item.title}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Тип кузова</mat-label>
+                    <mat-select formControlName="bodyType">
+                        <mat-option>Выбрать</mat-option>
+                        <mat-option *ngFor="let item of bodyTypeArr" [value]="item.value">
+                            {{item.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Год выпуска</mat-label>
+                    <mat-select required formControlName="year">
+                        <mat-option>Выбрать</mat-option>
+                        <mat-option *ngFor="let item of years" [value]="item">
+                            {{item}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Пробег (км)</mat-label>
+                    <input matInput placeholder="0" formControlName="millage">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Тип топлива</mat-label>
+                    <mat-select formControlName="fuel">
+                        <mat-option>Выбрать</mat-option>
+                        <mat-option *ngFor="let item of fuelArr" [value]="item.value">
+                            {{item.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Объем двигателя (л.)</mat-label>
+                    <mat-select formControlName="volume">
+                        <mat-option>Выбрать</mat-option>
+                        <mat-option *ngFor="let item of volumeArr" [value]="item.value">
+                            {{item.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Трансмиссия</mat-label>
+                    <mat-select formControlName="transmission">
+                        <mat-option>Выбрать</mat-option>
+                        <mat-option *ngFor="let item of transmissionArr" [value]="item.value">
+                            {{item.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Привод</mat-label>
+                    <mat-select formControlName="gear">
+                        <mat-option>Выбрать</mat-option>
+                        <mat-option *ngFor="let item of gearArr" [value]="item.value">
+                            {{item.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+            </section>
+
+
+            <section *ngIf="result" class="result__more-details">
+                <app-report [report]="report" [showOldCars]="showOldCars" [uniqId]="uniqId" [cur]="cur"></app-report>
+            </section>
+        </div>
+
+        <br>
+
+        <div class="home-expansion-panel">
+            <mat-accordion multi>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header class="home-expansion-panel__header">
+                        <mat-panel-title class="home-expansion-panel__title">
+                            <div class="home-expansion-panel__title-h1">Дополнительные параметры</div>
+                        </mat-panel-title>
+                        <mat-panel-description class="home-expansion-panel__description">
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+
+                    <section class="grid-colums-3">
+                        <mat-form-field>
+                            <mat-label>Поколение/Рестайлинг</mat-label>
+                            <mat-select formControlName="generationRestyling">
+                                <mat-option>Выбрать</mat-option>
+                                <mat-option *ngFor="let item of generationRestylingArr" [value]="item.value">
+                                    {{item.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Комплектация</mat-label>
+                            <mat-select formControlName="equipment">
+                                <mat-option>Выбрать</mat-option>
+                                <mat-option *ngFor="let item of equipmentArr" [value]="item.value">
+                                    {{item.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Состояние</mat-label>
+                            <mat-select formControlName="shape">
+                                <mat-option>Выбрать</mat-option>
+                                <mat-option *ngFor="let item of shapeArr" [value]="item.value">
+                                    {{item.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </section>
+
+                </mat-expansion-panel>
+            </mat-accordion>
+
+        </div>
+
+        <div class="home-expansion-panel">
+            <mat-accordion multi>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header class="home-expansion-panel__header">
+                        <mat-panel-title class="home-expansion-panel__title">
+                            <div class="home-expansion-panel__title-h1">Дополнительно установленное оборудование</div>
+                        </mat-panel-title>
+                        <mat-panel-description class="home-expansion-panel__description">
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <section>
+                        <section class="grid-colums-4" *ngFor="let item of additionallyEquipment; let id = index">
+
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Цена</mat-label>
+                                <input matInput placeholder="0" formControlName="millage" [value]="item">
+                            </mat-form-field>
+
+                            <span class="currency-select">
+                                <mat-form-field appearance="">
+                                    <mat-select class="select" [(value)]="item.currency">
+                                        <mat-option *ngFor="let currency of currencyList;" [(value)]="currency.value">
+                                            {{ currency.name }}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </span>
+
+
+                            <span class="currency-select">
+                                <mat-form-field appearance="">
+                                    <mat-label>Год установки</mat-label>
+                                    <mat-select class="select" [(value)]="item.year">
+                                        <mat-option *ngFor=" let itemYear of years" [value]="itemYear">
+                                            {{ itemYear }}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </span>
+
+                            <div>
+                                <button type=" button" mat-flat-button color="warn"
+                                    (click)="deleteAdditionallyEquipment(id)">
+
+                                    Удалить
+                                </button>
+                            </div>
+                        </section>
+
+                        <button type="button" mat-flat-button color="primary" (click)="addAdditionallyEquipment()">
+                            <span class="material-icons">
+                                add_circle
+                            </span>
+
+                            Добавить
+                            установленное
+                            оборудование</button>
+
+
+                    </section>
+
+                </mat-expansion-panel>
+            </mat-accordion>
+
+        </div>
+
+
+
+
+
+        <section class="form-footer__btns">
+            <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid || loadingBtn">
+                <mat-spinner class="loading-btn" *ngIf="loadingBtn" [diameter]="20"></mat-spinner>
+                анализировать
+            </button>
+        </section>
+
+
+    </form>
+
+</section>

@@ -1,9 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AutoService } from '../shared/services/auto.service';
 import { CurrencyService } from '../shared/services/currency.service';
 import { LocationService } from '../shared/services/location.service';
-import { PanelService } from '../user/shared/services/panel.service';
 import { map } from 'rxjs/operators';
 import { ChartService } from '../shared/services/chart.service';
 
@@ -21,7 +20,6 @@ export class AutoMarketPageComponent implements OnInit {
   showOldCars: boolean = false
   uniqId
 
-
   cur = this.currencyService.getCurrency()
 
   loadingMarks = true
@@ -38,18 +36,14 @@ export class AutoMarketPageComponent implements OnInit {
   modelsValue = undefined
   result
 
-
-
   constructor(
     private autoService: AutoService,
     private currencyService: CurrencyService,
     private locationService: LocationService,
-    private panelService: PanelService,
     private chartService: ChartService
   ) { }
 
   ngOnInit(): void {
-
 
     this.autoService.getMarks().subscribe(response => {
       //console.log('Result', response)
@@ -63,8 +57,6 @@ export class AutoMarketPageComponent implements OnInit {
       model: new FormControl('', Validators.required),
       year: new FormControl('', Validators.required)
     })
-
-
 
   }
 
@@ -95,7 +87,6 @@ export class AutoMarketPageComponent implements OnInit {
 
   submit() {
 
-
     if (this.form.invalid) {
       return;
     }
@@ -116,25 +107,6 @@ export class AutoMarketPageComponent implements OnInit {
         this.loadingBtn = false
         this.loadingBlock = false
         this.chartService.resetChartsEmitter.emit();
-
-        /*
-        this.panelService.getUserReport(response['uniqId'], localStorage.getItem('accessToken'), this.currencyService.getCurrency()).subscribe(resolve => {
-
-          console.log('resolve REPORT: ', resolve)
-          this.report = resolve['report']
-          this.cur = resolve['currency']
-
-          if (!!resolve['report']['oldCars']) {
-            this.showOldCars = true
-          }
-          this.loadingBtn = false
-          this.loadingBlock = false
-
-          this.chartService.resetChartsEmitter.emit();
-
-
-        })*/
-
 
       })
 
