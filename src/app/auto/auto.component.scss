@@ -10,7 +10,7 @@
 margin: 0 0 20px 0;
 
   &__header {
-min-height: 30px;
+    min-height: 20px;
     height: auto !important;
     padding: 15px;
     background: #f7f7f7;
@@ -29,4 +29,26 @@ min-height: 30px;
     font-size: 12px;
   }
  
+}
+
+
+
+.grid-colums-4 {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 1fr;    
+  grid-column-gap: 30px;
+  grid-row-gap: 10px;
+  justify-items: center;    
+  align-items: center;
+
+  & .mat-form-field {
+    width: 100%;
+}
+
+  @media only screen and (max-width: 640px) {
+      grid-template-columns: repeat(2, 1fr);      
+  }
+  @media only screen and (max-width: 470px) {
+      grid-template-columns: repeat(1, 1fr);      
+  }
 }
