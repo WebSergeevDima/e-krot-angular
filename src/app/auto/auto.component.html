@@ -165,36 +165,38 @@
                     </mat-expansion-panel-header>
                     <br>
 
-                        <div *ngFor="let item of additionallyEquipment; let id = index">
+                    <div *ngFor="let item of additionallyEquipment; let id = index">
 
-                            <div class="grid-colums-4">
+                        <div class="grid-colums-4">
 
 
-                                
+
                             <mat-form-field>
                                 <mat-label>Цена</mat-label>
-                                <input matInput placeholder="0" formControlName="millage" [value]="item">
+                                <input matInput placeholder="0" [value]=""
+                                    (keyup)="changePriceadditionallyEquipment($event, id)">
                             </mat-form-field>
 
-                          
-                                <mat-form-field appearance="">
-                                    <mat-select class="select" [(value)]="item.currency">
-                                        <mat-option *ngFor="let currency of currencyList;" [(value)]="currency.value">
-                                            {{ currency.name }}</mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-                            
+
+                            <mat-form-field>
+                                <mat-label>Валюта</mat-label>
+                                <mat-select class="select" [(value)]="item.currency">
+                                    <mat-option *ngFor="let currency of currencyList;" [(value)]="currency.value">
+                                        {{ currency.name }}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
 
 
-                            
-                                <mat-form-field appearance="">
-                                    <mat-label>Год установки</mat-label>
-                                    <mat-select class="select" [(value)]="item.year">
-                                        <mat-option *ngFor=" let itemYear of years" [value]="itemYear">
-                                            {{ itemYear }}</mat-option>
-                                    </mat-select>
-                                </mat-form-field>
-                           
+
+
+                            <mat-form-field>
+                                <mat-label>Год установки</mat-label>
+                                <mat-select class="select" [(value)]="item.year">
+                                    <mat-option *ngFor=" let itemYear of years" [value]="itemYear">
+                                        {{ itemYear }}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
 
                             <div>
                                 <button type=" button" mat-flat-button color="warn"
@@ -206,17 +208,17 @@
                         </div>
                     </div>
 
-                        <button type="button" mat-flat-button color="primary" (click)="addAdditionallyEquipment()">
-                            <span class="material-icons">
-                                add_circle
-                            </span>
+                    <button type="button" mat-flat-button color="primary" (click)="addAdditionallyEquipment()">
+                        <span class="material-icons">
+                            add_circle
+                        </span>
 
-                            Добавить
-                            установленное
-                            оборудование</button>
+                        Добавить
+                        установленное
+                        оборудование</button>
 
 
-               
+
 
                 </mat-expansion-panel>
             </mat-accordion>

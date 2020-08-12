@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AutoService } from '../shared/services/auto.service';
 import { CurrencyService } from '../shared/services/currency.service';
@@ -9,7 +9,8 @@ import { ChartService } from '../shared/services/chart.service';
 @Component({
   selector: 'app-auto',
   templateUrl: './auto.component.html',
-  styleUrls: ['./auto.component.scss']
+  styleUrls: ['./auto.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AutoComponent implements OnInit {
 
@@ -134,16 +135,17 @@ export class AutoComponent implements OnInit {
 
 
     console.log('this.form.value: ', this.form.value)
+    console.log('additionallyEquipment: ', this.additionallyEquipment)
 
     if (this.form.invalid) {
       return;
     }
 
-    /*
-    this.loadingBtn = true
-    this.loadingBlock = true
 
-    this.autoService.getSearchAuto(this.form.value, this.currencyService.getCurrency(), this.locationService.getLocation()).pipe(
+    //this.loadingBtn = true
+    //this.loadingBlock = true
+
+    this.autoService.getSearchAuto(this.form.value, this.currencyService.getCurrency(), this.locationService.getLocation(), this.additionallyEquipment).pipe(
       map(response => {
 
         this.uniqId = response['uniqId'] // Important for uniqId
@@ -159,7 +161,7 @@ export class AutoComponent implements OnInit {
         this.chartService.resetChartsEmitter.emit();
 
       })
-*/
+
   }
 
 
@@ -168,14 +170,18 @@ export class AutoComponent implements OnInit {
   }
 
   addAdditionallyEquipment() {
+    console.log(' this.additionallyEquipment add: ', this.additionallyEquipment)
     this.additionallyEquipment.push({
-      price: 0,
+      price: null,
       currency: 'USD',
       year: 2020
     })
   }
 
 
-
+  changePriceadditionallyEquipment(event, id) {
+    event.path[1].querySelector('input').value = parseInt(event.target.value.replace(/^0+/, '').replace(/\D+/g, ''))
+    this.additionallyEquipment[id].price = parseInt(event.target.value.replace(/^0+/, '').replace(/\D+/g, ''))
+  }
 
 }

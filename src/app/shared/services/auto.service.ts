@@ -203,11 +203,12 @@ export class AutoService {
   }
 
 
-  getSearchAuto(obj, cur, location) {
+  getSearchAuto(obj, cur, location, additionallyEquipment) {
 
     obj['currency'] = cur
     obj['location'] = location
     obj['accessToken'] = localStorage.getItem('accessToken')
+    obj['additionallyEquipment'] = additionallyEquipment
 
     return this.http.post(`${BASE_URL}/auto/searchAuto/`, JSON.stringify(obj)).pipe(
       map(result => {
