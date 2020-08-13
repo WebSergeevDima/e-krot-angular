@@ -203,10 +203,11 @@
 </ng-template>
 
 <div *ngIf="chartPriceHistoryShow">
-    <div class="chart-wrapper__title">Тенденция изменения стоимости модели <mat-icon *ngIf="chartPriceHistoryType == 'bar'"
-        class="chart-wrapper__btn-change-view" (click)="changeTypePriceHistory()">timeline</mat-icon>
-        <mat-icon *ngIf="chartPriceHistoryType == 'line'"
-        class="chart-wrapper__btn-change-view" (click)="changeTypePriceHistory()">leaderboard</mat-icon>
+    <div class="chart-wrapper__title">Тенденция изменения стоимости модели <mat-icon
+            *ngIf="chartPriceHistoryType == 'bar'" class="chart-wrapper__btn-change-view"
+            (click)="changeTypePriceHistory()">timeline</mat-icon>
+        <mat-icon *ngIf="chartPriceHistoryType == 'line'" class="chart-wrapper__btn-change-view"
+            (click)="changeTypePriceHistory()">leaderboard</mat-icon>
 
     </div>
 
@@ -221,10 +222,11 @@
     </div>
 </div>
 
-<div class="chart-wrapper__title">Зависимость стоимости модели от года выпуска <mat-icon *ngIf="chartPriceMarkYearsType == 'bar'"
-        class="chart-wrapper__btn-change-view" (click)="changeTypePriceMarkYears()">timeline</mat-icon>
-        <mat-icon *ngIf="chartPriceMarkYearsType == 'line'"
-        class="chart-wrapper__btn-change-view" (click)="changeTypePriceMarkYears()">leaderboard</mat-icon>
+<div class="chart-wrapper__title">Зависимость стоимости модели от года выпуска <mat-icon
+        *ngIf="chartPriceMarkYearsType == 'bar'" class="chart-wrapper__btn-change-view"
+        (click)="changeTypePriceMarkYears()">timeline</mat-icon>
+    <mat-icon *ngIf="chartPriceMarkYearsType == 'line'" class="chart-wrapper__btn-change-view"
+        (click)="changeTypePriceMarkYears()">leaderboard</mat-icon>
 </div>
 
 <div class="chart-wrapper">

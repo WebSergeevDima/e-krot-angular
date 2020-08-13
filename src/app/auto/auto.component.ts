@@ -10,7 +10,7 @@ import { ChartService } from '../shared/services/chart.service';
   selector: 'app-auto',
   templateUrl: './auto.component.html',
   styleUrls: ['./auto.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  //changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AutoComponent implements OnInit {
 
@@ -147,7 +147,7 @@ export class AutoComponent implements OnInit {
 
     this.autoService.getSearchAuto(this.form.value, this.currencyService.getCurrency(), this.locationService.getLocation(), this.additionallyEquipment).pipe(
       map(response => {
-
+        console.log('userID for report auto: ', response['uniqId'])
         this.uniqId = response['uniqId'] // Important for uniqId
         return response
 

@@ -98,10 +98,6 @@
 
             </section>
 
-
-            <section *ngIf="result" class="result__more-details">
-                <app-report [report]="report" [showOldCars]="showOldCars" [uniqId]="uniqId" [cur]="cur"></app-report>
-            </section>
         </div>
 
         <br>
@@ -226,6 +222,9 @@
         </div>
 
 
+        <section *ngIf="result" class="result__more-details">
+            <app-report [report]="report" [showOldCars]="showOldCars" [uniqId]="uniqId" [cur]="cur"></app-report>
+        </section>
 
 
 
