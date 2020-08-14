@@ -21,9 +21,6 @@ export class ReportComponent implements OnInit {
   @Input() cur
   //public uniqId
 
-
-
-
   public chartPriceHistoryShow = false
 
   chartPriceHistoryData = [
@@ -71,8 +68,6 @@ export class ReportComponent implements OnInit {
       //pointHoverBorderColor: 'rgba(225,10,24,0.2)'
     }];
 
-
-
   constructor(
     private activatedRoute: ActivatedRoute,
     private panelService: PanelService,
@@ -95,9 +90,6 @@ export class ReportComponent implements OnInit {
       this.showReport()
     })
   }
-
-
-
 
   showReport() {
 
@@ -155,10 +147,7 @@ export class ReportComponent implements OnInit {
 
     })
 
-
-
   }
-
 
   clearCharts() {
     this.chartPriceMarkYearsOptions = {
@@ -204,16 +193,5 @@ export class ReportComponent implements OnInit {
     ];
 
   }
-
-
-
-
-
-
-
-
-
-
-
 
 }
