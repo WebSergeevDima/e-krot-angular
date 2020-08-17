@@ -93,7 +93,7 @@ export class ReportComponent implements OnInit {
 
   showReport() {
 
-    this.panelService.getUserReport(this.uniqId, localStorage.getItem('accessToken'), this.currencyService.getCurrency()).subscribe(resolve => {
+    this.panelService.getUserReport(this.uniqId, this.currencyService.getCurrency()).subscribe(resolve => {
       this.report = resolve['report']
       this.cur = resolve['currency']
 

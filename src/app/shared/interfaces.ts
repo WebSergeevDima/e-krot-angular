@@ -17,6 +17,6 @@ export interface FeedbackMessage {
   message: string
   name: string
   email: string
-  tokenAccess: string
+  accessToken: string
 }
 

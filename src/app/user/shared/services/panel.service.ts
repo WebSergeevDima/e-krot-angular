@@ -23,9 +23,9 @@ export class PanelService {
     )
   }
 
-  getUserReport(uniqId: string, accessToken: string, currency) {
+  getUserReport(uniqId: string, currency) {
 
-    return this.http.post(`${BASE_URL}/panel/user_report/`, JSON.stringify({ uniqId: uniqId, accessToken: accessToken, currency: currency })).pipe(
+    return this.http.post(`${BASE_URL}/panel/user_report/`, JSON.stringify({ uniqId: uniqId, accessToken: localStorage.getItem('accessToken') ?? '', currency: currency })).pipe(
       map(resolve => {
         console.log('test uniqId', resolve)
         return resolve

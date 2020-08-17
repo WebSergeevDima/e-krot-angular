@@ -20,25 +20,25 @@ export class SupportComponent implements OnInit {
     private support: SupportService,
     public dialog: MatDialog,
     private roles: RolesService
-  ) { 
+  ) {
   }
 
 
-  
+
 
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      email: new FormControl({value: this.userEmail(), disabled: false}, [Validators.required, Validators.email]),
-      name: new FormControl({value: this.userName(), disabled: false}, [Validators.required, Validators.minLength(2)]),
+      email: new FormControl({ value: this.userEmail(), disabled: false }, [Validators.required, Validators.email]),
+      name: new FormControl({ value: this.userName(), disabled: false }, [Validators.required, Validators.minLength(2)]),
       comment: new FormControl('', [Validators.required, Validators.maxLength(1000)])
     })
 
-    
+
 
   }
 
-  
+
   userName() {
     return this.roles.userName()
   }
@@ -52,7 +52,7 @@ export class SupportComponent implements OnInit {
     return this.roles.validatePrivilege(privelege)
   }
 
- 
+
 
   submit() {
 
@@ -68,7 +68,7 @@ export class SupportComponent implements OnInit {
       message: this.form.value.comment,
       name: this.form.value.name,
       email: this.form.value.email,
-      tokenAccess: localStorage.getItem('accessToken')
+      accessToken: localStorage.getItem('accessToken')
     }
 
     this.support.sendMessage(feedback).subscribe(response => {
