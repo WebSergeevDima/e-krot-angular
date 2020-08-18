@@ -21,6 +21,7 @@ import { RegistrationPageComponent } from './registration-page/registration-page
 import { RolesService } from './shared/services/roles.service';
 import { SupportComponent } from './support/support.component';
 import { AutoComponent } from './auto/auto.component';
+import { AutoBudgetComponent } from './auto-budget/auto-budget.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AutoComponent } from './auto/auto.component';
     LoginPageComponent,
     RegistrationPageComponent,
     SupportComponent,
-    AutoComponent
+    AutoComponent,
+    AutoBudgetComponent
 
   ],
   imports: [

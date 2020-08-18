@@ -73,7 +73,6 @@
 <div class="container">
 
   <div class="home-expansion-panel">
-
     <mat-accordion multi>
       <mat-expansion-panel>
         <mat-expansion-panel-header class="home-expansion-panel__header">
@@ -109,7 +108,25 @@
 
       </mat-expansion-panel>
     </mat-accordion>
+  </div>
 
+  <div class="home-expansion-panel">
+    <mat-accordion multi>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header class="home-expansion-panel__header">
+          <mat-panel-title class="home-expansion-panel__title">
+            <div class="home-expansion-panel__title-h1">Подбор по параметрам</div>
+            <div class="home-expansion-panel__title-h2">Необходимо подобрать автомобиль исходя из вашего бюджета или
+              других параметров?</div>
+          </mat-panel-title>
+          <mat-panel-description class="home-expansion-panel__description">
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <app-auto-budget></app-auto-budget>
+
+      </mat-expansion-panel>
+    </mat-accordion>
   </div>
 
 

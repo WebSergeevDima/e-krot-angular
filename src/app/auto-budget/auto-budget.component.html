@@ -1,0 +1,115 @@
+<section [class]="loadingBlock ? 'loading-block' : ''">
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+        <div class="loading-block__layout">
+            <mat-spinner class="spinner-loading-block" *ngIf="loadingBlock" [diameter]="50"></mat-spinner>
+
+            <h1 class="auto-price-page__h1">Внесите параметры автомобиля:</h1>
+
+            <section class="grid-colums-3">
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Ваш бюджет</mat-label>
+                    <input matInput placeholder="0" required formControlName="budget">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Валюта</mat-label>
+                    <mat-select class="select" required [value]="currencyBudget" formControlName="currencyBudget">
+                        <mat-option *ngFor="let currency of currencyList;" [(value)]="currency.value">
+                            {{ currency.name }}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+
+                <mat-form-field>
+
+                    <mat-spinner class="loading-select" *ngIf="loadingMarks" [diameter]="20"></mat-spinner>
+                    <mat-label>Марка</mat-label>
+                    <mat-select #selectMarksId required formControlName="mark">
+                        <mat-option>Выбрать</mat-option>
+                        <mat-option *ngFor="let mark of marks" [value]="mark.id">
+                            {{mark.title}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
+
+
+                <input type="range">
+
+                <mat-slider type="range" class="example-margin" [max]="max" [min]="min" [step]="step"
+                    [thumbLabel]="thumbLabel" vertical="vertical">
+                </mat-slider>
+
+
+
+
+
+                <mat-form-field>
+                    <mat-label>Тип кузова</mat-label>
+                    <mat-select formControlName="bodyType">
+                        <mat-option>Выбрать</mat-option>
+                        <mat-option *ngFor="let item of bodyTypeArr" [value]="item.value">
+                            {{item.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Год выпуска</mat-label>
+                    <mat-select formControlName="year">
+                        <mat-option>Выбрать</mat-option>
+                        <mat-option *ngFor="let item of years" [value]="item">
+                            {{item}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+
+                <mat-form-field>
+                    <mat-label>Тип топлива</mat-label>
+                    <mat-select formControlName="fuel">
+                        <mat-option>Выбрать</mat-option>
+                        <mat-option *ngFor="let item of fuelArr" [value]="item.value">
+                            {{item.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Трансмиссия</mat-label>
+                    <mat-select formControlName="transmission">
+                        <mat-option>Выбрать</mat-option>
+                        <mat-option *ngFor="let item of transmissionArr" [value]="item.value">
+                            {{item.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Привод</mat-label>
+                    <mat-select formControlName="gear">
+                        <mat-option>Выбрать</mat-option>
+                        <mat-option *ngFor="let item of gearArr" [value]="item.value">
+                            {{item.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+            </section>
+
+        </div>
+
+        <br>
+
+        <section class="form-footer__btns">
+            <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid || loadingBtn">
+                <mat-spinner class="loading-btn" *ngIf="loadingBtn" [diameter]="20"></mat-spinner>
+                анализировать
+            </button>
+        </section>
+
+
+    </form>
+
+</section>

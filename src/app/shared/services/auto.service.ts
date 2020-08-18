@@ -218,4 +218,18 @@ export class AutoService {
     )
   }
 
+  getSearchBudget(obj, cur, location) {
+
+    obj['currency'] = cur
+    obj['location'] = location
+    obj['accessToken'] = localStorage.getItem('accessToken')
+
+    return this.http.post(`${BASE_URL}/auto/search_budget/`, JSON.stringify(obj)).pipe(
+      map(result => {
+        console.log('r', result)
+        return result
+      })
+    )
+  }
+
 }

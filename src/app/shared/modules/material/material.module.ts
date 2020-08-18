@@ -14,6 +14,8 @@ import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginato
 import { MatTableModule } from '@angular/material/table';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
+import { MatSliderModule } from '@angular/material/slider';
+import { Ng5SliderModule } from 'ng5-slider';
 //for translate paginator
 import { TranslateRuPaginator } from 'src/app/shared/components/paginator/translate-ru-paginator';
 
@@ -33,7 +35,9 @@ const matModules = [
   MatPaginatorModule,
   MatTableModule,
   MatDividerModule,
-  MatListModule
+  MatListModule,
+  MatSliderModule,
+  Ng5SliderModule
 ]
 
 @NgModule({
