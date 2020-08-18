@@ -14,34 +14,12 @@ import { ChartService } from '../shared/services/chart.service';
 export class AutoBudgetComponent implements OnInit {
 
 
-  minValue: number = 50;
-  maxValue: number = 200;
-  options = {
-    floor: 0,
-    ceil: 250
+  minYearValue: number = 1980;
+  maxYearValue: number = (new Date()).getFullYear();
+  optionsYear = {
+    floor: 1980,
+    ceil: 2020
   };
-
-
-
-
-
-  autoTicks = false;
-  disabled = false;
-  invert = false;
-  max = 100;
-  min = 0;
-  showTicks = false;
-  step = 1;
-  thumbLabel = false;
-  value = 0;
-  vertical = false;
-  tickInterval = 1;
-
-
-
-
-
-
 
 
 
@@ -66,7 +44,6 @@ export class AutoBudgetComponent implements OnInit {
   bodyTypeArr = this.autoService.generateArrayOfBodyTypes()
   fuelArr = this.autoService.generateArrayOfFuel()
   transmissionArr = this.autoService.generateArrayOfTransmission()
-  gearArr = this.autoService.generateArrayOfGear()
   marks = undefined
   result
 
@@ -95,10 +72,8 @@ export class AutoBudgetComponent implements OnInit {
       budget: new FormControl('', Validators.required),
       currencyBudget: new FormControl(this.currencyBudget, Validators.required),
       bodyType: new FormControl(),
-      year: new FormControl(null),
       fuel: new FormControl(null),
-      transmission: new FormControl(null),
-      gear: new FormControl(null)
+      transmission: new FormControl(null) 
 
       /*
       mark: new FormControl('', Validators.required),
@@ -107,8 +82,7 @@ export class AutoBudgetComponent implements OnInit {
       millage: new FormControl('', Validators.required),
       fuel: new FormControl('', Validators.required),
       volume: new FormControl('', Validators.required),
-      transmission: new FormControl('', Validators.required),
-      gear: new FormControl('', Validators.required)
+      transmission: new FormControl('', Validators.required)
       */
 
     })
@@ -123,7 +97,8 @@ export class AutoBudgetComponent implements OnInit {
 
 
     console.log('this.form.value: ', this.form.value)
-
+    console.log('minYearValue', this.minYearValue)
+    console.log('maxYearValue', this.maxYearValue)
 
     /*
     if (this.form.invalid) {

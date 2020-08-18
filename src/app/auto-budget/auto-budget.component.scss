@@ -1,0 +1,38 @@
+.auto-price-page {
+  &__h1 {
+    margin: 15px 0 20px;
+    font-size: 1rem;
+    line-height: 1.4rem;
+  }
+}
+
+
+.home-expansion-panel {
+margin: 0 0 20px 0;
+
+  &__header {
+    min-height: 20px;
+    height: auto !important;
+    padding: 15px;
+    background: #f7f7f7;
+  }
+
+  &__title {
+    flex-direction: column;
+
+  }
+  &__title-h1 {
+    font-size: 14px;
+    margin: 0 0 0px 0;
+    font-weight: 500;
+  }
+  &__title-h2 {
+    font-size: 14px;
+    margin: 0 0 0px 0;
+    font-weight: 500;
+  }
+  &__title-h2 {    
+    font-size: 12px;
+  }
+ 
+}

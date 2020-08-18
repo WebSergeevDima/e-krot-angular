@@ -371,5 +371,10 @@ mat-spinner {
 
 
 
-
   
+.ng5-slider span.ng5-slider-span  {
+  outline: 0px !important;
+}
+.ng5-slider span.ng5-slider-pointer.ng5-slider-active:after {
+  background-color: #fff !important;
+}

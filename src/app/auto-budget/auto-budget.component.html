@@ -4,8 +4,8 @@
 
         <div class="loading-block__layout">
             <mat-spinner class="spinner-loading-block" *ngIf="loadingBlock" [diameter]="50"></mat-spinner>
-
-            <h1 class="auto-price-page__h1">Внесите параметры автомобиля:</h1>
+            <br>
+            <div class="auto-price-page__h2">Внесите параметры автомобиля:</div>
 
             <section class="grid-colums-3">
 
@@ -34,19 +34,36 @@
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
-
-                <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
-
-
-                <input type="range">
-
-                <mat-slider type="range" class="example-margin" [max]="max" [min]="min" [step]="step"
-                    [thumbLabel]="thumbLabel" vertical="vertical">
-                </mat-slider>
+          
 
 
 
 
+            </section>
+
+            <br>
+            
+            <div class="auto-price-page__h2">Выберите года</div>
+            <ng5-slider [(value)]="minYearValue" [(highValue)]="maxYearValue" [options]="optionsYear"></ng5-slider>
+
+
+            <br> <br>
+
+            <div class="home-expansion-panel">
+                <mat-accordion multi>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header class="home-expansion-panel__header">
+                            <mat-panel-title class="home-expansion-panel__title">
+                                <div class="home-expansion-panel__title-h1">
+                                    Дополнительные параметры</div>
+                            </mat-panel-title>
+                            <mat-panel-description class="home-expansion-panel__description">
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <br>
+               
+    
+                            <div class="grid-colums-3">   
 
                 <mat-form-field>
                     <mat-label>Тип кузова</mat-label>
@@ -57,15 +74,7 @@
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field>
-                    <mat-label>Год выпуска</mat-label>
-                    <mat-select formControlName="year">
-                        <mat-option>Выбрать</mat-option>
-                        <mat-option *ngFor="let item of years" [value]="item">
-                            {{item}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+
 
 
                 <mat-form-field>
@@ -77,6 +86,7 @@
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
+
                 <mat-form-field>
                     <mat-label>Трансмиссия</mat-label>
                     <mat-select formControlName="transmission">
@@ -86,17 +96,21 @@
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
-                <mat-form-field>
-                    <mat-label>Привод</mat-label>
-                    <mat-select formControlName="gear">
-                        <mat-option>Выбрать</mat-option>
-                        <mat-option *ngFor="let item of gearArr" [value]="item.value">
-                            {{item.name}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+              
+            </div>
+                        
+    
+    
+    
+    
+    
+                    </mat-expansion-panel>
+                </mat-accordion>
+    
+            </div>
 
-            </section>
+
+
 
         </div>
 
