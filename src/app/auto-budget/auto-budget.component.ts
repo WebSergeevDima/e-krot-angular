@@ -15,21 +15,21 @@ export class AutoBudgetComponent implements OnInit {
 
 
   minYearValue: number = 1980;
-  maxYearValue: number = (new Date()).getFullYear();
+  maxYearValue: number = (new Date()).getFullYear()
   optionsYear = {
+    showTicks: true,
+    step: 1,
     floor: 1980,
-    ceil: 2020
+    ceil: (new Date()).getFullYear()
   };
 
 
+  visible = true;
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
 
-
-
-  public report = {
-    tradeIn: {},
-    oldCars: []
-  }
-  uniqId
+  listChipMarks = []
 
   currencyBudget = this.currencyService.getCurrency()
 
@@ -68,12 +68,12 @@ export class AutoBudgetComponent implements OnInit {
 
     //console.log(this.marks)
     this.form = new FormGroup({
-      mark: new FormControl('', Validators.required),
+      mark: new FormControl(null),
       budget: new FormControl('', Validators.required),
       currencyBudget: new FormControl(this.currencyBudget, Validators.required),
       bodyType: new FormControl(),
       fuel: new FormControl(null),
-      transmission: new FormControl(null) 
+      transmission: new FormControl(null)
 
       /*
       mark: new FormControl('', Validators.required),
@@ -90,17 +90,34 @@ export class AutoBudgetComponent implements OnInit {
   }
 
 
+  removeListChipMarks(carId) {
+    console.log('REMOVE CAR', carId)
+    this.listChipMarks = this.listChipMarks.filter(mark => mark.id != carId)
+  }
+  addForListChipMarks(event) {
+    console.log('event', event.value)
+    let mark = this.marks.find(mark => mark.id === event.value)
+    let markInListChipMarks = this.listChipMarks.find(mark => mark.id === event.value)
+
+    if (mark && !markInListChipMarks && this.listChipMarks.length < 3) {
+      this.listChipMarks.push(mark)
+    }
+
+  }
+
 
   submit() {
 
 
 
+    this.form.value['marks'] = this.listChipMarks
+    this.form.value['minYear'] = this.minYearValue
+    this.form.value['maxYear'] = this.maxYearValue
 
     console.log('this.form.value: ', this.form.value)
-    console.log('minYearValue', this.minYearValue)
-    console.log('maxYearValue', this.maxYearValue)
 
-    /*
+
+
     if (this.form.invalid) {
       return;
     }
@@ -111,21 +128,18 @@ export class AutoBudgetComponent implements OnInit {
 
     this.autoService.getSearchBudget(this.form.value, this.currencyService.getCurrency(), this.locationService.getLocation()).pipe(
       map(response => {
-        console.log('userID for report auto: ', response['uniqId'])
-        this.uniqId = response['uniqId'] // Important for uniqId
         return response
-
       })).subscribe(response => {
 
         this.result = response['data']
-        this.cur = this.currencyService.getCurrency()
+        //this.cur = this.currencyService.getCurrency()
 
         this.loadingBtn = false
         this.loadingBlock = false
         this.chartService.resetChartsEmitter.emit();
 
       })
-*/
+
   }
 
 

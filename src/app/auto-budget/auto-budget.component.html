@@ -23,26 +23,38 @@
                 </mat-form-field>
 
 
-                <mat-form-field>
+                <mat-form-field *ngIf="listChipMarks.length < 3">
 
                     <mat-spinner class="loading-select" *ngIf="loadingMarks" [diameter]="20"></mat-spinner>
                     <mat-label>Марка</mat-label>
-                    <mat-select #selectMarksId required formControlName="mark">
+                    <mat-select #selectMarksId formControlName="mark" (selectionChange)="addForListChipMarks($event)">
                         <mat-option>Выбрать</mat-option>
                         <mat-option *ngFor="let mark of marks" [value]="mark.id">
                             {{mark.title}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
-          
-
-
-
 
             </section>
 
+            <div *ngIf="listChipMarks.length > 0">
+                <br>
+                <div class="auto-price-page__h2">Выбранные марки (<strong>{{listChipMarks.length}} из 3</strong>):</div>
+                <mat-chip-list #chipList aria-label="Fruit selection">
+                    <mat-chip *ngFor="let car of listChipMarks" [selectable]="selectable" [removable]="removable"
+                        (removed)="removeListChipMarks(car.id)">
+                        {{car.title}}
+                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                    </mat-chip>
+                </mat-chip-list>
+            </div>
+
+
+
+
+
             <br>
-            
+
             <div class="auto-price-page__h2">Выберите года</div>
             <ng5-slider [(value)]="minYearValue" [(highValue)]="maxYearValue" [options]="optionsYear"></ng5-slider>
 
@@ -61,52 +73,52 @@
                             </mat-panel-description>
                         </mat-expansion-panel-header>
                         <br>
-               
-    
-                            <div class="grid-colums-3">   
-
-                <mat-form-field>
-                    <mat-label>Тип кузова</mat-label>
-                    <mat-select formControlName="bodyType">
-                        <mat-option>Выбрать</mat-option>
-                        <mat-option *ngFor="let item of bodyTypeArr" [value]="item.value">
-                            {{item.name}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
 
 
+                        <div class="grid-colums-3">
 
-                <mat-form-field>
-                    <mat-label>Тип топлива</mat-label>
-                    <mat-select formControlName="fuel">
-                        <mat-option>Выбрать</mat-option>
-                        <mat-option *ngFor="let item of fuelArr" [value]="item.value">
-                            {{item.name}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+                            <mat-form-field>
+                                <mat-label>Тип кузова</mat-label>
+                                <mat-select formControlName="bodyType">
+                                    <mat-option>Выбрать</mat-option>
+                                    <mat-option *ngFor="let item of bodyTypeArr" [value]="item.value">
+                                        {{item.name}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
 
-                <mat-form-field>
-                    <mat-label>Трансмиссия</mat-label>
-                    <mat-select formControlName="transmission">
-                        <mat-option>Выбрать</mat-option>
-                        <mat-option *ngFor="let item of transmissionArr" [value]="item.value">
-                            {{item.name}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-              
-            </div>
-                        
-    
-    
-    
-    
-    
+
+
+                            <mat-form-field>
+                                <mat-label>Тип топлива</mat-label>
+                                <mat-select formControlName="fuel">
+                                    <mat-option>Выбрать</mat-option>
+                                    <mat-option *ngFor="let item of fuelArr" [value]="item.value">
+                                        {{item.name}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <mat-label>Трансмиссия</mat-label>
+                                <mat-select formControlName="transmission">
+                                    <mat-option>Выбрать</mat-option>
+                                    <mat-option *ngFor="let item of transmissionArr" [value]="item.value">
+                                        {{item.name}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+
+                        </div>
+
+
+
+
+
+
                     </mat-expansion-panel>
                 </mat-accordion>
-    
+
             </div>
 
 
@@ -117,7 +129,8 @@
         <br>
 
         <section class="form-footer__btns">
-            <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid || loadingBtn">
+            <button mat-flat-button color="primary" type="submit"
+                [disabled]="form.invalid || loadingBtn || listChipMarks.length <= 0">
                 <mat-spinner class="loading-btn" *ngIf="loadingBtn" [diameter]="20"></mat-spinner>
                 анализировать
             </button>
