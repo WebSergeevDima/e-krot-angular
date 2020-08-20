@@ -31,6 +31,7 @@ export class AutoBudgetComponent implements OnInit {
 
   listChipMarks = []
 
+  cur = this.currencyService.getCurrency()
   currencyBudget = this.currencyService.getCurrency()
 
   loadingMarks = true
@@ -45,7 +46,8 @@ export class AutoBudgetComponent implements OnInit {
   fuelArr = this.autoService.generateArrayOfFuel()
   transmissionArr = this.autoService.generateArrayOfTransmission()
   marks = undefined
-  result
+  result = []
+  resultShow = false
 
   currencyList
 
@@ -71,9 +73,9 @@ export class AutoBudgetComponent implements OnInit {
       mark: new FormControl(null),
       budget: new FormControl('', Validators.required),
       currencyBudget: new FormControl(this.currencyBudget, Validators.required),
-      bodyType: new FormControl(),
-      fuel: new FormControl(null),
-      transmission: new FormControl(null)
+      bodyType: new FormControl(''),
+      fuel: new FormControl(''),
+      transmission: new FormControl('')
 
       /*
       mark: new FormControl('', Validators.required),
@@ -128,15 +130,18 @@ export class AutoBudgetComponent implements OnInit {
 
     this.autoService.getSearchBudget(this.form.value, this.currencyService.getCurrency(), this.locationService.getLocation()).pipe(
       map(response => {
+        console.log('response  BUDGETT: ', response)
         return response
       })).subscribe(response => {
 
+        this.cur = response['currency']
         this.result = response['data']
+        this.resultShow = true
         //this.cur = this.currencyService.getCurrency()
-
-        this.loadingBtn = false
+        /*this.loadingBtn = false
         this.loadingBlock = false
         this.chartService.resetChartsEmitter.emit();
+        */
 
       })
 
