@@ -33,17 +33,13 @@ export class CurrencyComponent implements OnInit {
     this.currencySelected = this.currencyService.getCurrency()
   }
 
-
-
   currencyChange() {
 
     this.customName.emit('Hi iz componenta Currency)')
 
-
     this.currencyService.setCurrencySelected(this.currencySelected)
-
     let allCurrencyPrice = document.querySelectorAll('[data-currency-price]')
-    console.log('allCurrencyPrice', allCurrencyPrice)
+    //let allCurrencyPriceInput: any = document.querySelectorAll('[data-currency-price-input]')
 
     const arrPrices = []
     for (var i = 0; i < allCurrencyPrice.length; i++) {
@@ -53,17 +49,39 @@ export class CurrencyComponent implements OnInit {
 
     }
 
-    console.log('arrPrices', arrPrices)
+    /*
+    const arrPricesInput = []
+    const arrPricesInputCur = []
+    for (var i = 0; i < allCurrencyPriceInput.length; i++) {
 
-    this.currencyService.converterPrice({ prices: arrPrices, currency: this.currencyService.getCurrency() }).subscribe(response => {
-      console.log('coverter: ', response)
+      let price = parseInt(allCurrencyPriceInput[i].value.replace(/\D+/g, ""))
+      let cur = allCurrencyPriceInput[i].getAttribute('data-currency-price-input')
+      arrPricesInput.push(price)
+      arrPricesInputCur.push(cur)
+
+    }
+*/
+
+    this.currencyService.converterPrice({
+      prices: arrPrices,
+      //pricesInput: arrPricesInput,
+      //pricesInputCur: arrPricesInputCur,
+      currency: this.currencyService.getCurrency()
+    }).subscribe(response => {
+      //console.log('coverter: ', response)
 
       for (var i = 0; i < allCurrencyPrice.length; i++) {
 
         allCurrencyPrice[i].innerHTML = response['prices'][i]
 
       }
-
+      /*
+            for (var i = 0; i < allCurrencyPriceInput.length; i++) {
+      
+              allCurrencyPriceInput[i].value = response['pricesInput'][i]
+      
+            }
+      */
 
       let allCurrencyUnit = document.querySelectorAll('[data-currency-unit]')
 

@@ -5,6 +5,7 @@ import { CurrencyService } from '../shared/services/currency.service';
 import { LocationService } from '../shared/services/location.service';
 import { map } from 'rxjs/operators';
 import { ChartService } from '../shared/services/chart.service';
+import { NumbersService } from '../shared/services/numbers.service';
 
 @Component({
   selector: 'app-auto-budget',
@@ -55,10 +56,19 @@ export class AutoBudgetComponent implements OnInit {
     private autoService: AutoService,
     private currencyService: CurrencyService,
     private locationService: LocationService,
-    private chartService: ChartService
+    private chartService: ChartService,
+    private numbersService: NumbersService
   ) { }
 
   ngOnInit(): void {
+
+    /*
+    let inputsCur = document.querySelectorAll('[data-currency-price-input]')
+    for (var i = 0; i < inputsCur.length; i++) {
+
+      inputsCur[i].setAttribute('data-currency-price-input', this.cur)
+
+    }*/
 
     this.currencyList = this.currencyService.getCurrencyList()
 
@@ -107,10 +117,12 @@ export class AutoBudgetComponent implements OnInit {
 
   }
 
+  thousandSeparator(event) {
+    event.target.value = this.numbersService.thousandSeparator(event.target.value)
+  }
+
 
   submit() {
-
-
 
     this.form.value['marks'] = this.listChipMarks
     this.form.value['minYear'] = this.minYearValue
@@ -118,15 +130,12 @@ export class AutoBudgetComponent implements OnInit {
 
     console.log('this.form.value: ', this.form.value)
 
-
-
     if (this.form.invalid) {
       return;
     }
 
-
-    //this.loadingBtn = true
-    //this.loadingBlock = true
+    this.loadingBtn = true
+    this.loadingBlock = true
 
     this.autoService.getSearchBudget(this.form.value, this.currencyService.getCurrency(), this.locationService.getLocation()).pipe(
       map(response => {
@@ -137,9 +146,10 @@ export class AutoBudgetComponent implements OnInit {
         this.cur = response['currency']
         this.result = response['data']
         this.resultShow = true
-        //this.cur = this.currencyService.getCurrency()
-        /*this.loadingBtn = false
+        this.loadingBtn = false
         this.loadingBlock = false
+        //this.cur = this.currencyService.getCurrency()
+        /*
         this.chartService.resetChartsEmitter.emit();
         */
 

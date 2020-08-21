@@ -37,7 +37,7 @@
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Тип кузова</mat-label>
-                    <mat-select formControlName="bodyType">
+                    <mat-select required formControlName="bodyType">
                         <mat-option>Выбрать</mat-option>
                         <mat-option *ngFor="let item of bodyTypeArr" [value]="item.value">
                             {{item.name}}
@@ -56,12 +56,13 @@
 
                 <mat-form-field class="example-full-width">
                     <mat-label>Пробег (км)</mat-label>
-                    <input matInput placeholder="0" formControlName="millage">
+                    <input matInput placeholder="0" required formControlName="millage"
+                        (keyup)="thousandSeparator($event)">
                 </mat-form-field>
 
                 <mat-form-field>
                     <mat-label>Тип топлива</mat-label>
-                    <mat-select formControlName="fuel">
+                    <mat-select required formControlName="fuel">
                         <mat-option>Выбрать</mat-option>
                         <mat-option *ngFor="let item of fuelArr" [value]="item.value">
                             {{item.name}}
@@ -70,7 +71,7 @@
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Объем двигателя (л.)</mat-label>
-                    <mat-select formControlName="volume">
+                    <mat-select required formControlName="volume">
                         <mat-option>Выбрать</mat-option>
                         <mat-option *ngFor="let item of volumeArr" [value]="item.value">
                             {{item.name}}
@@ -79,7 +80,7 @@
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Трансмиссия</mat-label>
-                    <mat-select formControlName="transmission">
+                    <mat-select required formControlName="transmission">
                         <mat-option>Выбрать</mat-option>
                         <mat-option *ngFor="let item of transmissionArr" [value]="item.value">
                             {{item.name}}
@@ -88,7 +89,7 @@
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Привод</mat-label>
-                    <mat-select formControlName="gear">
+                    <mat-select required formControlName="gear">
                         <mat-option>Выбрать</mat-option>
                         <mat-option *ngFor="let item of gearArr" [value]="item.value">
                             {{item.name}}

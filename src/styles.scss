@@ -30,6 +30,7 @@ html {
 
 body {
   min-height: 100%;
+  background: url(/assets/main/background.png);
 }
 
 html, body {
@@ -370,11 +371,42 @@ mat-spinner {
 }
 
 
+.input-currency {
+
+  & + [data-currency-unit] {
+        position: absolute;
+    right: 0;
+    color: #949494;
+  }
+
+}
 
   
 .ng5-slider span.ng5-slider-span  {
-  outline: 0px !important;
+  outline: 0px !important;   
 }
 .ng5-slider span.ng5-slider-pointer.ng5-slider-active:after {
   background-color: #fff !important;
 }
+.ng5-slider .ng5-slider-selection,
+.ng5-slider .ng5-slider-tick.ng5-slider-selected,
+.ng5-slider .ng5-slider-pointer {
+    background: #4c8dff !important;
+}
+.ng5-slider .ng5-slider-bubble.ng5-slider-limit {
+    color: #949494 !important;
+    font-size: 12px;
+}
+
+
+.error-message {
+
+  &__text-only {
+    display: table;
+    margin: 20px auto;
+    color: #d32f2f;
+    font-weight: 500;
+  }
+}
+
+

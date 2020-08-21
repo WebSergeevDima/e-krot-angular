@@ -5,6 +5,7 @@ import { CurrencyService } from '../shared/services/currency.service';
 import { LocationService } from '../shared/services/location.service';
 import { map } from 'rxjs/operators';
 import { ChartService } from '../shared/services/chart.service';
+import { NumbersService } from '../shared/services/numbers.service';
 
 @Component({
   selector: 'app-auto',
@@ -59,7 +60,8 @@ export class AutoComponent implements OnInit {
     private autoService: AutoService,
     private currencyService: CurrencyService,
     private locationService: LocationService,
-    private chartService: ChartService
+    private chartService: ChartService,
+    private numbersService: NumbersService
   ) { }
 
   ngOnInit(): void {
@@ -74,20 +76,22 @@ export class AutoComponent implements OnInit {
 
     //console.log(this.marks)
     this.form = new FormGroup({
-      mark: new FormControl('', Validators.required),
-      model: new FormControl('', Validators.required),
-      bodyType: new FormControl(),
-      year: new FormControl('', Validators.required),
-      millage: new FormControl(null),
-      fuel: new FormControl(null),
-      volume: new FormControl(null),
-      transmission: new FormControl(null),
-      gear: new FormControl(null),
-      generationRestyling: new FormControl(null),
-      equipment: new FormControl(null),
-      shape: new FormControl(null)
 
-      /*
+      /* 
+      mark: new FormControl('', Validators.required),
+       model: new FormControl('', Validators.required),
+       bodyType: new FormControl(),
+       year: new FormControl('', Validators.required),
+       millage: new FormControl(null),
+       fuel: new FormControl(null),
+       volume: new FormControl(null),
+       transmission: new FormControl(null),
+       gear: new FormControl(null),
+       generationRestyling: new FormControl(null),
+       equipment: new FormControl(null),
+       shape: new FormControl(null)
+ */
+
       mark: new FormControl('', Validators.required),
       model: new FormControl('', Validators.required),
       bodyType: new FormControl('', Validators.required),
@@ -97,10 +101,10 @@ export class AutoComponent implements OnInit {
       volume: new FormControl('', Validators.required),
       transmission: new FormControl('', Validators.required),
       gear: new FormControl('', Validators.required),
-      generationRestyling: new FormControl('', Validators.required),
-      equipment: new FormControl('', Validators.required),
-      shape: new FormControl('', Validators.required)
-      */
+      generationRestyling: new FormControl(null),
+      equipment: new FormControl(null),
+      shape: new FormControl(null)
+
 
     })
 
@@ -183,5 +187,10 @@ export class AutoComponent implements OnInit {
     event.path[1].querySelector('input').value = parseInt(event.target.value.replace(/^0+/, '').replace(/\D+/g, ''))
     this.additionallyEquipment[id].price = parseInt(event.target.value.replace(/^0+/, '').replace(/\D+/g, ''))
   }
+
+  thousandSeparator(event) {
+    event.target.value = this.numbersService.thousandSeparator(event.target.value)
+  }
+
 
 }

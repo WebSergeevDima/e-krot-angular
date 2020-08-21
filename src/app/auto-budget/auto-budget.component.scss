@@ -92,3 +92,21 @@ margin: 0 0 20px 0;
   }
 
 }
+
+.grid-colums {
+
+  &__budget {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);    
+  grid-column-gap: 30px;
+  grid-row-gap: 10px;
+
+  @media only screen and (max-width: 640px) {
+      grid-template-columns: repeat(2, 1fr);      
+  }
+  @media only screen and (max-width: 470px) {
+      grid-template-columns: repeat(1, 1fr);      
+  }
+  }
+
+}

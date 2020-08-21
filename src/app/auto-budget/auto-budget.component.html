@@ -6,22 +6,13 @@
             <mat-spinner class="spinner-loading-block" *ngIf="loadingBlock" [diameter]="50"></mat-spinner>
             <br>
             <div class="auto-price-page__h2">Внесите параметры автомобиля:</div>
-
-            <section class="grid-colums-3">
-
+            <section class="grid-colums__budget">
                 <mat-form-field class="example-full-width">
                     <mat-label>Ваш бюджет</mat-label>
-                    <input matInput placeholder="0" required formControlName="budget">
+                    <input matInput placeholder="0" required formControlName="budget" class="input-currency"
+                        (keyup)="thousandSeparator($event)">
+                    <span [attr.data-currency-unit]="cur"></span>
                 </mat-form-field>
-
-                <mat-form-field>
-                    <mat-label>Валюта</mat-label>
-                    <mat-select class="select" required [value]="currencyBudget" formControlName="currencyBudget">
-                        <mat-option *ngFor="let currency of currencyList;" [(value)]="currency.value">
-                            {{ currency.name }}</mat-option>
-                    </mat-select>
-                </mat-form-field>
-
 
                 <mat-form-field *ngIf="listChipMarks.length < 3">
 
@@ -112,10 +103,6 @@
                         </div>
 
 
-
-
-
-
                     </mat-expansion-panel>
                 </mat-accordion>
 
@@ -129,20 +116,31 @@
 
         <div *ngIf="resultShow">
 
-            <div class="auto-budget-rating__title">Результат подбора автомобилей:</div>
 
-            <div class="auto-budget-rating">
+            <div *ngIf="result.length > 0; else messageNotCars">
+                <div class="auto-budget-rating__title">Результат подбора автомобилей:</div>
 
-                <div *ngFor="let car of result; let index = index" class="auto-budget-rating__item">
-                    <div class="auto-budget-rating__item-counter">{{index + 1}}</div>
-                    <div class="auto-budget-rating__item-title"><strong>{{car['markTitle']}}</strong></div>
-                    <div class="auto-budget-rating__item-title"><strong>{{car['modelTitle']}}</strong></div>
-                    <div class="auto-budget-rating__item-title"><strong>{{car['year']}}</strong> год</div>
-                    <div class="auto-budget-rating__item-price"><strong>{{car['priceAvg']}}</strong> {{cur}}</div>
+                <div class="auto-budget-rating">
+
+                    <div *ngFor="let car of result; let index = index" class="auto-budget-rating__item">
+                        <div class="auto-budget-rating__item-counter">{{index + 1}}</div>
+                        <div class="auto-budget-rating__item-title"><strong>{{car['markTitle']}}</strong></div>
+                        <div class="auto-budget-rating__item-title"><strong>{{car['modelTitle']}}</strong></div>
+                        <div class="auto-budget-rating__item-title"><strong>{{car['year']}}</strong> год</div>
+                        <div class="auto-budget-rating__item-price"><strong
+                                [attr.data-currency-price]="car['priceAvg']">{{car['priceAvgCur']}}</strong> <span
+                                [attr.data-currency-unit]="cur"></span>
+                        </div>
+                    </div>
+
                 </div>
-
             </div>
 
+            <ng-template #messageNotCars>
+                <div class="error-message__text-only ">
+                    К сожалению, мы не смогли подобрать автомобиль с данными параметрами. Попробуйти увеличить свой
+                    бюджет либо изменить дополнительные параметры.</div>
+            </ng-template>
         </div>
         <br>
 
