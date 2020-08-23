@@ -92,15 +92,15 @@ export class AutoComponent implements OnInit {
        shape: new FormControl(null)
  */
 
-      mark: new FormControl('', Validators.required),
-      model: new FormControl('', Validators.required),
-      bodyType: new FormControl('', Validators.required),
-      year: new FormControl('', Validators.required),
-      millage: new FormControl('', Validators.required),
-      fuel: new FormControl('', Validators.required),
-      volume: new FormControl('', Validators.required),
-      transmission: new FormControl('', Validators.required),
-      gear: new FormControl('', Validators.required),
+      mark: new FormControl(null, Validators.required),
+      model: new FormControl(null, Validators.required),
+      bodyType: new FormControl(null, Validators.required),
+      year: new FormControl(null, Validators.required),
+      millage: new FormControl(null, Validators.required),
+      fuel: new FormControl(null, Validators.required),
+      volume: new FormControl(null, Validators.required),
+      transmission: new FormControl(null, Validators.required),
+      gear: new FormControl(null, Validators.required),
       generationRestyling: new FormControl(null),
       equipment: new FormControl(null),
       shape: new FormControl(null)
@@ -151,6 +151,7 @@ export class AutoComponent implements OnInit {
 
     this.autoService.getSearchAuto(this.form.value, this.currencyService.getCurrency(), this.locationService.getLocation(), this.additionallyEquipment).pipe(
       map(response => {
+        console.log('response AUTO SEARCH in map:', response)
         console.log('userID for report auto: ', response['uniqId'])
         this.uniqId = response['uniqId'] // Important for uniqId
         return response
@@ -184,7 +185,7 @@ export class AutoComponent implements OnInit {
 
 
   changePriceadditionallyEquipment(event, id) {
-    event.path[1].querySelector('input').value = parseInt(event.target.value.replace(/^0+/, '').replace(/\D+/g, ''))
+    event.path[1].querySelector('input').value = this.numbersService.thousandSeparator(event.target.value)
     this.additionallyEquipment[id].price = parseInt(event.target.value.replace(/^0+/, '').replace(/\D+/g, ''))
   }
 
