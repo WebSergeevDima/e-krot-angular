@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AutoService } from '../shared/services/auto.service';
 import { CurrencyService } from '../shared/services/currency.service';
 import { LocationService } from '../shared/services/location.service';
 import { map } from 'rxjs/operators';
 import { ChartService } from '../shared/services/chart.service';
+import { PanelService } from '../user/shared/services/panel.service';
 
 @Component({
   selector: 'app-auto-market-page',
@@ -18,7 +19,7 @@ export class AutoMarketPageComponent implements OnInit {
     oldCars: []
   }
   showOldCars: boolean = false
-  uniqId
+  public uniqId
 
   cur = this.currencyService.getCurrency()
 
@@ -40,7 +41,8 @@ export class AutoMarketPageComponent implements OnInit {
     private autoService: AutoService,
     private currencyService: CurrencyService,
     private locationService: LocationService,
-    private chartService: ChartService
+    private chartService: ChartService,
+    private panelService: PanelService
   ) { }
 
   ngOnInit(): void {
@@ -86,7 +88,6 @@ export class AutoMarketPageComponent implements OnInit {
   }
 
   submit() {
-
     if (this.form.invalid) {
       return;
     }
@@ -95,19 +96,17 @@ export class AutoMarketPageComponent implements OnInit {
 
     this.autoService.getSearchMarket(this.form.value, this.currencyService.getCurrency(), this.locationService.getLocation()).pipe(
       map(response => {
-
+        console.log('new ID: ', response['uniqId'])
         this.uniqId = response['uniqId'] // Important for uniqId
         return response
 
       })).subscribe(response => {
-
         this.result = response['data']
         this.cur = this.currencyService.getCurrency()
-
         this.loadingBtn = false
         this.loadingBlock = false
-        this.chartService.resetChartsEmitter.emit();
-
+        //this.chartService.resetChartsEmitter.emit();
+        this.panelService.updateReportEmitter.emit({ uniqId: this.uniqId });
       })
 
   }

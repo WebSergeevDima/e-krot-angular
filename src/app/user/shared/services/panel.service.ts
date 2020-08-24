@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BASE_URL } from 'src/app/api-config';
 import { map } from 'rxjs/operators';
@@ -8,6 +8,7 @@ import { map } from 'rxjs/operators';
 })
 export class PanelService {
 
+  public updateReportEmitter = new EventEmitter();
   public allReports
 
   constructor(private http: HttpClient) { }

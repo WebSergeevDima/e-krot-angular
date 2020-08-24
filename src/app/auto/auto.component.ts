@@ -6,6 +6,7 @@ import { LocationService } from '../shared/services/location.service';
 import { map } from 'rxjs/operators';
 import { ChartService } from '../shared/services/chart.service';
 import { NumbersService } from '../shared/services/numbers.service';
+import { PanelService } from '../user/shared/services/panel.service';
 
 @Component({
   selector: 'app-auto',
@@ -61,7 +62,8 @@ export class AutoComponent implements OnInit {
     private currencyService: CurrencyService,
     private locationService: LocationService,
     private chartService: ChartService,
-    private numbersService: NumbersService
+    private numbersService: NumbersService,
+    private panelService: PanelService
   ) { }
 
   ngOnInit(): void {
@@ -151,8 +153,7 @@ export class AutoComponent implements OnInit {
 
     this.autoService.getSearchAuto(this.form.value, this.currencyService.getCurrency(), this.locationService.getLocation(), this.additionallyEquipment).pipe(
       map(response => {
-        console.log('response AUTO SEARCH in map:', response)
-        console.log('userID for report auto: ', response['uniqId'])
+        //console.log('response AUTO SEARCH in map:', response)
         this.uniqId = response['uniqId'] // Important for uniqId
         return response
 
@@ -160,10 +161,9 @@ export class AutoComponent implements OnInit {
 
         this.result = response['data']
         this.cur = this.currencyService.getCurrency()
-
         this.loadingBtn = false
         this.loadingBlock = false
-        this.chartService.resetChartsEmitter.emit();
+        this.panelService.updateReportEmitter.emit({ uniqId: this.uniqId });
 
       })
 

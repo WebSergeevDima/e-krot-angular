@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ChartService {
 
-  public resetChartsEmitter = new EventEmitter();
+  //public resetChartsEmitter = new EventEmitter();
 
   constructor(
     private http: HttpClient

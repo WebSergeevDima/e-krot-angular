@@ -12,9 +12,9 @@ import { ChartService } from 'src/app/shared/services/chart.service';
 })
 export class ReportComponent implements OnInit {
 
-  @Input() uniqId
+  @Input() uniqId: string
   @Input() showOldCars: boolean = false
-  @Input() report = {
+  report = {
     tradeIn: {},
     oldCars: []
   }
@@ -74,19 +74,24 @@ export class ReportComponent implements OnInit {
     public currencyService: CurrencyService,
     private chartService: ChartService
   ) {
+    /*
     this.currencyService.carrencyChangeEmitter.subscribe(response => {
       this.showCharts()
     })
+    */
+    /*
     this.chartService.resetChartsEmitter.subscribe(response => {
+      this.showReport()
+    })
+    */
+    this.panelService.updateReportEmitter.subscribe(response => {
+      this.uniqId = response['uniqId']
       this.showReport()
     })
   }
 
   ngOnInit(): void {
-    this.activatedRoute.paramMap.pipe(map(params => {
-      //this.uniqId = params.get('uniqId')
-    })).subscribe(response => {
-      console.log('report uniqId', response)
+    this.activatedRoute.paramMap.subscribe(response => {
       this.showReport()
     })
   }
