@@ -27,6 +27,7 @@ export class AutoMarketPageComponent implements OnInit {
   loadingModels = false
   loadingBtn = false
   loadingBlock = false
+  resultShow = false
 
   form: FormGroup
 
@@ -96,7 +97,7 @@ export class AutoMarketPageComponent implements OnInit {
 
     this.autoService.getSearchMarket(this.form.value, this.currencyService.getCurrency(), this.locationService.getLocation()).pipe(
       map(response => {
-        console.log('new ID: ', response['uniqId'])
+        console.log('responseresponse response: ', response)
         this.uniqId = response['uniqId'] // Important for uniqId
         return response
 
@@ -105,6 +106,7 @@ export class AutoMarketPageComponent implements OnInit {
         this.cur = this.currencyService.getCurrency()
         this.loadingBtn = false
         this.loadingBlock = false
+        this.resultShow = true
         //this.chartService.resetChartsEmitter.emit();
         this.panelService.updateReportEmitter.emit({ uniqId: this.uniqId });
       })
