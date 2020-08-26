@@ -30,6 +30,7 @@ export class AutoComponent implements OnInit {
   loadingModels = false
   loadingBtn = false
   loadingBlock = false
+  resultShow = false
 
   form: FormGroup
 
@@ -160,10 +161,21 @@ export class AutoComponent implements OnInit {
       })).subscribe(response => {
 
         this.result = response['data']
-        this.cur = this.currencyService.getCurrency()
+
+        if (Object.keys(this.result).length < 1) {
+
+          this.result = false
+
+        } else {
+
+          this.cur = this.currencyService.getCurrency()
+          this.panelService.updateReportEmitter.emit({ uniqId: this.uniqId });
+
+        }
+
+        this.resultShow = true
         this.loadingBtn = false
         this.loadingBlock = false
-        this.panelService.updateReportEmitter.emit({ uniqId: this.uniqId });
 
       })
 

@@ -50,7 +50,7 @@
       <div *ngIf="resultShow">
 
 
-        <div *ngIf="result.length > 0; else messageNotCars">
+        <div *ngIf="result; else messageNotCars">
           <section *ngIf="result" class="result__more-details">
             <app-report [showOldCars]="showOldCars" [uniqId]="uniqId" [cur]="cur"></app-report>
           </section>

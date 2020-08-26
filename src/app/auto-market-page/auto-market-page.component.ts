@@ -102,13 +102,27 @@ export class AutoMarketPageComponent implements OnInit {
         return response
 
       })).subscribe(response => {
+
         this.result = response['data']
-        this.cur = this.currencyService.getCurrency()
+        console.log('LENG', Object.keys(this.result).length)
+
+        if (Object.keys(this.result).length < 1) {
+
+          this.result = false
+
+        } else {
+
+          this.cur = this.currencyService.getCurrency()
+          //this.chartService.resetChartsEmitter.emit();
+          this.panelService.updateReportEmitter.emit({ uniqId: this.uniqId });
+
+        }
+
         this.loadingBtn = false
         this.loadingBlock = false
         this.resultShow = true
-        //this.chartService.resetChartsEmitter.emit();
-        this.panelService.updateReportEmitter.emit({ uniqId: this.uniqId });
+
+
       })
 
   }

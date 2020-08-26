@@ -224,9 +224,24 @@
         </div>
 
 
-        <section *ngIf="result" class="result__more-details">
-            <app-report [showOldCars]="showOldCars" [uniqId]="uniqId" [cur]="cur"></app-report>
-        </section>
+        <div *ngIf="resultShow">
+
+
+            <div *ngIf="result; else messageNotCars">
+                <section *ngIf="result" class="result__more-details">
+                    <app-report [showOldCars]="showOldCars" [uniqId]="uniqId" [cur]="cur"></app-report>
+                </section>
+            </div>
+
+            <ng-template #messageNotCars>
+                <div class="error-message__text-only ">
+                    К сожалению, мы не смогли подобрать автомобиль с данными параметрами. Попробуйти увеличить свой
+                    бюджет либо изменить дополнительные параметры.</div>
+            </ng-template>
+
+        </div>
+
+
 
 
 
