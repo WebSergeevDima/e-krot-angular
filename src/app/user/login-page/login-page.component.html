@@ -1,26 +1,24 @@
+<br><br>
 <section class="container">
-<form [formGroup]="form" (ngSubmit)="submit()" class="login-page">
+  <form [formGroup]="form" (ngSubmit)="submit()" class="login-page">
 
-  
-  <h2>Войти в личный кабинет</h2>
-  <section class="flex-middle_colum-2">
-  <mat-form-field class="flex-item">
-    <mat-label>Введите Email</mat-label>
-    <input matInput type="email" formControlName="email">
-  </mat-form-field>
-  
-  
-  <mat-form-field class="flex-item">
-    <mat-label>Введите пароль</mat-label>
-    <input matInput type="password" formControlName="password">
-  </mat-form-field>
-  
-  </section>
-  
-  
-  <button mat-flat-button color="primary" type="submit">Войти</button>
+
+    <h2>Войти в личный кабинет</h2>
+    <section class="flex-middle_colum-2">
+      <mat-form-field class="flex-item">
+        <mat-label>Введите Email</mat-label>
+        <input matInput type="email" formControlName="email">
+      </mat-form-field>
+
+
+      <mat-form-field class="flex-item">
+        <mat-label>Введите пароль</mat-label>
+        <input matInput type="password" formControlName="password">
+      </mat-form-field>
+
+    </section>
+
+
+    <button mat-flat-button color="primary" type="submit">Войти</button>
   </form>
 </section>
-  
-  
-  

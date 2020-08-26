@@ -70,6 +70,11 @@ html, body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 15px;
+
+  &_block {
+    position: relative;
+    height: 100%;
+  }
 }
 
 mat-spinner {
@@ -118,17 +123,21 @@ mat-spinner {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  &__item { 
+    width: calc(100% / 3 - 13px);
+  }
+
 }
 
 .header__toolbar {
-  background: rgb(76, 141, 255);
-  padding: 12px 0;
-  box-shadow: 0px -1px 9px rgb(0, 0, 0);
-  width: 100%;
-  position: fixed;
-  z-index: 5;
-  transition: .3s;
-  top: 0;
+    background: #ffffff;
+    padding: 12px 0;
+    box-shadow: 0px -1px 9px black;
+    width: 100%;
+    z-index: 5;
+    transition: 0.3s;
+    top: 0;
 }
 .header__svg {
   width: 24px;
@@ -162,7 +171,6 @@ mat-spinner {
 }
 .logo {
   text-align: center;
-  margin: 70px 0 40px 0;
 
   &__description {
     font-size: 14px;
@@ -177,16 +185,19 @@ mat-spinner {
 
 .header-account {
 
-  color: #fff;
-  transition: 0.3s;
-  text-decoration: none;
-  font-size: 16px;
+    color: #2819eb;
+    transition: 0.3s;
+    text-decoration: none;
+    font-size: 16px;
+    text-align: right;
 
   &__registration {
-    color: #fff;
+    color: #000;
     transition: 0.3s;
     text-decoration: none;
     cursor: pointer;
+    font-size: 14px;
+    text-transform: uppercase;
 
     &:hover {
       text-decoration: underline;
@@ -410,3 +421,28 @@ mat-spinner {
 }
 
 
+
+.home-expansion-panel {
+margin: 0 0 20px 0;
+
+  &__header {
+    min-height: 70px;
+    height: auto !important;
+    padding: 15px 24px;
+    background: #f7f7f7;
+  }
+
+  &__title {
+    flex-direction: column;
+
+  }
+  &__title-h1 {
+    font-size: 22px;
+    margin: 0 0 10px 0;
+    font-weight: 500;
+  }
+  &__title-h2 {    
+    font-size: 12px;
+  }
+ 
+}
