@@ -22,4 +22,15 @@ export class HomePageComponent implements OnInit {
     return this.roles.validatePrivilege(privelege)
   }
 
+  scrollingToAssessment() {
+
+    const assessment = document.querySelector('[data-block="assessment"]')
+
+    assessment.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    })
+
+  }
+
 }

@@ -51,7 +51,7 @@ html, body {
   flex-grow: 0;
   flex-shrink: 0;
   flex-basis: auto;
-  background: #4c8dff;
+  background: #2819eb;
   text-align: center;
   line-height: 40px;
   color: #fff;
@@ -152,7 +152,7 @@ mat-spinner {
     border-radius: 20px;
     padding: 3px 10px;
     font-size: 14px;
-    margin: 0 20px 0 0;
+    margin: 0 20px 40px 0;
 
   }
   &__top-select-right {
@@ -428,7 +428,7 @@ margin: 0 0 20px 0;
   &__header {
     min-height: 70px;
     height: auto !important;
-    padding: 15px 24px;
+    padding: 10px 24px !important;
     background: #f7f7f7;
   }
 

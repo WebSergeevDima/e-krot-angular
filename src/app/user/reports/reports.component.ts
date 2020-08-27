@@ -21,10 +21,10 @@ export class ReportsComponent implements OnInit {
     private panelService: PanelService,
     private currencyService: CurrencyService
   ) {
-    /*
-        this.currencyService.carrencyChangeEmitter.subscribe(response => {
-          this.showReports()
-        })*/
+
+    this.currencyService.carrencyChangeEmitter.subscribe(response => {
+      this.showReports()
+    })
 
   }
 

@@ -67,8 +67,10 @@
 
   <div class="container container_block">
 
-    <div class="header__title">Удобная и быстрая система оценки автомобиля</div>
-    <a href="javascript:;" class="header__btn-evaluate">Оценить сейчас</a>
+    <div class="header__title">
+      <span class="header__title-small">Удобная и быстрая</span><span class="header__title-big">система оценки
+        автомобиля</span></div>
+    <a href="javascript:;" class="header__btn-evaluate" (click)="scrollingToAssessment()">Оценить сейчас</a>
     <img class="header__car" src="/assets/main/home-car.png" alt="">
 
   </div>
@@ -76,7 +78,9 @@
 </div>
 
 
-
+<div class="home-title" data-block="assessment">
+  Оценка авто
+</div>
 
 <div class="container">
   <app-location></app-location>
