@@ -103,11 +103,9 @@ export class AutoBudgetComponent implements OnInit {
 
 
   removeListChipMarks(carId) {
-    console.log('REMOVE CAR', carId)
     this.listChipMarks = this.listChipMarks.filter(mark => mark.id != carId)
   }
   addForListChipMarks(event) {
-    console.log('event', event.value)
     let mark = this.marks.find(mark => mark.id === event.value)
     let markInListChipMarks = this.listChipMarks.find(mark => mark.id === event.value)
 
@@ -128,7 +126,6 @@ export class AutoBudgetComponent implements OnInit {
     this.form.value['minYear'] = this.minYearValue
     this.form.value['maxYear'] = this.maxYearValue
 
-    console.log('this.form.value: ', this.form.value)
 
     if (this.form.invalid) {
       return;
@@ -139,7 +136,6 @@ export class AutoBudgetComponent implements OnInit {
 
     this.autoService.getSearchBudget(this.form.value, this.currencyService.getCurrency(), this.locationService.getLocation()).pipe(
       map(response => {
-        console.log('response  BUDGETT: ', response)
         return response
       })).subscribe(response => {
 

@@ -66,7 +66,6 @@ export class AutoMarketPageComponent implements OnInit {
 
   getModels(value, selectModels) {
 
-    console.log('selectModels', selectModels)
     const markId = {
       id: value
     }
@@ -97,14 +96,12 @@ export class AutoMarketPageComponent implements OnInit {
 
     this.autoService.getSearchMarket(this.form.value, this.currencyService.getCurrency(), this.locationService.getLocation()).pipe(
       map(response => {
-        console.log('responseresponse response: ', response)
         this.uniqId = response['uniqId'] // Important for uniqId
         return response
 
       })).subscribe(response => {
 
         this.result = response['data']
-        console.log('LENG', Object.keys(this.result).length)
 
         if (Object.keys(this.result).length < 1) {
 

@@ -18,13 +18,12 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   privilege(privelege: string): boolean {
     return this.roles.validatePrivilege(privelege)
   }
 
-
-  logout() {
-    console.log('Click Logout()')
+  logout() {   
     this.authService.logout()
     this.router.navigate(['/user', 'login'])
   }

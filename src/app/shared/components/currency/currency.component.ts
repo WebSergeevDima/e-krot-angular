@@ -28,7 +28,7 @@ export class CurrencyComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('debug', this.currencyService.getCurrencyList())
+    //console.log('debug', this.currencyService.getCurrencyList())
     this.currencyList = this.currencyService.getCurrencyList()
     this.currencySelected = this.currencyService.getCurrency()
   }

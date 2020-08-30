@@ -39,7 +39,7 @@ export class AutoPricePageComponent implements OnInit {
   }
 
   submit() {
-    console.log('Form:', this.form)
+    //console.log('Form:', this.form)
   }
 
 }

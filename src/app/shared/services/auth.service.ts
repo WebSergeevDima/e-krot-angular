@@ -42,7 +42,7 @@ export class AuthService {
 
   isAuthentificated() {
 
-    console.log('isAuthentificated satrt')
+    //console.log('isAuthentificated satrt')
     return this.http.post(`${BASE_URL}/auth/validate_token/`, JSON.stringify({ accessToken: localStorage.getItem('accessToken') })).pipe(
       map(resolve => {
         //console.log('isAuthentificated: ', resolve)

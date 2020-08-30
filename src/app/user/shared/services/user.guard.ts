@@ -22,7 +22,7 @@ export class AuthGuard implements CanActivate {
     this.tokenValid = this.auth.isAuthentificated()
 
     if (!this.tokenValid) {
-      console.log('GUARD FALSE: ')
+     
       this.auth.logout()
       this.router.navigate(['/user/login'], {
         queryParams: {

@@ -19,7 +19,7 @@ export class ReportPageComponent implements OnInit {
     this.activatedRoute.paramMap.pipe(map(params => {
       this.uniqId = params.get('uniqId')
     })).subscribe(response => {
-      console.log('report PANEL uniqId', response)
+      //console.log('report PANEL uniqId', response)
       //this.showReport()
     })
 

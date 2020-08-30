@@ -56,7 +56,7 @@ export class SupportComponent implements OnInit {
 
   submit() {
 
-    console.log(this.form.controls.email)
+    //console.log(this.form.controls.email)
 
 
 
@@ -72,8 +72,6 @@ export class SupportComponent implements OnInit {
     }
 
     this.support.sendMessage(feedback).subscribe(response => {
-      console.log('response', response)
-
 
       if (response['validation']) {
         this.form.reset()

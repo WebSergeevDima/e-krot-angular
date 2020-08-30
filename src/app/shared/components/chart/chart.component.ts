@@ -86,10 +86,7 @@ export class ChartComponent implements OnInit {
 
   showCharts() {
 
-    console.log('this.uniqId in CHART: ', this.uniqId)
-
     this.clearCharts()
-
 
     const obj = {
       accessToken: localStorage.getItem('accessToken'),
@@ -98,8 +95,7 @@ export class ChartComponent implements OnInit {
     }
 
     this.chartService.userReport(obj).subscribe(response => {
-      console.log(response)
-
+  
       this.cur = response['currency']
 
       for (let car of response['chartPriceMarkYears']) {

@@ -47,8 +47,6 @@ export class RegistrationPageComponent implements OnInit {
 
     this.registrationService.createUser(user).subscribe(response => {
 
-      console.log(response)
-
       if (response['validation']) {
 
         this.dialog.open(DialogRegistrationComponent, {

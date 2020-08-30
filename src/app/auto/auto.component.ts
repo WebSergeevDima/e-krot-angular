@@ -30,7 +30,6 @@ export class AutoComponent implements OnInit {
   loadingModels = false
   loadingBtn = false
   loadingBlock = false
-  resultShow = false
 
   form: FormGroup
 
@@ -48,6 +47,7 @@ export class AutoComponent implements OnInit {
   models = undefined
   modelsValue = undefined
   result
+  resultShow = false
 
   additionallyEquipment = [
     {
@@ -116,7 +116,6 @@ export class AutoComponent implements OnInit {
 
   getModels(value, selectModels) {
 
-    console.log('selectModels', selectModels)
     const markId = {
       id: value
     }
@@ -141,16 +140,16 @@ export class AutoComponent implements OnInit {
   submit() {
 
 
-    console.log('this.form.value: ', this.form.value)
-    console.log('additionallyEquipment: ', this.additionallyEquipment)
+    //console.log('this.form.value: ', this.form.value)
+    //console.log('additionallyEquipment: ', this.additionallyEquipment)
 
     if (this.form.invalid) {
       return;
     }
 
 
-    //this.loadingBtn = true
-    //this.loadingBlock = true
+    this.loadingBtn = true
+    this.loadingBlock = true
 
     this.autoService.getSearchAuto(this.form.value, this.currencyService.getCurrency(), this.locationService.getLocation(), this.additionallyEquipment).pipe(
       map(response => {
@@ -161,21 +160,11 @@ export class AutoComponent implements OnInit {
       })).subscribe(response => {
 
         this.result = response['data']
-
-        if (Object.keys(this.result).length < 1) {
-
-          this.result = false
-
-        } else {
-
-          this.cur = this.currencyService.getCurrency()
-          this.panelService.updateReportEmitter.emit({ uniqId: this.uniqId });
-
-        }
-
-        this.resultShow = true
+        this.cur = this.currencyService.getCurrency()
         this.loadingBtn = false
         this.loadingBlock = false
+        this.panelService.updateReportEmitter.emit({ uniqId: this.uniqId });
+        this.resultShow = true
 
       })
 
@@ -186,8 +175,7 @@ export class AutoComponent implements OnInit {
     this.additionallyEquipment.splice(id, 1)
   }
 
-  addAdditionallyEquipment() {
-    console.log(' this.additionallyEquipment add: ', this.additionallyEquipment)
+  addAdditionallyEquipment() {    
     this.additionallyEquipment.push({
       price: null,
       currency: 'USD',

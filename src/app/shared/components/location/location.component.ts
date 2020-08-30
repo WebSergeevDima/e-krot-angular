@@ -16,7 +16,7 @@ export class LocationComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log('debug Loc', this.locationService.getLocationList())
+    //console.log('debug Loc', this.locationService.getLocationList())
     this.locationList = this.locationService.getLocationList()
     this.locationSelected = this.locationService.getLocation()
   }

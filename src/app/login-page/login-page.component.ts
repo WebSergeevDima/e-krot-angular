@@ -35,8 +35,6 @@ export class LoginPageComponent implements OnInit {
       password: this.form.value.password 
     }
 
-    console.log(user)
-
   }
 
 }

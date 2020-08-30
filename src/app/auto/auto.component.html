@@ -27,8 +27,8 @@
                     <mat-spinner class="loading-select" *ngIf="loadingModels" [diameter]="20"></mat-spinner>
 
                     <mat-label>Модель</mat-label>
-                    <mat-select #selectModels required formControlName="model" [(ngModel)]="modelsValue"
-                        [disabled]="loadingModels">
+                    <mat-select #selectModels required formControlName="model" [value]="modelsValue"
+                        [attr.disabled]="loadingModels">
                         <mat-option>Выбрать</mat-option>
                         <mat-option *ngFor="let item of models" [value]="item.id">
                             {{item.title}}

@@ -15,24 +15,12 @@ export class PanelService {
 
   getUserAllReports(accessToken: string, currency) {
 
-    return this.http.post(`${BASE_URL}/panel/userAllReports/`, JSON.stringify({ accessToken: accessToken, currency: currency })).pipe(
-      map(resolve => {
-        console.log('test rep', resolve)
-        return resolve
-      }
-      )
-    )
+    return this.http.post(`${BASE_URL}/panel/userAllReports/`, JSON.stringify({ accessToken: accessToken, currency: currency }))
   }
 
   getUserReport(uniqId: string, currency) {
 
-    return this.http.post(`${BASE_URL}/panel/user_report/`, JSON.stringify({ uniqId: uniqId, accessToken: localStorage.getItem('accessToken') ?? '', currency: currency })).pipe(
-      map(resolve => {
-        console.log('test uniqId', resolve)
-        return resolve
-      }
-      )
-    )
+    return this.http.post(`${BASE_URL}/panel/user_report/`, JSON.stringify({ uniqId: uniqId, accessToken: localStorage.getItem('accessToken') ?? '', currency: currency }))
 
   }
 

@@ -28,7 +28,6 @@ export class HeaderComponent implements OnInit {
 
 
   logout() {
-    console.log('Click Logout()')
     this.authService.logout()
     this.router.navigate(['/user', 'login'])
   }

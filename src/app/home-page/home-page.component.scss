@@ -29,6 +29,9 @@
         position: absolute;
 
         }
+        @media all and (max-width: 650px) {
+            height: 500px;
+        }
     }
 
     &__title {
@@ -37,7 +40,10 @@
       top: 100px;
       position: absolute;
       text-align: left;
-      line-height: 30px;
+      line-height: 30px;     
+      @media all and (max-width: 650px) {
+        top: 30px;
+    }
     }
 
     &__title-small {
@@ -57,7 +63,11 @@
         position: absolute;
         right: 0;
         bottom: 80px;
-        z-index: 2;
+        z-index: 2; 
+        
+        @media all and (max-width: 650px) {
+            width: 100%;
+        }
     }
 
     &__btn-evaluate {
@@ -89,6 +99,10 @@
         &:hover {
           background: #fff;
           color: #000;
+        }
+
+        @media all and (max-width: 650px) {
+            left: calc(50% - 122px)
         }
     }
 

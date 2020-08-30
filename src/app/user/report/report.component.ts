@@ -188,7 +188,7 @@ export class ReportComponent implements OnInit {
   }
 
   doSomething() {
-    console.log('doSomething!!!!!!!!!!!')
+    
   }
 
   dataUpdate() {

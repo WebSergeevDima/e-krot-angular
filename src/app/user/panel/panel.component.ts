@@ -25,7 +25,7 @@ export class PanelComponent implements OnInit {
     return this.roles.validatePrivilege(privelege)
   }
   myMethod(e) {
-    console.log('принято: ' + e)
+   
   }
 }
 
