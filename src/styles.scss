@@ -125,10 +125,19 @@ mat-spinner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  @media all and (max-width: 700px) {
+    display: grid;
+    grid-template-columns: 0 66px 1fr;
+  }
   &__item { 
     width: calc(100% / 3 - 13px);
+
+    @media all and (max-width: 700px) {
+      width: 100%;
+    }
   }
+  
+
 
 }
 
@@ -174,11 +183,32 @@ mat-spinner {
 .logo {
   text-align: center;
 
+  
+
   &__description {
     font-size: 14px;
     text-align: center;
     color: #545454;
     margin: 0 0 30px 0;
+  }
+
+  &__image {
+    display: block;
+  }
+  
+  &__image-small {
+    display: none;
+  }
+  @media all and (max-width: 700px) {
+    text-align: left;
+
+    &__image {      
+      display: none;
+    }
+    
+    &__image-small {
+      display: block;
+    }
   }
 }
 .logo-link {
