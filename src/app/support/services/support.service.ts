@@ -13,7 +13,7 @@ export class SupportService {
     ) { }
 
     sendMessage(feedback: FeedbackMessage) {
-        return this.http.post(`${BASE_URL}/support/sendMessage/`, JSON.stringify(feedback))
+        return this.http.post(`${BASE_URL}/support/send_message/`, JSON.stringify(feedback))
     }
 
 }

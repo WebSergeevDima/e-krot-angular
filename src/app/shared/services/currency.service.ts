@@ -46,7 +46,7 @@ export class CurrencyService {
   }
 
   converterPrice(obj) {
-    return this.http.post(`${BASE_URL}/currency/converter-price/`, JSON.stringify(obj))
+    return this.http.post(`${BASE_URL}/currency/converter_price/`, JSON.stringify(obj))
   }
 
 

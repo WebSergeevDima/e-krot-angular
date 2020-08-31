@@ -14,7 +14,7 @@ export class ChartService {
   ) { }
 
   userReport(obj) {
-    return this.http.post(`${BASE_URL}/chart/user-report/`, JSON.stringify(obj))
+    return this.http.post(`${BASE_URL}/chart/all_charts/`, JSON.stringify(obj))
   }
 
 

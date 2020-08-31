@@ -1,7 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BASE_URL } from 'src/app/api-config';
-import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +14,7 @@ export class PanelService {
 
   getUserAllReports(accessToken: string, currency) {
 
-    return this.http.post(`${BASE_URL}/panel/userAllReports/`, JSON.stringify({ accessToken: accessToken, currency: currency }))
+    return this.http.post(`${BASE_URL}/panel/user_all_reports/`, JSON.stringify({ accessToken: accessToken, currency: currency }))
   }
 
   getUserReport(uniqId: string, currency) {

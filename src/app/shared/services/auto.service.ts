@@ -177,11 +177,11 @@ export class AutoService {
 
 
   getMarks() {
-    return this.http.get(`${BASE_URL}/auto/getMarks/`)
+    return this.http.get(`${BASE_URL}/auto/get_marks/`)
   }
 
   getModels(obj) {
-    return this.http.post(`${BASE_URL}/auto/getModels/`, JSON.stringify(obj)).pipe(
+    return this.http.post(`${BASE_URL}/auto/get_models/`, JSON.stringify(obj)).pipe(
       map(result => {
         return result['html']
       })
@@ -194,7 +194,7 @@ export class AutoService {
     obj['location'] = location
     obj['accessToken'] = localStorage.getItem('accessToken')
 
-    return this.http.post(`${BASE_URL}/auto/searchMarket/`, JSON.stringify(obj))
+    return this.http.post(`${BASE_URL}/auto/search_market/`, JSON.stringify(obj))
 
   }
 
@@ -206,7 +206,7 @@ export class AutoService {
     obj['accessToken'] = localStorage.getItem('accessToken')
     obj['additionallyEquipment'] = additionallyEquipment
 
-    return this.http.post(`${BASE_URL}/auto/searchAuto/`, JSON.stringify(obj))
+    return this.http.post(`${BASE_URL}/auto/search_auto/`, JSON.stringify(obj))
 
   }
 

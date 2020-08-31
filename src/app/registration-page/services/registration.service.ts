@@ -13,7 +13,7 @@ export class RegistrationService {
   ) { }
 
   createUser(user: NewUser) {
-    return this.http.post(`${BASE_URL}/registration/createUser/`, JSON.stringify(user))
+    return this.http.post(`${BASE_URL}/registration/create_user/`, JSON.stringify(user))
   }
 
 }

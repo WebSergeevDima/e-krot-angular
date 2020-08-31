@@ -16,6 +16,7 @@ export class ReportsComponent implements OnInit {
   public pageIndex: number = 0
   public pageSize: number = 10
   public length: number = 0
+  public loadingBlock = true
 
   constructor(
     private panelService: PanelService,
@@ -40,6 +41,7 @@ export class ReportsComponent implements OnInit {
       this.allReports = resolve['allReports']
       this.reportPage = this.allReports.slice(0, 10)
       this.length = resolve['allReports'].length
+      this.loadingBlock = false
     })
 
     this.cur = this.currencyService.getCurrency()
