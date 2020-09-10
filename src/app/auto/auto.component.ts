@@ -160,10 +160,21 @@ export class AutoComponent implements OnInit {
       })).subscribe(response => {
 
         this.result = response['data']
-        this.cur = this.currencyService.getCurrency()
+
+        if (Object.keys(this.result).length < 1) {
+
+          this.result = false
+
+        } else {
+
+          this.cur = this.currencyService.getCurrency()
+          //this.chartService.resetChartsEmitter.emit();
+          this.panelService.updateReportEmitter.emit({ uniqId: this.uniqId });
+
+        }        
+        
         this.loadingBtn = false
         this.loadingBlock = false
-        this.panelService.updateReportEmitter.emit({ uniqId: this.uniqId });
         this.resultShow = true
 
       })

@@ -62,7 +62,8 @@
                   "maximumWarning": "6kb",
                   "maximumError": "10kb"
                 }
-              ]
+              ],
+              "scripts": ["src/assets/scripts/analytics.js"]
             }
           }
         },
