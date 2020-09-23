@@ -39,7 +39,9 @@ export class ReportsComponent implements OnInit {
 
     this.panelService.getUserAllReports(localStorage.getItem('accessToken'), this.currencyService.getCurrency()).subscribe(resolve => {
       this.allReports = resolve['allReports']
-      this.reportPage = this.allReports.slice(0, 10)
+      if(!this.allReports || !this.allReports.length) {
+        this.reportPage = this.allReports.slice(0, 10)
+      }
       this.length = resolve['allReports'].length
       this.loadingBlock = false
     })
