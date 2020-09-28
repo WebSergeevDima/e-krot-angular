@@ -9,6 +9,7 @@ import { LocationComponent } from './components/location/location.component';
 import { ChartComponent } from './components/chart/chart.component';
 import { ChartsModule } from 'ng2-charts';
 import { ReportComponent } from '../user/report/report.component';
+import { RatingWithCommentComponent } from './components/rating-with-comment/rating-with-comment.component';
 @NgModule({
   imports: [
     ReactiveFormsModule,
@@ -28,9 +29,10 @@ import { ReportComponent } from '../user/report/report.component';
     LocationComponent,
     ChartComponent,
     ChartsModule,
-    ReportComponent
+    ReportComponent,
+    RatingWithCommentComponent
   ],
-  declarations: [CurrencyComponent, ReportComponent, LocationComponent, ChartComponent]
+  declarations: [CurrencyComponent, ReportComponent, LocationComponent, ChartComponent, RatingWithCommentComponent]
 })
 export class SharedModule {
 

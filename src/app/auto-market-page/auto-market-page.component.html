@@ -114,6 +114,12 @@
     -->
     </div>
 
+    <div *ngIf="!resultShow">
+
+      <app-rating-with-comment></app-rating-with-comment>
+
+    </div>
+
     <section class="form-footer__btns">
       <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid || loadingBtn">
         <mat-spinner class="loading-btn" *ngIf="loadingBtn" [diameter]="20"></mat-spinner>
