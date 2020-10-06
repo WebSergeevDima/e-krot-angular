@@ -1,0 +1,47 @@
+.rating-with-comment__form {
+  background: #fff2f2;
+  border-radius: 4px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.rating-with-comment__title {
+  margin: 15px 0 20px;
+  font-size: 1.2rem;
+  line-height: 1.4rem;
+  font-weight: 500;
+}
+
+.rating-with-comment__grid {
+  display: flex;
+  width: 100%;
+  align-items: baseline;
+  justify-content: space-between;
+  column-gap: 30px;
+
+  & .mat-form-field {
+    width: 100%;
+  }
+}
+
+.rating-with-comment__grid-item-1 {
+  
+}
+
+.rating-with-comment__grid-item-2 {
+  
+}
+
+.rating-with-comment__grid-message {
+  
+}
+
+.rating-with-comment__btn {
+  margin: 20px auto 0;
+  display: block;
+}
+
+.rating-with-comment__rating {
+  text-align: center;
+  margin: 40px 0 40px;
+}

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-rating-with-comment',
@@ -8,19 +8,31 @@ import { FormGroup } from '@angular/forms';
 })
 export class RatingWithCommentComponent implements OnInit {
 
+  @Input() uniqId: string
+  
   form: FormGroup
+  flagRatingDown: boolean = false
+  flagRatingUp: boolean = false
 
   constructor() { }
 
   ngOnInit(): void {
+
+    this.form = new FormGroup({
+      email: new FormControl({ value: '', disabled: false }, [Validators.required, Validators.email]),
+      name: new FormControl({ value: '', disabled: false }, [Validators.required, Validators.minLength(2)]),
+      comment: new FormControl('', [Validators.required, Validators.maxLength(1000)])
+    })
   }
 
   ratingUp() {
-
+    this.flagRatingUp = true
+    console.log('flagRatingUp', this.uniqId)
   }
 
   ratingDown() {
-
+    this.flagRatingDown = true    
+    console.log('ratingDown', this.uniqId)
   }
 
   submit() {

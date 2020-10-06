@@ -1,19 +1,53 @@
-<div>Оцените оценку:</div>
 
-<button mat-mini-fab disabled aria-label="Хорошо" (click)="ratingUp()">
+<div *ngIf="!flagRatingUp">
+
+<div *ngIf="!flagRatingDown" class="rating-with-comment__rating">
+
+<div class="rating-with-comment__title">Оцените сервис</div>
+
+<button mat-mini-fab aria-label="Хорошо" (click)="ratingUp()">
     <mat-icon>thumb_up</mat-icon>
 </button>
-<button mat-mini-fab disabled aria-label="Плохо" (click)="ratingDown()">
+&nbsp;
+&nbsp;
+<button mat-mini-fab aria-label="Плохо" (click)="ratingDown()">
     <mat-icon>thumb_down</mat-icon>
 </button>
-<form [formGroup]="form" (ngSubmit)="submit()" class="support-form">
 
-    <mat-form-field class="support-form__grid-item-3">
-        <mat-label>Сообщение</mat-label>
-        <textarea matInput formControlName="comment" maxlength="1000"></textarea>
-    </mat-form-field>
+</div>
+
+<div *ngIf="flagRatingDown">
+    
+<form [formGroup]="form" (ngSubmit)="submit()" class="rating-with-comment__form">
+
+    
+<div class="rating-with-comment__title">Что вам не понравилось? =(</div>
+
+    <div class="rating-with-comment__grid">
+
+
+        <mat-form-field class="rating-with-comment__grid-item-1">
+            <mat-label>Ваше имя</mat-label>
+            <input matInput type="name" formControlName="name" [attr.disabled] [value]="">
+        </mat-form-field>
+
+        <mat-form-field class="rating-with-comment__grid-item-2">
+            <mat-label>Ваш Email</mat-label>
+            <input matInput type="email" formControlName="email" [attr.disabled] [value]="">
+        </mat-form-field>
+    
+        <mat-form-field class="rating-with-comment__grid-message">
+            <mat-label>Сообщение</mat-label>
+            <textarea matInput formControlName="comment" rows="1" maxlength="1000"></textarea>
+        </mat-form-field>
+    </div>
 
 
 
-    <button mat-flat-button color="primary" type="submit">Отправить</button>
+    <button mat-flat-button color="accent" type="submit" class="rating-with-comment__btn">Отправить замечание</button>
+
+
 </form>
+</div>
+
+</div>

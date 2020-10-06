@@ -62,6 +62,8 @@
             бюджет либо изменить дополнительные параметры.</div>
         </ng-template>
 
+        <app-rating-with-comment [uniqId]="uniqId"></app-rating-with-comment>
+        
       </div>
       <!--
       <section *ngIf="result" class="result__more-details">
@@ -114,11 +116,7 @@
     -->
     </div>
 
-    <div *ngIf="!resultShow">
-
-      <app-rating-with-comment></app-rating-with-comment>
-
-    </div>
+   
 
     <section class="form-footer__btns">
       <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid || loadingBtn">
