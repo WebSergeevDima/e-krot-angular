@@ -94,6 +94,8 @@ export class AutoMarketPageComponent implements OnInit {
     this.loadingBtn = true
     this.loadingBlock = true
 
+    //this.panelService.reportBtnEmitter.emit();
+
     this.autoService.getSearchMarket(this.form.value, this.currencyService.getCurrency(), this.locationService.getLocation()).pipe(
       map(response => {
         this.uniqId = response['uniqId'] // Important for uniqId
@@ -110,7 +112,6 @@ export class AutoMarketPageComponent implements OnInit {
         } else {
 
           this.cur = this.currencyService.getCurrency()
-          //this.chartService.resetChartsEmitter.emit();
           this.panelService.updateReportEmitter.emit({ uniqId: this.uniqId });
 
         }

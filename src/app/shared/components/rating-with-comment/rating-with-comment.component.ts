@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { PanelService } from 'src/app/user/shared/services/panel.service';
+import { RatingService } from '../../services/rating.service';
 
 @Component({
   selector: 'app-rating-with-comment',
@@ -9,12 +11,23 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class RatingWithCommentComponent implements OnInit {
 
   @Input() uniqId: string
-  
+
   form: FormGroup
   flagRatingDown: boolean = false
   flagRatingUp: boolean = false
 
-  constructor() { }
+  constructor(
+    private ratingService: RatingService,
+    private panelService: PanelService
+  ) {
+
+    this.panelService.updateReportEmitter.subscribe(response => {
+      this.flagRatingUp = false
+      this.flagRatingDown = false
+      this.form.reset()
+    })
+
+  }
 
   ngOnInit(): void {
 
@@ -27,29 +40,42 @@ export class RatingWithCommentComponent implements OnInit {
 
   ratingUp() {
     this.flagRatingUp = true
-    console.log('flagRatingUp', this.uniqId)
+    this.ratingService.create({
+      uniqId: this.uniqId,
+      result: 1
+    }).subscribe((resolve) => { })
   }
 
   ratingDown() {
-    this.flagRatingDown = true    
-    console.log('ratingDown', this.uniqId)
+    this.flagRatingDown = true
+    this.ratingService.create({
+      uniqId: this.uniqId,
+      result: 0
+    }).subscribe((resolve) => { })
   }
 
   submit() {
 
-    //console.log(this.form.controls.email)
-
-
-
-    if (this.form.invalid || !this.form.value.name.trim() || !this.form.value.comment.trim()) {
+    if (this.form.invalid || !this.form.value.name.trim() || !this.form.value.comment.trim() || !this.form.value.email.trim()) {
       return
     }
 
-    const feedback = {
+    const obj = {
+      uniqId: this.uniqId,
       message: this.form.value.comment,
-      accessToken: localStorage.getItem('accessToken')
+      name: this.form.value.name,
+      email: this.form.value.email
     }
 
+    this.form.reset()
+    this.flagRatingDown = false
+    this.flagRatingUp = true
+
+    this.ratingService.addComment(obj).subscribe((resolve) => {
+
+      console.log(resolve)
+
+    })
 
   }
 
