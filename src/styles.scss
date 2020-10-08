@@ -483,3 +483,35 @@ margin: 0 0 20px 0;
   }
  
 }
+
+
+
+
+
+.scroll-up {
+  position: fixed;
+  color: #fff;
+  background-color: #2819eb;
+  right: 0px;
+  bottom: 45px;
+  padding: 4px 10px;
+  font-size: 20px;
+  border-radius: 4px 0 0 4px;
+  cursor: pointer;
+  display: none;
+  text-align: center;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;  
+  
+  &_show {
+    display: block;
+  }
+
+  &:hover {
+    background-color: #4882fd;
+  }
+}

@@ -33,7 +33,7 @@
               "src/styles-app-loading.scss",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": ["src/assets/scripts/main.js"]
           },
           "configurations": {
             "production": {
@@ -63,7 +63,10 @@
                   "maximumError": "10kb"
                 }
               ],
-              "scripts": ["src/assets/scripts/analytics.js"]
+              "scripts": [
+                "src/assets/scripts/analytics.js",
+                "src/assets/scripts/main.js"
+              ]
             }
           }
         },
