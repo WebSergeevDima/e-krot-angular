@@ -74,11 +74,11 @@ export class ReportComponent implements OnInit {
     public currencyService: CurrencyService,
     private chartService: ChartService
   ) {
-    /*
+
     this.currencyService.carrencyChangeEmitter.subscribe(response => {
       this.showCharts()
     })
-    */
+
     /*
     this.chartService.resetChartsEmitter.subscribe(response => {
       this.showReport()
