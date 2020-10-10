@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { PanelService } from 'src/app/user/shared/services/panel.service';
 import { RatingService } from '../../services/rating.service';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-rating-with-comment',
@@ -18,7 +20,8 @@ export class RatingWithCommentComponent implements OnInit {
 
   constructor(
     private ratingService: RatingService,
-    private panelService: PanelService
+    private panelService: PanelService,
+    private dialog: MatDialog
   ) {
 
     this.panelService.updateReportEmitter.subscribe(response => {
@@ -43,7 +46,19 @@ export class RatingWithCommentComponent implements OnInit {
     this.ratingService.create({
       uniqId: this.uniqId,
       result: 1
-    }).subscribe((resolve) => { })
+    }).subscribe((resolve) => { 
+
+      this.dialog.open(DialogComponent, {
+        data: {
+          title: 'Спасибо за вашу оценку!',
+          content: 'Благодарим, что нашли время и возможность оценить нас!',
+          btnClose: 'Закрыть',
+          btnClosePosition: 'center',
+          styles: 'dialog_green'
+        }
+      })
+
+    })
   }
 
   ratingDown() {
@@ -51,7 +66,19 @@ export class RatingWithCommentComponent implements OnInit {
     this.ratingService.create({
       uniqId: this.uniqId,
       result: 0
-    }).subscribe((resolve) => { })
+    }).subscribe((resolve) => { 
+
+      this.dialog.open(DialogComponent, {
+        data: {
+          title: 'Спасибо за вашу оценку!',
+          content: 'Для нас очень важно выявить недостатки нашего сервиса и разобраться в ситуации. Будем благодарны, если оставите свои контактные данные и опишите что вызволо у Вас недовольство.',
+          btnClose: 'Закрыть',
+          btnClosePosition: 'center',
+          styles: 'dialog_green'
+        }
+      })
+
+    })
   }
 
   submit() {
@@ -72,8 +99,17 @@ export class RatingWithCommentComponent implements OnInit {
     this.flagRatingUp = true
 
     this.ratingService.addComment(obj).subscribe((resolve) => {
+      
+      this.dialog.open(DialogComponent, {
+        data: {
+          title: 'Спасибо, Ваш отзыв принят!',
+          content: 'Будьте уверены, Ваш комментарий не останется без внимания!',
+          btnClose: 'Закрыть',
+          btnClosePosition: 'center',
+          styles: 'dialog_green'
+        }
 
-      console.log(resolve)
+      })
 
     })
 
