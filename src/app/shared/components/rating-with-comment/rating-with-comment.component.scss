@@ -22,6 +22,11 @@
   & .mat-form-field {
     width: 100%;
   }
+
+  @media all and (max-width: 740px) {    
+    flex-direction: column;
+  }
+  
 }
 
 .rating-with-comment__grid-item-1 {
