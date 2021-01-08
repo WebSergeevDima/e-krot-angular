@@ -202,6 +202,69 @@
 
 </ng-template>
 
+
+
+
+
+
+<br>
+<div class="report-prices__title">Срок продажи Вашего автомобиля в зависимости от цены</div>
+<div class="report-prices">
+    <div class="report-prices__item report-prices__item_min">
+        <div>
+            <div class="report-prices__sell-period_bold">{{report['sellPeriod']['priceMinText']}}</div>
+            <div class="report-prices__middle-text">при цене</div>
+            <div class="report-prices__sell-period_bold">
+                <div>
+                    от <span [attr.data-currency-price]="report['sellPeriod']['priceMinFirst']">{{report['sellPeriod']['priceMinFirstCur']}}</span><span
+                    [attr.data-currency-unit]="cur"></span>
+                </div>
+                <div>
+                    до <span [attr.data-currency-price]="report['sellPeriod']['priceMinSecond']">{{report['sellPeriod']['priceMinSecondCur']}}</span><span
+                    [attr.data-currency-unit]="cur"></span>
+                </div>                  
+            </div>                
+        </div>
+    </div>
+    <div class="report-prices__item report-prices__item_avg">
+        <div>
+            <div class="report-prices__sell-period_bold">{{report['sellPeriod']['priceAvgText']}}</div>
+            <div class="report-prices__middle-text">при цене</div>
+            <div class="report-prices__sell-period_bold">
+                <div>
+                    от <span [attr.data-currency-price]="report['sellPeriod']['priceAvgFirst']">{{report['sellPeriod']['priceAvgFirstCur']}}</span><span
+                    [attr.data-currency-unit]="cur"></span>
+                </div>
+                <div>
+                    до <span [attr.data-currency-price]="report['sellPeriod']['priceAvgSecond']">{{report['sellPeriod']['priceAvgSecondCur']}}</span><span
+                    [attr.data-currency-unit]="cur"></span>
+                </div>                    
+            </div>       
+        </div>
+    </div>
+    <div class="report-prices__item report-prices__item_max">
+        <div>
+            <div class="report-prices__sell-period_bold">{{report['sellPeriod']['priceMaxText']}}</div>                
+            <div class="report-prices__middle-text">при цене</div>                
+            <div class="report-prices__sell-period_bold">
+                <div>
+                    от <span [attr.data-currency-price]="report['sellPeriod']['priceMaxFirst']">{{report['sellPeriod']['priceMaxFirstCur']}}</span><span
+                    [attr.data-currency-unit]="cur"></span> 
+                </div>
+                <div>
+                    до <span [attr.data-currency-price]="report['sellPeriod']['priceMaxSecond']">{{report['sellPeriod']['priceMaxSecondCur']}}</span><span
+                    [attr.data-currency-unit]="cur"></span>
+                </div>     
+            </div>       
+        </div>
+    </div>
+</div>
+
+<mat-divider class="divider"></mat-divider>
+
+
+
+
 <div *ngIf="chartPriceHistoryShow">
     <div class="chart-wrapper__title">Тенденция изменения стоимости модели <mat-icon
             *ngIf="chartPriceHistoryType == 'bar'" class="chart-wrapper__btn-change-view"

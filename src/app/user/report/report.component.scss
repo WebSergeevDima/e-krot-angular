@@ -140,7 +140,19 @@ font-size: 16px;
             
             background: #ffab91;
         }
-}
+    }
+
+    &__middle-text {
+        margin: 10px 0;
+    }
+
+    &__sell-period {
+        &_bold {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 400;
+        }
+    }
 }
 
 

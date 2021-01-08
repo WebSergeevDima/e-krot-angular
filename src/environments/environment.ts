@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  serverUrl: 'http://e-krot.etalonocenki.com/api/web'
+  serverUrl: 'http://preview.e-krot.com/api/web'
 };
 
 /*
