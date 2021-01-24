@@ -1,0 +1,18 @@
+.market-statistics {
+
+  &__top-block {
+    background: #f7f7f7;
+    padding: 30px;
+    border-radius: 4px;
+    @media all and (max-width: 600px) { 
+      background: #fff;
+      padding: 0;
+      border-radius: 0;   
+      
+    }
+   
+  }
+
+  
+  
+}

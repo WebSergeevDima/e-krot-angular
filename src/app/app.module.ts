@@ -21,6 +21,7 @@ import { RolesService } from './shared/services/roles.service';
 import { SupportComponent } from './support/support.component';
 import { AutoComponent } from './auto/auto.component';
 import { AutoBudgetComponent } from './auto-budget/auto-budget.component';
+import { MarketStatisticsComponent } from './market-statistics/market-statistics.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AutoBudgetComponent } from './auto-budget/auto-budget.component';
     RegistrationPageComponent,
     SupportComponent,
     AutoComponent,
-    AutoBudgetComponent
+    AutoBudgetComponent,
+    MarketStatisticsComponent
 
   ],
   imports: [

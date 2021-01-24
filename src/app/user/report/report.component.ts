@@ -16,7 +16,8 @@ export class ReportComponent implements OnInit {
   @Input() showOldCars: boolean = false
   report = {
     tradeIn: {},
-    oldCars: []
+    oldCars: [],
+    sellPeriod: {},
   }
   @Input() cur
   //public uniqId

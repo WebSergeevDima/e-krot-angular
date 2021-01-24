@@ -1,0 +1,39 @@
+<div>
+
+
+  <h2 class="main-h2"></h2>
+
+  <h2 class="main-h2">Общее количество автомобилей в продаже:</h2>
+
+  <div class="market-statistics__top-block">
+
+    <canvas baseChart [datasets]="chartMarketingStatisticsCountData" [labels]="chartMarketingStatisticsCountLabels"
+      [options]="chartMarketingStatisticsCountOptions" [chartType]="chartMarketingStatisticsCountType" [colors]="chartMarketingStatisticsCountColors">
+    </canvas>  
+    
+  </div>
+
+  <h2 class="main-h2">Средняя стоимость автомобиля:</h2>
+
+  <div class="market-statistics__top-block">
+
+    <canvas baseChart [datasets]="chartMarketingStatisticsPriceAvgData" [labels]="chartMarketingStatisticsPriceAvgLabels"
+      [options]="chartMarketingStatisticsPriceAvgOptions" [chartType]="chartMarketingStatisticsPriceAvgType" [colors]="chartMarketingStatisticsPriceAvgColors">
+    </canvas>  
+    
+  </div>
+
+
+  <h2 class="main-h2">ТОП 5 самых продаваемых автомобилей:</h2>
+
+
+  <div class="market-statistics__top-block">
+
+    <canvas baseChart [datasets]="chartMarketingStatisticsTopData" [labels]="chartMarketingStatisticsTopLabels"
+      [options]="chartMarketingStatisticsTopOptions" [chartType]="chartMarketingStatisticsTopType" [colors]="chartMarketingStatisticsTopColors">
+    </canvas>  
+    
+  </div>
+
+</div>
+  
