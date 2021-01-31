@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CurrencyService } from '../shared/services/currency.service';
 import { MarketStatisticsService } from '../shared/services/market-statistics.service';
 
 @Component({
@@ -8,16 +9,16 @@ import { MarketStatisticsService } from '../shared/services/market-statistics.se
 })
 export class MarketStatisticsComponent implements OnInit {
 
-  public chartMarketingStatisticsTopLabels = []
-  public chartMarketingStatisticsTopType = 'pie'
-  public chartMarketingStatisticsTopData = [
+  public chartMSTopLabels = []
+  public chartMSTopType = 'pie'
+  public chartMSTopData = [
     { data: [], label: '' }
   ]
-  public chartMarketingStatisticsTopColors: Array<any> = [
+  public chartMSTopColors: Array<any> = [
     {
       backgroundColor: [],
     }];
-public chartMarketingStatisticsTopOptions = {
+public chartMSTopOptions = {
   responsive: true,
   legend: {
     display: true,
@@ -48,67 +49,70 @@ public chartMarketingStatisticsTopOptions = {
         var currentValue = dataset.data[tooltipItem.index]
         console.log('currentValue', currentValue)
         console.log('tooltipItem', tooltipItem)
-        return data['labels'][tooltipItem.index] + ': ' + currentValue + " %"
+        return currentValue + " %"
       }
     }
   }
 }
 
-
-
-
-
-
-
-  public chartMarketingStatisticsCountLabels = []
-  public chartMarketingStatisticsCountType = 'line'
-  public chartMarketingStatisticsCountData = [
+  public chartMSCountLabels = []
+  public chartMSCountType = 'line'
+  public chartMSCountData = [
     { data: [], label: '' }
   ]
-  public chartMarketingStatisticsCountColors: Array<any> = [
+  public chartMSCountColors: Array<any> = [
     {
-      backgroundColor: 'rgb(170 161 200 / 70%)',
+      backgroundColor: 'rgb(22 219 147 / 70%)',
     }];
 
-  public chartMarketingStatisticsCountOptions = {
+  public chartMSCountOptions = {
+    responsive: true,
+    legend: {
+      display: false,
+      //position: 'top'
+    },  
+    tooltips: {
+      callbacks: {
+        label: function(tooltipItem, data) {
+          console.log('data', data)
+          var dataset = data.datasets[tooltipItem.datasetIndex];
+          var currentValue = dataset.data[tooltipItem.index]
+          console.log('currentValue', currentValue)
+          console.log('tooltipItem', tooltipItem)
+          return  currentValue + " штук"
+        }
+      }
+    }
+  }
+
+  public chartMSPriceAvgLabels = []
+  public chartMSPriceAvgType = 'line'
+  public chartMSPriceAvgData = [
+    { data: [], label: '' }
+  ]
+
+  public chartMSPriceAvgOptions = {
     responsive: true,
     legend: {
       display: false,
       //position: 'top'
     },
   }
-
-
-
-  public chartMarketingStatisticsPriceAvgLabels = []
-  public chartMarketingStatisticsPriceAvgType = 'line'
-  public chartMarketingStatisticsPriceAvgData = [
-    { data: [], label: '' }
-  ]
-
-  public chartMarketingStatisticsPriceAvgOptions = {
-    responsive: true,
-    legend: {
-      display: false,
-      //position: 'top'
-    },
-  }
-  public chartMarketingStatisticsPriceAvgColors: Array<any> = [
+  public chartMSPriceAvgColors: Array<any> = [
     {
-      backgroundColor: 'rgb(170 161 200 / 70%)',
-    }];
-
-
-
-  
+      backgroundColor: 'rgb(22 219 147 / 70%)',
+    }];  
 
   constructor(
-    private marketStatistics: MarketStatisticsService
-    ) { }
+    private marketStatistics: MarketStatisticsService,
+    private currencyService: CurrencyService,
+    ) { 
+      this.currencyService.carrencyChangeEmitter.subscribe(response => {
+        this.showChartMarketStatistics()
+      })
+    }
 
-  ngOnInit(): void {  
-
- 
+  ngOnInit(): void {   
 
     window.addEventListener('resize', event => {
  
@@ -122,11 +126,11 @@ public chartMarketingStatisticsTopOptions = {
 
   legendDisplay() {
     if(document.documentElement.clientWidth <= 600) {
-      this.chartMarketingStatisticsTopType = 'bar'
-      this.chartMarketingStatisticsTopOptions['legend']['display'] = false
+      this.chartMSTopType = 'bar'
+      this.chartMSTopOptions['legend']['display'] = false
     } else {
-      this.chartMarketingStatisticsTopType = 'pie'
-      this.chartMarketingStatisticsTopOptions['legend']['display'] = true
+      this.chartMSTopType = 'pie'
+      this.chartMSTopOptions['legend']['display'] = true
     }
     this.showChartMarketStatistics()
   }
@@ -134,47 +138,32 @@ public chartMarketingStatisticsTopOptions = {
 
   showChartMarketStatistics() {
     
-    this.marketStatistics.allStatistics().subscribe(response => {
+    this.marketStatistics.allStatistics(this.currencyService.getCurrency()).subscribe(response => {
 
       const colorsArr = ["#54478c","#2c699a","#048ba8","#0db39e","#16db93","#83e377","#b9e769","#efea5a","#f1c453","#f29e4c","#ffc09f","#ffee93","#fcf5c7","#a0ced9","#adf7b6"]
 
-      console.log('result', response['result'])
+      console.log('result', response['result'])  
 
-      this.chartMarketingStatisticsTopLabels = []
-      this.chartMarketingStatisticsTopData[0]['data'] = []
-      this.chartMarketingStatisticsTopColors[0]['backgroundColor'] = []
-      
-      this.chartMarketingStatisticsCountLabels = []
-      this.chartMarketingStatisticsCountData[0]['data'] = []
-
-      this.chartMarketingStatisticsPriceAvgLabels = []
-      this.chartMarketingStatisticsPriceAvgData[0]['data'] = []
-
-
-
-
-
-      
+      this.clearChartMarketStatistics()
 
       let rating = response['result'][0]['MS_RATING_MARK']
       let otherPercent = 0;
       for (let i = 0; i < rating.length; i++) {
         console.log(rating[i]['percent'])
         otherPercent += rating[i]['percent']
-        this.chartMarketingStatisticsTopLabels.push(rating[i]['markTitle'])
-        this.chartMarketingStatisticsTopData[0]['data'].push(rating[i]['percent'])
-        this.chartMarketingStatisticsTopColors[0]['backgroundColor'].push(colorsArr[i])         
+        this.chartMSTopLabels.push(rating[i]['markTitle'])
+        this.chartMSTopData[0]['data'].push(rating[i]['percent'])
+        this.chartMSTopColors[0]['backgroundColor'].push(colorsArr[i])         
       }
-      this.chartMarketingStatisticsTopLabels.push('Остальные марки')
-      this.chartMarketingStatisticsTopData[0]['data'].push((100 - otherPercent).toFixed(2))
+      this.chartMSTopLabels.push('Остальные марки')
+      this.chartMSTopData[0]['data'].push((100 - otherPercent).toFixed(2))
 
 
       for (let i = 0; i < response['result'].length; i++) { 
-        this.chartMarketingStatisticsCountLabels.push(response['result'][i]['MS_DATE_CREATE'])
-        this.chartMarketingStatisticsCountData[0]['data'].push(response['result'][i]['MS_CARS_COUNT'])
-        
-        this.chartMarketingStatisticsPriceAvgLabels.push(response['result'][i]['MS_DATE_CREATE'])
-        this.chartMarketingStatisticsPriceAvgData[0]['data'].push(response['result'][i]['MS_CARS_PRICE_AVG'])        
+        this.chartMSCountLabels.push(response['result'][i]['MS_DATE_CREATE'])
+        this.chartMSCountData[0]['data'].push(response['result'][i]['MS_CARS_COUNT'])        
+        this.chartMSPriceAvgLabels.push(response['result'][i]['MS_DATE_CREATE'])
+        this.chartMSPriceAvgData[0]['data'].push(response['result'][i]['MS_CARS_PRICE_AVG'])        
       }
 
 
@@ -182,6 +171,18 @@ public chartMarketingStatisticsTopOptions = {
     })
 
 
+
+  }
+
+  clearChartMarketStatistics():void {
+
+    this.chartMSTopLabels = []
+    this.chartMSTopData[0]['data'] = []
+    this.chartMSTopColors[0]['backgroundColor'] = []      
+    this.chartMSCountLabels = []
+    this.chartMSCountData[0]['data'] = []
+    this.chartMSPriceAvgLabels = []
+    this.chartMSPriceAvgData[0]['data'] = []    
 
   }
 

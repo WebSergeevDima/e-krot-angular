@@ -11,7 +11,7 @@ export class MarketStatisticsService {
     private http: HttpClient
   ) { }
 
-  allStatistics() {
-    return this.http.post(`${BASE_URL}/market_statistics/all_statistics/`, JSON.stringify({}))
+  allStatistics(currency) {
+    return this.http.post(`${BASE_URL}/market_statistics/all_statistics/`, JSON.stringify({currency: currency}))
   }
 }

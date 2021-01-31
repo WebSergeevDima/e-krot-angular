@@ -1,7 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ChartService } from '../../services/chart.service';
-import { ActivatedRoute } from '@angular/router';
-import { CurrencyService } from '../../services/currency.service';
 
 @Component({
   selector: 'app-chart',

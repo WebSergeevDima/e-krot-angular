@@ -56,13 +56,13 @@ export class AutoComponent implements OnInit {
       year: 2020
     }
   ]
+  
   currencyList
 
   constructor(
     private autoService: AutoService,
     private currencyService: CurrencyService,
     private locationService: LocationService,
-    private chartService: ChartService,
     private numbersService: NumbersService,
     private panelService: PanelService
   ) { }
