@@ -70,7 +70,11 @@
     <div class="header__title">
       <span class="header__title-small">Удобная и быстрая</span><span class="header__title-big">система оценки
         автомобиля</span></div>
-    <a href="javascript:;" class="header__btn-evaluate" (click)="scrollingToAssessment()">Оценить сейчас</a>
+        <a href="javascript:;" class="header__btn-evaluate" (click)="scrollingTo('assessment')">Оценить сейчас</a>
+        <button mat-icon-button  class="header__btn-statistics" (click)="scrollingTo('market-statistics')">
+          <mat-icon>insights</mat-icon> Посмотреть статистику
+        </button>
+        
     <img class="header__car" src="/assets/main/home-car.png" alt="">
 
   </div>
@@ -151,7 +155,7 @@
 
 </div>
 
-<div class="market-statistics">
+<div class="market-statistics" data-block="market-statistics">
   <div class="container">
 
     <div class="home-title">Статистика по рынку Беларуси</div>

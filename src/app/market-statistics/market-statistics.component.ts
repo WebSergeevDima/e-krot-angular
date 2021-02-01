@@ -9,10 +9,12 @@ import { MarketStatisticsService } from '../shared/services/market-statistics.se
 })
 export class MarketStatisticsComponent implements OnInit {
 
+  public cur
+
   public chartMSTopLabels = []
   public chartMSTopType = 'pie'
   public chartMSTopData = [
-    { data: [], label: '' }
+    { data: [], label: ''}
   ]
   public chartMSTopColors: Array<any> = [
     {
@@ -44,11 +46,8 @@ public chartMSTopOptions = {
   tooltips: {
     callbacks: {
       label: function(tooltipItem, data) {
-        console.log('data', data)
         var dataset = data.datasets[tooltipItem.datasetIndex];
         var currentValue = dataset.data[tooltipItem.index]
-        console.log('currentValue', currentValue)
-        console.log('tooltipItem', tooltipItem)
         return currentValue + " %"
       }
     }
@@ -74,12 +73,9 @@ public chartMSTopOptions = {
     tooltips: {
       callbacks: {
         label: function(tooltipItem, data) {
-          console.log('data', data)
           var dataset = data.datasets[tooltipItem.datasetIndex];
           var currentValue = dataset.data[tooltipItem.index]
-          console.log('currentValue', currentValue)
-          console.log('tooltipItem', tooltipItem)
-          return  currentValue + " штук"
+          return  currentValue + " шт"
         }
       }
     }
@@ -88,7 +84,7 @@ public chartMSTopOptions = {
   public chartMSPriceAvgLabels = []
   public chartMSPriceAvgType = 'line'
   public chartMSPriceAvgData = [
-    { data: [], label: '' }
+    { data: [], label: ''} 
   ]
 
   public chartMSPriceAvgOptions = {
@@ -97,6 +93,15 @@ public chartMSTopOptions = {
       display: false,
       //position: 'top'
     },
+    tooltips: {
+      callbacks: {
+        label: function(tooltipItem, data) {    
+          var dataset = data.datasets[tooltipItem.datasetIndex];
+          var currentValue = dataset.data[tooltipItem.index]
+          return  currentValue
+        }
+      }
+    }
   }
   public chartMSPriceAvgColors: Array<any> = [
     {
@@ -142,14 +147,15 @@ public chartMSTopOptions = {
 
       const colorsArr = ["#54478c","#2c699a","#048ba8","#0db39e","#16db93","#83e377","#b9e769","#efea5a","#f1c453","#f29e4c","#ffc09f","#ffee93","#fcf5c7","#a0ced9","#adf7b6"]
 
-      console.log('result', response['result'])  
+      //console.log('result', response['result'])  
+
+      this.cur = response['currency']
 
       this.clearChartMarketStatistics()
 
       let rating = response['result'][0]['MS_RATING_MARK']
       let otherPercent = 0;
       for (let i = 0; i < rating.length; i++) {
-        console.log(rating[i]['percent'])
         otherPercent += rating[i]['percent']
         this.chartMSTopLabels.push(rating[i]['markTitle'])
         this.chartMSTopData[0]['data'].push(rating[i]['percent'])

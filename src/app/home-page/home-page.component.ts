@@ -22,6 +22,19 @@ export class HomePageComponent implements OnInit {
     return this.roles.validatePrivilege(privelege)
   }
 
+  scrollingTo(block) {
+
+    const blockEl = document.querySelector('[data-block="'+block+'"]')
+
+    blockEl.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    })
+
+  }
+
+/*
+
   scrollingToAssessment() {
 
     const assessment = document.querySelector('[data-block="assessment"]')
@@ -32,5 +45,5 @@ export class HomePageComponent implements OnInit {
     })
 
   }
-
+*/
 }

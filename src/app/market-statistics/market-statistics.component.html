@@ -1,27 +1,32 @@
 <div>
-
-
-  <h2 class="main-h2"></h2>
-
+<div *ngIf="chartMSCountData[0]['data'].length > 1">
   <h2 class="main-h2">Общее количество автомобилей в продаже:</h2>
 
   <div class="market-statistics__top-block">
-
+    <div class="market-statistics__description-left">
+      Количество (<span class="margin-initial">шт</span>)
+    </div>
     <canvas baseChart [datasets]="chartMSCountData" [labels]="chartMSCountLabels"
       [options]="chartMSCountOptions" [chartType]="chartMSCountType" [colors]="chartMSCountColors">
     </canvas>  
-    
+    <div class="market-statistics__description-footer">Период (в неделях)</div>
   </div>
+</div>
 
+<div *ngIf="chartMSPriceAvgData[0]['data'].length > 1">
   <h2 class="main-h2 mt-3">Средняя стоимость автомобиля:</h2>
-
+  
   <div class="market-statistics__top-block">
-
+    <div class="market-statistics__description-left">
+      Средняя стоимость (<span class="margin-initial"
+                [attr.data-currency-unit]="cur"></span>)
+    </div>
     <canvas baseChart [datasets]="chartMSPriceAvgData" [labels]="chartMSPriceAvgLabels"
       [options]="chartMSPriceAvgOptions" [chartType]="chartMSPriceAvgType" [colors]="chartMSPriceAvgColors">
     </canvas>  
-    
-  </div>
+    <div class="market-statistics__description-footer">Период (в неделях)</div>
+  </div>  
+</div>
 
 
   <h2 class="main-h2 mt-3">ТОП 5 самых продаваемых автомобилей:</h2>
