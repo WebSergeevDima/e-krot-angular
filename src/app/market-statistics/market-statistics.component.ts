@@ -125,7 +125,6 @@ public chartMSTopOptions = {
 
     }, false);
 
-    this.legendDisplay()
     this.showChartMarketStatistics()
   }
 
@@ -147,9 +146,7 @@ public chartMSTopOptions = {
 
       const colorsArr = ["#54478c","#2c699a","#048ba8","#0db39e","#16db93","#83e377","#b9e769","#efea5a","#f1c453","#f29e4c","#ffc09f","#ffee93","#fcf5c7","#a0ced9","#adf7b6"]
 
-      //console.log('result', response['result'])  
-
-      this.cur = response['currency']
+      this.cur = this.currencyService.getCurrency()
 
       this.clearChartMarketStatistics()
 
@@ -162,8 +159,7 @@ public chartMSTopOptions = {
         this.chartMSTopColors[0]['backgroundColor'].push(colorsArr[i])         
       }
       this.chartMSTopLabels.push('Остальные марки')
-      this.chartMSTopData[0]['data'].push((100 - otherPercent).toFixed(2))
-
+      this.chartMSTopData[0]['data'].push((100 - otherPercent))
 
       for (let i = 0; i < response['result'].length; i++) { 
         this.chartMSCountLabels.push(response['result'][i]['MS_DATE_CREATE'])
@@ -172,7 +168,7 @@ public chartMSTopOptions = {
         this.chartMSPriceAvgData[0]['data'].push(response['result'][i]['MS_CARS_PRICE_AVG'])        
       }
 
-
+      console.log(this.chartMSPriceAvgData[0]['data'])
 
     })
 
