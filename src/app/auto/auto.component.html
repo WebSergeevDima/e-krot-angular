@@ -27,7 +27,7 @@
                     <mat-spinner class="loading-select" *ngIf="loadingModels" [diameter]="20"></mat-spinner>
 
                     <mat-label>Модель</mat-label>
-                    <mat-select #selectModels required formControlName="model" [value]="modelsValue"
+                    <mat-select #selectModels required formControlName="model" [value]="modelsValue" (ngModelChange)="getBodyTypes($event, selectBodyTypes)"
                         [attr.disabled]="loadingModels">
                         <mat-option>Выбрать</mat-option>
                         <mat-option *ngFor="let item of models" [value]="item.id">
@@ -36,8 +36,11 @@
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field>
+
+                    <mat-spinner class="loading-select" *ngIf="loadingBodyTypes" [diameter]="20"></mat-spinner>
+
                     <mat-label>Тип кузова</mat-label>
-                    <mat-select required formControlName="bodyType">
+                    <mat-select #selectBodyTypes required formControlName="bodyType" [value]="bodyTypesValue">
                         <mat-option>Выбрать</mat-option>
                         <mat-option *ngFor="let item of bodyTypeArr" [value]="item.value">
                             {{item.name}}

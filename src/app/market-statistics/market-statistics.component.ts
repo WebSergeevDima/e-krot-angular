@@ -48,7 +48,8 @@ public chartMSTopOptions = {
       label: function(tooltipItem, data) {
         var dataset = data.datasets[tooltipItem.datasetIndex];
         var currentValue = dataset.data[tooltipItem.index]
-        return currentValue + " %"
+        var titleValue = data.labels[tooltipItem.index]
+        return titleValue + ': ' + currentValue + " %"
       }
     }
   }
@@ -167,8 +168,6 @@ public chartMSTopOptions = {
         this.chartMSPriceAvgLabels.push(response['result'][i]['MS_DATE_CREATE'])
         this.chartMSPriceAvgData[0]['data'].push(response['result'][i]['MS_CARS_PRICE_AVG'])        
       }
-
-      console.log(this.chartMSPriceAvgData[0]['data'])
 
     })
 

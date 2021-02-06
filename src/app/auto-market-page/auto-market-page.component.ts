@@ -28,21 +28,24 @@ export class AutoMarketPageComponent implements OnInit {
   loadingBtn = false
   loadingBlock = false
   resultShow = false
+  loadingModelYears = false
 
   form: FormGroup
 
   date = new Date();
-  years = this.autoService.generateArrayOfYears()
+  //years = this.autoService.generateArrayOfYears()
+  years: any
   marks = undefined
   models = undefined
   modelsValue = undefined
+  modelYears = undefined
+  modelYearsValue = undefined
   result
 
   constructor(
     private autoService: AutoService,
     private currencyService: CurrencyService,
     private locationService: LocationService,
-    private chartService: ChartService,
     private panelService: PanelService
   ) { }
 
@@ -86,6 +89,31 @@ export class AutoMarketPageComponent implements OnInit {
 
 
   }
+
+
+
+  getYears(value, selectBodyTypes) {
+
+    let modelId = value   
+
+    this.modelYearsValue = undefined
+    this.modelYears = null
+
+    if (!modelId) {
+      return false
+    }
+
+    this.loadingModelYears = true
+
+    this.autoService.getModelYears(modelId).subscribe(response => {
+      this.years = response
+      this.loadingModelYears = false
+    })
+
+
+  }
+
+
 
   submit() {
     if (this.form.invalid) {

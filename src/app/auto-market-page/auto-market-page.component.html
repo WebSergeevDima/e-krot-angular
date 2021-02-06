@@ -27,7 +27,7 @@
 
           <mat-label>Модель</mat-label>
           <mat-select #selectModels required formControlName="model" [value]="modelsValue"
-            [attr.disabled]="loadingModels">
+            [attr.disabled]="loadingModels" (ngModelChange)="getYears($event, selectModelYears)">
             <mat-option>Выбрать</mat-option>
             <mat-option *ngFor="let model of models" [value]="model.id">
               {{model.title}}
@@ -37,7 +37,7 @@
 
         <mat-form-field>
           <mat-label>Год выпуска</mat-label>
-          <mat-select required formControlName="year">
+          <mat-select required formControlName="year" #selectModelYears>
             <mat-option>Выбрать</mat-option>
             <mat-option *ngFor="let year of years" [value]="year">
               {{year}}

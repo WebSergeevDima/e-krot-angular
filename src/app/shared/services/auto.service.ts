@@ -188,6 +188,22 @@ export class AutoService {
     )
   }
 
+  getBodyTypes(modelId) {
+    return this.http.post(`${BASE_URL}/auto/get_body_types/`, JSON.stringify({modelId: modelId})).pipe(
+      map(result => {        
+        for (var i in result) {
+          result[i].name = result[i].name[0].toUpperCase() + result[i].name.slice(1)
+        }
+        return result
+      })
+    )
+  }
+
+  
+  getModelYears(modelId) {
+    return this.http.post(`${BASE_URL}/auto/get_years/`, JSON.stringify({modelId: modelId}))
+  }
+
   getSearchMarket(obj, cur, location) {
 
     obj['currency'] = cur

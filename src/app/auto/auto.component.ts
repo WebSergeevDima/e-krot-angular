@@ -30,12 +30,14 @@ export class AutoComponent implements OnInit {
   loadingModels = false
   loadingBtn = false
   loadingBlock = false
+  loadingBodyTypes = false
 
   form: FormGroup
 
   date = new Date();
   years = this.autoService.generateArrayOfYears()
-  bodyTypeArr = this.autoService.generateArrayOfBodyTypes()
+  //bodyTypeArr = this.autoService.generateArrayOfBodyTypes()
+  bodyTypeArr: any
   fuelArr = this.autoService.generateArrayOfFuel()
   volumeArr = this.autoService.generateArrayOfVolume()
   transmissionArr = this.autoService.generateArrayOfTransmission()
@@ -46,6 +48,8 @@ export class AutoComponent implements OnInit {
   marks = undefined
   models = undefined
   modelsValue = undefined
+  bodyTypes = undefined
+  bodyTypesValue = undefined
   result
   resultShow = false
 
@@ -79,22 +83,6 @@ export class AutoComponent implements OnInit {
 
     //console.log(this.marks)
     this.form = new FormGroup({
-
-      /* 
-      mark: new FormControl('', Validators.required),
-       model: new FormControl('', Validators.required),
-       bodyType: new FormControl(),
-       year: new FormControl('', Validators.required),
-       millage: new FormControl(null),
-       fuel: new FormControl(null),
-       volume: new FormControl(null),
-       transmission: new FormControl(null),
-       gear: new FormControl(null),
-       generationRestyling: new FormControl(null),
-       equipment: new FormControl(null),
-       shape: new FormControl(null)
- */
-
       mark: new FormControl(null, Validators.required),
       model: new FormControl(null, Validators.required),
       bodyType: new FormControl(null, Validators.required),
@@ -107,9 +95,7 @@ export class AutoComponent implements OnInit {
       generationRestyling: new FormControl(null),
       equipment: new FormControl(null),
       shape: new FormControl(null)
-
-
-    })
+        })
 
   }
 
@@ -130,8 +116,32 @@ export class AutoComponent implements OnInit {
     this.loadingModels = true
 
     this.autoService.getModels(markId).subscribe(response => {
+      this.bodyTypeArr = []
       this.models = response
       this.loadingModels = false
+    })
+
+
+  }
+
+  
+  getBodyTypes(value, selectBodyTypes) {
+
+    let modelId = value
+    
+
+    this.bodyTypesValue = undefined
+    this.bodyTypes = null
+
+    if (!modelId) {
+      return false
+    }
+
+    this.loadingBodyTypes = true
+
+    this.autoService.getBodyTypes(modelId).subscribe(response => {
+      this.bodyTypeArr = response
+      this.loadingBodyTypes = false
     })
 
 
