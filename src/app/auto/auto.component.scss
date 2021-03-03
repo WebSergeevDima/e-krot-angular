@@ -33,7 +33,6 @@ margin: 0 0 20px 0;
 }
 
 
-
 .grid-colums-4 {
   display: grid;
   grid-template-columns: 2fr 2fr 2fr 1fr;    
@@ -44,7 +43,7 @@ margin: 0 0 20px 0;
 
   & .mat-form-field {
     width: 100%;
-}
+  }
 
   @media only screen and (max-width: 640px) {
       grid-template-columns: repeat(2, 1fr);      
@@ -52,4 +51,20 @@ margin: 0 0 20px 0;
   @media only screen and (max-width: 470px) {
       grid-template-columns: repeat(1, 1fr);      
   }
+
 }
+
+.info {
+  & .mat-form-field {
+    width: calc(100% - 30px);
+  }
+
+  & .icon-info {
+    position: relative;
+    top: 11px;
+    left: 5px;
+    color: #4c8dff;
+    cursor: pointer;
+  }
+}
+

@@ -119,7 +119,8 @@
                     <br>
 
                     <section class="grid-colums-3">
-                        <mat-form-field>
+                        <div class="info">
+                        <mat-form-field>                            
                             <mat-label>Поколение/Рестайлинг</mat-label>
                             <mat-select formControlName="generationRestyling">
                                 <mat-option>Выбрать</mat-option>
@@ -127,7 +128,9 @@
                                     {{item.name}}
                                 </mat-option>
                             </mat-select>
-                        </mat-form-field>
+                        </mat-form-field>                        
+                        <span class="material-icons icon-info" (click)="showInfoEquipment()">info</span>  
+                        </div>
                         <mat-form-field>
                             <mat-label>Комплектация</mat-label>
                             <mat-select formControlName="equipment">

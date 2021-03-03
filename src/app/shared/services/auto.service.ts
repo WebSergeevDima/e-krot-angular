@@ -163,7 +163,7 @@ export class AutoService {
     return [
       { value: 1, name: 'Минимальная' },
       { value: 2, name: 'Средняя' },
-      { value: 2, name: 'Максимальная' }
+      { value: 3, name: 'Максимальная' }
     ]
   }
 
@@ -188,8 +188,8 @@ export class AutoService {
     )
   }
 
-  getBodyTypes(modelId) {
-    return this.http.post(`${BASE_URL}/auto/get_body_types/`, JSON.stringify({modelId: modelId})).pipe(
+  getBodyTypes(modelId, location) {
+    return this.http.post(`${BASE_URL}/auto/get_body_types/`, JSON.stringify({modelId: modelId, location: location})).pipe(
       map(result => {        
         for (var i in result) {
           result[i].name = result[i].name[0].toUpperCase() + result[i].name.slice(1)

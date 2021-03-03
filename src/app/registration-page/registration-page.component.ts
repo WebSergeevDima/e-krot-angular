@@ -55,7 +55,7 @@ export class RegistrationPageComponent implements OnInit {
             content: 'Теперь можете авторизоваться',
             styles: 'dialog_blue'
           }
-        });
+        })
 
 
       } else {
@@ -69,7 +69,7 @@ export class RegistrationPageComponent implements OnInit {
             btnClosePosition: 'center',
             styles: 'dialog_red'
           }
-        });
+        })
 
       }
 

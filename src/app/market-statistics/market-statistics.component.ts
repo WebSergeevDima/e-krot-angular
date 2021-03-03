@@ -160,13 +160,13 @@ public chartMSTopOptions = {
         this.chartMSTopColors[0]['backgroundColor'].push(colorsArr[i])         
       }
       this.chartMSTopLabels.push('Остальные марки')
-      this.chartMSTopData[0]['data'].push((100 - otherPercent))
+      this.chartMSTopData[0]['data'].push((100 - otherPercent).toFixed(2))
 
       for (let i = 0; i < response['result'].length; i++) { 
-        this.chartMSCountLabels.push(response['result'][i]['MS_DATE_CREATE'])
-        this.chartMSCountData[0]['data'].push(response['result'][i]['MS_CARS_COUNT'])        
-        this.chartMSPriceAvgLabels.push(response['result'][i]['MS_DATE_CREATE'])
-        this.chartMSPriceAvgData[0]['data'].push(response['result'][i]['MS_CARS_PRICE_AVG'])        
+        this.chartMSCountLabels.unshift(response['result'][i]['MS_DATE_CREATE'])
+        this.chartMSCountData[0]['data'].unshift(response['result'][i]['MS_CARS_COUNT'])        
+        this.chartMSPriceAvgLabels.unshift(response['result'][i]['MS_DATE_CREATE'])
+        this.chartMSPriceAvgData[0]['data'].unshift(response['result'][i]['MS_CARS_PRICE_AVG'])        
       }
 
     })

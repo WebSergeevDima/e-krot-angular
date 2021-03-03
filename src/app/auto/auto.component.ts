@@ -4,9 +4,11 @@ import { AutoService } from '../shared/services/auto.service';
 import { CurrencyService } from '../shared/services/currency.service';
 import { LocationService } from '../shared/services/location.service';
 import { map } from 'rxjs/operators';
-import { ChartService } from '../shared/services/chart.service';
 import { NumbersService } from '../shared/services/numbers.service';
 import { PanelService } from '../user/shared/services/panel.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from 'src/app/shared/components/dialog/dialog.component';
+import { DialogRegistrationComponent } from 'src/app/shared/components/dialog-registration/dialog-registration.component';
 
 @Component({
   selector: 'app-auto',
@@ -16,11 +18,11 @@ import { PanelService } from '../user/shared/services/panel.service';
 })
 export class AutoComponent implements OnInit {
 
-
   public report = {
     tradeIn: {},
     oldCars: []
   }
+
   showOldCars: boolean = false
   uniqId
 
@@ -68,7 +70,8 @@ export class AutoComponent implements OnInit {
     private currencyService: CurrencyService,
     private locationService: LocationService,
     private numbersService: NumbersService,
-    private panelService: PanelService
+    private panelService: PanelService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -138,8 +141,8 @@ export class AutoComponent implements OnInit {
     }
 
     this.loadingBodyTypes = true
-
-    this.autoService.getBodyTypes(modelId).subscribe(response => {
+console.log('lang', this.locationService.getLocation())
+    this.autoService.getBodyTypes(modelId, this.locationService.getLocation()).subscribe(response => {
       this.bodyTypeArr = response
       this.loadingBodyTypes = false
     })
@@ -150,7 +153,8 @@ export class AutoComponent implements OnInit {
   submit() {
 
 
-    //console.log('this.form.value: ', this.form.value)
+   // console.log('this.form.value: ', this.form.value)
+    //return
     //console.log('additionallyEquipment: ', this.additionallyEquipment)
 
     if (this.form.invalid) {
@@ -212,6 +216,18 @@ export class AutoComponent implements OnInit {
 
   thousandSeparator(event) {
     event.target.value = this.numbersService.thousandSeparator(event.target.value)
+  }
+
+  showInfoEquipment() {
+    this.dialog.open(DialogComponent, {
+      data: {
+        title: 'Поколение/Рестайлинг',
+        content: 'Параметр следует заполнить, если автомобиль был выпущен в год, когда выпускались оба варианта кузова (рестайлинг/дорестайлинг или новое/предыдущее поколение)',
+        btnClose: 'Закрыть',
+        btnClosePosition: 'center',
+        styles: 'dialog_blue'
+      }
+    })
   }
 
 
