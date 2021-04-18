@@ -10,7 +10,8 @@ export class LocationService {
     { value: 'BY', name: 'Беларусь' },
     { value: 'RU_MO', name: 'Россия (Москва)' },
     { value: 'RU_SPB', name: 'Россия (СПБ)' },
-    { value: 'RU_SMO', name: 'Россия (Смоленск)' }
+    { value: 'RU_SMO', name: 'Россия (Смоленск)' },
+    { value: 'RU_RND', name: 'Россия (Ростов-на-Дону)' }
   ]
 
   constructor() { }
