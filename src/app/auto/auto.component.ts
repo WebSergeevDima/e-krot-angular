@@ -8,7 +8,6 @@ import { NumbersService } from '../shared/services/numbers.service';
 import { PanelService } from '../user/shared/services/panel.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/shared/components/dialog/dialog.component';
-import { DialogRegistrationComponent } from 'src/app/shared/components/dialog-registration/dialog-registration.component';
 
 @Component({
   selector: 'app-auto',
