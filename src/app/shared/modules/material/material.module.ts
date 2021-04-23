@@ -19,6 +19,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { Ng5SliderModule } from 'ng5-slider';
 //for translate paginator
 import { TranslateRuPaginator } from 'src/app/shared/components/paginator/translate-ru-paginator';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 const matModules = [
@@ -39,7 +40,8 @@ const matModules = [
   MatListModule,
   MatSliderModule,
   Ng5SliderModule,
-  MatChipsModule
+  MatChipsModule, 
+  MatCheckboxModule
 ]
 
 @NgModule({

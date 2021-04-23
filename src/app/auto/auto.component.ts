@@ -140,7 +140,7 @@ export class AutoComponent implements OnInit {
     }
 
     this.loadingBodyTypes = true
-console.log('lang', this.locationService.getLocation())
+    
     this.autoService.getBodyTypes(modelId, this.locationService.getLocation()).subscribe(response => {
       this.bodyTypeArr = response
       this.loadingBodyTypes = false

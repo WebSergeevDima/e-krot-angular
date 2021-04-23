@@ -48,6 +48,37 @@ export class RolesService {
 
     }
 
+    validatePrivilegeOLD(privilege: string): boolean {
+
+        const rols = {
+            2: {
+                name: 'admin',
+                privilege: [
+                    'auth',
+                    'vip'
+                ]
+            },
+            3: {
+                name: 'business',
+                privilege: [
+                    'auth',
+                    'business'
+                ]
+            },
+            4: {
+                name: 'user',
+                privilege: [
+                    'auth'
+                ]
+            }
+        }
+
+        
+
+        return !!rols[this.role] ? rols[this.role].privilege.indexOf(privilege) != -1 : false
+
+    }
+
     validatePrivilege(privilege: string): boolean {
 
         const rols = {
@@ -56,6 +87,14 @@ export class RolesService {
                 privilege: [
                     'auth',
                     'vip'
+                ]
+            },
+            3: {
+                name: 'business',
+                privilege: [
+                    'auth',
+                    'business',
+                    'price-comparisons'
                 ]
             },
             4: {

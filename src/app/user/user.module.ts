@@ -13,6 +13,8 @@ import { MaterialModule } from '../shared/modules/material/material.module';
 import { DialogRegistrationComponent } from '../shared/components/dialog-registration/dialog-registration.component';
 import { ReportsComponent } from './reports/reports.component';
 import { ReportPageComponent } from './report-page/report-page.component';
+import { AutoPriceComparisonsPageComponent } from './auto-price-comparisons-page/auto-price-comparisons-page.component';
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { ReportPageComponent } from './report-page/report-page.component';
     DialogComponent,
     DialogRegistrationComponent,
     ReportsComponent,
-    ReportPageComponent
+    ReportPageComponent,
+    AutoPriceComparisonsPageComponent
   ],
   imports: [
     RouterModule.forChild([
@@ -42,15 +45,19 @@ import { ReportPageComponent } from './report-page/report-page.component';
               },
               {
                 path: 'reports/report/:uniqId', component: ReportPageComponent, canActivate: [AuthGuard]
+              },
+              {
+                path: 'price-comparisons', component: AutoPriceComparisonsPageComponent, canActivate: [AuthGuard]
               }
             ]
           }
         ]
       }
     ]),
-    SharedModule
+    SharedModule,
+    FormsModule 
   ],
-  exports: [RouterModule, MaterialModule],
+  exports: [RouterModule, MaterialModule, FormsModule],
   providers: [
     AuthService,
     AuthGuard,

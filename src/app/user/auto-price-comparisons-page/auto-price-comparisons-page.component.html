@@ -1,0 +1,95 @@
+<!--div *ngFor="let report of reportPage; let i = index">
+  <span data-label="№">{{i + 1 + (pageIndex * pageSize)}}</span>
+ 
+  <span data-label="Цена:">{{report.A_MARK_NAME}}</span>
+
+
+</div-->
+<section [class]="loadingBlock ? 'loading-block' : ''">
+  <div class="price-comparison__filter">
+    <ul class="price-comparison__filter-list">
+      <li *ngFor="let f of filter.city">
+      <mat-checkbox [(ngModel)]="f.checked" (ngModelChange)="getPriceComparisons()" [color]="'primary'">
+        {{f.name}}
+      </mat-checkbox>
+    </li>
+    </ul>
+  </div>
+  </section>
+
+  
+<section [class]="loadingBlock ? 'loading-block' : ''">
+  <div class="price-comparison__filter">    
+    <ul class="price-comparison__filter-list">
+      <li>
+        <mat-checkbox [(ngModel)]="filter.liquidity" (ngModelChange)="getPriceComparisons()" [color]="'warn'">
+          Ликвидные
+        </mat-checkbox>
+      </li>
+    </ul>
+    
+  </div>
+  </section>
+
+<section [class]="loadingBlock ? 'loading-block' : ''">
+
+  <mat-spinner class="spinner-loading-block" *ngIf="loadingBlock" [diameter]="50"></mat-spinner>
+  <div *ngIf="!!length">
+
+    <div class="price-comparison__block">
+    <div class="price-comparison__item" *ngFor="let report of reportPage; let i = index">
+
+        <div class="price-comparison__item-title">
+          {{report.mark}} {{report.model}} {{report.body_type}} {{report.year}} года
+        </div>
+
+        <div class="price-comparison__item-location price-comparison__item-location_header price-comparison__item-location_animate">
+          <div>
+            <div class="price-comparison__item-buy">Buy</div>
+            {{report.city}}
+          </div>
+          <div>                
+            <div class="price-comparison__item-sell">Sell</div>        
+            {{report.c_city}}
+          </div>
+        </div>
+        <div class="price-comparison__item-location price-comparison__item-location_body">
+          <div>
+            <div class="price-comparison__item-location-param">Ср. пробег: <span class="price-comparison__item-location-value"><span [ngClass]="{red: report.millage > report.c_millage, green: report.millage < report.c_millage}">{{report.millage}}</span></span> км</div>
+            <div class="price-comparison__item-location-param">Ср. ст-ть: <span class="price-comparison__item-location-value"><span [attr.data-currency-price]="report['price_avg_cur']" [ngClass]="{red: report.price_avg_cur > report.c_price_avg_cur, green: report.price_avg_cur < report.c_price_avg_cur}">{{report.price_avg}}</span></span><span [attr.data-currency-unit]="cur"></span></div>
+          </div>
+          <div>            
+            <div class="price-comparison__item-location-param">Ср. пробег: <span class="price-comparison__item-location-value"><span [ngClass]="{red: report.millage < report.c_millage, green: report.millage > report.c_millage}">{{report.c_millage}}</span></span> км</div>
+            <div class="price-comparison__item-location-param">Ср. ст-ть: <span class="price-comparison__item-location-value"><span [attr.data-currency-price]="report['c_price_avg_cur']" [ngClass]="{red: report.price_avg_cur < report.c_price_avg_cur, green: report.price_avg_cur > report.c_price_avg_cur}">{{report.c_price_avg}}</span></span><span [attr.data-currency-unit]="cur"></span></div>
+          </div>
+        </div>
+        
+        <div class="price-comparison__item-profit-avg">
+          <div [ngClass]="{red: report.price_profit_avg_cur <= 0}" class="price-comparison__item-price-profit-avg">
+            <span [attr.data-currency-price]="report['price_profit_avg_cur']">{{report.price_profit_avg}}</span>
+            <span [attr.data-currency-unit]="cur"></span>
+          </div>
+          <div class="price-comparison__item-description-profit-avg">
+            ожидаемая прибыль
+          </div>
+        </div>
+      </div>
+
+  
+    </div>
+    
+
+
+    <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[10, 25, 50, 100]"
+      (page)="paginatoreChange($event)">
+    </mat-paginator>
+
+  </div>
+
+
+
+  <div *ngIf="!length && !loadingBlock">У вас нет отчётов</div>
+
+
+
+</section>

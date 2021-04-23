@@ -5,6 +5,7 @@
             <nav class="grid-nav">
                 <a routerLinkActive="active" class="panel-nav__item" [routerLink]="['/user/panel/reports']">Сохраненные
                     отчеты</a>
+                <a *ngIf="privilege('price-comparisons')" routerLinkActive="active" class="panel-nav__item" [routerLink]="['/user/panel/price-comparisons']">Сравнение цен</a>
 
 
                 <span *ngIf="privilege('vip')">

@@ -101,7 +101,7 @@ mat-spinner {
 }
 .loading-block {
   position: relative;  
-  min-height: 100px;
+  /*min-height: 100px;*/
 
   &:after {
     content: "";
