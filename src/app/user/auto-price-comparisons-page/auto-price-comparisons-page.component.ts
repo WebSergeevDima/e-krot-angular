@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CurrencyService } from 'src/app/shared/services/currency.service';
 import { PriceComparisonsService } from '../shared/services/price-comparisons.service';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { AutoService } from 'src/app/shared/services/auto.service';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-auto-price-comparisons-page',
@@ -17,6 +19,21 @@ export class AutoPriceComparisonsPageComponent implements OnInit {
   public pageSize: number = 10
   public length: number = 0
   public loadingBlock = true
+  loadingModelYears = false
+
+  
+  
+  loadingMarks = true
+  loadingModels = false
+  marks = undefined
+  models = undefined
+  years: any
+  modelYears = undefined
+  modelYearsValue = undefined
+
+ public mID
+
+
 
   public filter = {'city': [
       {
@@ -45,7 +62,10 @@ export class AutoPriceComparisonsPageComponent implements OnInit {
         'key': 905
       }
     ],
-    'liquidity': true
+    'liquidity': true,
+    'mark': null,
+    'model': null,
+    'year': null
   }    
    
 
@@ -53,14 +73,21 @@ export class AutoPriceComparisonsPageComponent implements OnInit {
 
   constructor(
     private priceComparisonsService: PriceComparisonsService,
-    private currencyService: CurrencyService
+    private currencyService: CurrencyService,
+    private autoService: AutoService
     ) { 
       this.currencyService.carrencyChangeEmitter.subscribe(response => {
-        this.getPriceComparisons()
+        
       })
     }
 
   ngOnInit(): void {
+
+    this.autoService.getMarks().subscribe(response => {
+      //console.log('Result', response)
+      this.marks = response
+      this.loadingMarks = false
+    })
 
     this.getPriceComparisons()
 
@@ -98,6 +125,62 @@ export class AutoPriceComparisonsPageComponent implements OnInit {
     }
     this.reportPage = this.allReports.slice(startIndex, endIndex);
   }
+
+
+
+  
+
+  getModels(value, selectModels) {
+
+   
+
+    const markId = {
+      id: value
+    }
+
+    this.filter.model = null
+    this.filter.year = null
+    this.models = null
+    this.years = null
+
+    
+    if (!markId['id']) {
+      return false
+    }
+
+    this.loadingModels = true
+
+    this.autoService.getModels(markId).subscribe(response => {
+      this.models = response
+      this.loadingModels = false
+    })
+
+    this.getPriceComparisons() 
+  }
+
+
+  getYears(value,f) {
+    let modelId = value   
+
+
+    this.filter.year = null
+    this.modelYears = null
+
+    if (!modelId) {
+      return false
+    }
+
+    this.loadingModelYears = true
+
+    this.autoService.getModelYears(modelId).subscribe(response => {
+      this.years = response
+      this.loadingModelYears = false
+    })
+
+    this.getPriceComparisons() 
+  }
+
+  
 
 
 }

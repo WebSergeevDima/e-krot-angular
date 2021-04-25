@@ -94,7 +94,7 @@ mat-spinner {
     left: calc(50% - 25px);
     top: calc(50% - 25px);
   }
-
+  
 }
 .mat-expansion-panel-body {
   position: relative;
@@ -102,17 +102,32 @@ mat-spinner {
 .loading-block {
   position: relative;  
   /*min-height: 100px;*/
+  overflow: hidden;
 
   &:after {
     content: "";
-    display: block;
-    background: rgba(255, 255, 255, 0.48);
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 2;
+    z-index: 5;
+    color: transparent;
+    z-index: 6;
+    opacity: 0.8;
+    left: -28px; // Ширина фоновой картинки throbber.png.
+    z-index: 10;
+    background: repeating-linear-gradient(
+    -45deg,
+    #FFFFFF 1px,
+    #EEEEEE 2px,
+    #EEEEEE 11px,
+    #FFFFFF 12px,
+    #FFFFFF 20px
+    );
+    animation: .4s linear infinite loading-bg;
+
+
     }
 
     & &__layout {
@@ -543,6 +558,22 @@ margin: 0 0 20px 0;
 }
 
 
+@keyframes animate_loading {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
 
+@keyframes loading-bg {
+  from {
+      transform: translateX(0);
+  }
 
-
+  to {
+      // Сдвигаем на ширину фоновой картинки throbber.png.
+      transform: translateX(28px);
+  }
+}

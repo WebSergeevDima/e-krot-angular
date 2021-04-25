@@ -53,12 +53,26 @@
       width: 10px;
       height: 10px;
       border-radius: 100%;
+      top: 18px;
+      z-index: 2;
+    }
+
+    /*
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 100%;
       background: #9cc0ff;
       animation: moveLeft 3s cubic-bezier(0.6, 0.46, 0.4, 0.57) infinite;
       top: 18px;
       z-index: 2;
     }
     
+    */
+    /*
     &:after {
       content: "";
       display: block;
@@ -70,7 +84,75 @@
       top: 18px;
       z-index: 1;
     }
+    */
+  }
+
+  &__item-location_animate.animate_moveGreenGreen {
     
+    &:before {
+      background: #9cc0ff;
+      animation: moveGreenGreen 3s cubic-bezier(0.6, 0.46, 0.4, 0.57) infinite;
+    }
+
+    & .price-comparison__item-buy {
+      background: #18dc93;
+    }
+
+    & .price-comparison__item-sell {
+      background: #18dc93;
+    }
+   
+  }
+
+  &__item-location_animate.animate_moveRedRed {
+    
+    &:before {
+      background: #9cc0ff;
+      animation: moveRedRed 3s cubic-bezier(0.6, 0.46, 0.4, 0.57) infinite;
+    }
+
+    & .price-comparison__item-buy {
+      background: #f44336;
+    }
+
+    & .price-comparison__item-sell {
+      background: #f44336;
+    }
+   
+  }
+
+  &__item-location_animate.animate_moveGreenRed {
+    
+    &:before {
+      background: #9cc0ff;
+      animation: moveGreenRed 3s cubic-bezier(0.6, 0.46, 0.4, 0.57) infinite;
+    }
+
+    & .price-comparison__item-buy {
+      background: #18dc93;
+    }
+
+    & .price-comparison__item-sell {
+      background: #f44336;
+    }
+   
+  }
+
+  &__item-location_animate.animate_moveRedGreen {
+    
+    &:before {
+      background: #9cc0ff;
+      animation: moveRedGreen 3s cubic-bezier(0.6, 0.46, 0.4, 0.57) infinite;
+    }
+
+    & .price-comparison__item-buy {
+      background: #f44336;
+    }
+
+    & .price-comparison__item-sell {
+      background: #18dc93;
+    }
+   
   }
 
   &__item-location {
@@ -175,5 +257,114 @@
     width: 1px;
     height: 1px;
     left: calc(66% + 20px);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@keyframes moveGreenRed {
+  from {
+    top: 18px;
+    width: 1px;
+    height: 1px;
+    left: calc(33% - 20px);
+    background: #18dc93;
+  }
+  50% {
+    top: 8px;
+    width: 20px;
+    height: 20px;
+    left: 50%;
+  }
+  to   {
+    top: 18px;
+    width: 1px;
+    height: 1px;
+    left: calc(66% + 20px);
+    background: #f44336;
+  }
+}
+
+
+
+@keyframes moveRedGreen {
+  from {
+    top: 18px;
+    width: 1px;
+    height: 1px;
+    left: calc(33% - 20px);
+    background: #f44336;
+  }
+  50% {
+    top: 8px;
+    width: 20px;
+    height: 20px;
+    left: 50%;
+  }
+  to   {
+    top: 18px;
+    width: 1px;
+    height: 1px;
+    left: calc(66% + 20px);
+    background: #18dc93;
+  }
+}
+
+
+
+@keyframes moveGreenGreen {
+  from {
+    top: 18px;
+    width: 1px;
+    height: 1px;
+    left: calc(33% - 20px);
+    background: #18dc93;
+  }
+  50% {
+    top: 8px;
+    width: 20px;
+    height: 20px;
+    left: 50%;
+  }
+  to   {
+    top: 18px;
+    width: 1px;
+    height: 1px;
+    left: calc(66% + 20px);
+    background: #18dc93;
+  }
+}
+
+
+@keyframes moveRedRed {
+  from {
+    top: 18px;
+    width: 1px;
+    height: 1px;
+    left: calc(33% - 20px);
+    background: #f44336;
+  }
+  50% {
+    top: 8px;
+    width: 20px;
+    height: 20px;
+    left: 50%;
+  }
+  to   {
+    top: 18px;
+    width: 1px;
+    height: 1px;
+    left: calc(66% + 20px);
+    background: #f44336;
   }
 }

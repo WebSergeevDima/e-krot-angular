@@ -6,6 +6,8 @@
 
 </div-->
 <section [class]="loadingBlock ? 'loading-block' : ''">
+
+
   <div class="price-comparison__filter">
     <ul class="price-comparison__filter-list">
       <li *ngFor="let f of filter.city">
@@ -15,25 +17,70 @@
     </li>
     </ul>
   </div>
-  </section>
+
 
   
-<section [class]="loadingBlock ? 'loading-block' : ''">
-  <div class="price-comparison__filter">    
-    <ul class="price-comparison__filter-list">
-      <li>
-        <mat-checkbox [(ngModel)]="filter.liquidity" (ngModelChange)="getPriceComparisons()" [color]="'warn'">
-          Ликвидные
-        </mat-checkbox>
-      </li>
-    </ul>
+    <div class="price-comparison__filter">    
+      <ul class="price-comparison__filter-list">
+        <li>
+          <mat-checkbox [(ngModel)]="filter.liquidity" (ngModelChange)="getPriceComparisons()" [color]="'warn'">
+            Ликвидные
+          </mat-checkbox>
+        </li>
+      </ul>
+      
+    </div>
+  
+      <div class="price-comparison__filter">    
+        <ul class="price-comparison__filter-list">
+          
+            <mat-form-field>
+
+              <!--
+              <mat-spinner class="loading-select" *ngIf="loadingMarks" [diameter]="20"></mat-spinner>
+              -->
+
+              <mat-label>Марка</mat-label>
+              <mat-select #selectMarksId [ngModel]="[]" [(value)]="filter.mark" (ngModelChange)="getModels($event, selectModels)">
+                <mat-option (click)="getPriceComparisons()">Выбрать</mat-option>
+                <mat-option *ngFor="let mark of marks" [value]="mark.id">
+                  {{mark.title}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
     
-  </div>
-  </section>
+            <mat-form-field>
+    <!--
+              <mat-spinner class="loading-select" *ngIf="loadingModels" [diameter]="20"></mat-spinner>
+     -->
+              <mat-label>Модель</mat-label>
+              <mat-select #selectModels [ngModel]="[]" [(value)]="filter.model"
+                [attr.disabled]="loadingModels" (ngModelChange)="getYears($event, selectModelYears)">
+                <mat-option (click)="getPriceComparisons()">Выбрать</mat-option>
+                <mat-option *ngFor="let model of models" [value]="model.id">
+                  {{model.title}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            
+            <mat-form-field>
+              <mat-label>Год выпуска</mat-label>
+              <mat-select #selectModelYears [ngModel]="[]" [(value)]="filter.year" (ngModelChange)="getPriceComparisons()">
+                <mat-option (click)="getPriceComparisons()">Выбрать</mat-option>
+                <mat-option *ngFor="let year of years" [value]="year">
+                  {{year}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+           
+        
+        </ul>
+        
+      </div>
 
-<section [class]="loadingBlock ? 'loading-block' : ''">
-
-  <mat-spinner class="spinner-loading-block" *ngIf="loadingBlock" [diameter]="50"></mat-spinner>
+ <!--
+    <mat-spinner class="spinner-loading-block" *ngIf="loadingBlock" [diameter]="50"></mat-spinner>
+       -->
   <div *ngIf="!!length">
 
     <div class="price-comparison__block">
@@ -43,7 +90,12 @@
           {{report.mark}} {{report.model}} {{report.body_type}} {{report.year}} года
         </div>
 
-        <div class="price-comparison__item-location price-comparison__item-location_header price-comparison__item-location_animate">
+        <div [ngClass]="{
+        animate_moveGreenGreen: (report.liquidity && report.c_liquidity),
+        animate_moveRedRed: (!report.liquidity && !report.c_liquidity),
+        animate_moveGreenRed: (report.liquidity && !report.c_liquidity),
+        animate_moveRedGreen: (!report.liquidity && report.c_liquidity)
+        }" class="price-comparison__item-location price-comparison__item-location_header price-comparison__item-location_animate">
           <div>
             <div class="price-comparison__item-buy">Buy</div>
             {{report.city}}
