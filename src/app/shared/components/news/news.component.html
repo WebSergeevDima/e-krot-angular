@@ -1,0 +1,11 @@
+<div>
+
+<div class="news">
+  <div *ngFor="let item of news" class="news__item">
+    <div>{{item.title}}</div>
+    <div [innerHtml]="item.text"></div>
+  </div>  
+</div>
+
+
+</div>
