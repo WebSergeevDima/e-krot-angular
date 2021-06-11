@@ -22,6 +22,8 @@ import { SupportComponent } from './support/support.component';
 import { AutoComponent } from './auto/auto.component';
 import { AutoBudgetComponent } from './auto-budget/auto-budget.component';
 import { MarketStatisticsComponent } from './market-statistics/market-statistics.component';
+import { NewsPageComponent } from './news-page/news-page.component';
+import { NewsComponent } from './shared/components/news/news.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { MarketStatisticsComponent } from './market-statistics/market-statistics
     SupportComponent,
     AutoComponent,
     AutoBudgetComponent,
-    MarketStatisticsComponent
+    MarketStatisticsComponent,
+    NewsPageComponent,
+    NewsComponent
 
   ],
   imports: [

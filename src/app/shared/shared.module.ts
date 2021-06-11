@@ -10,7 +10,6 @@ import { ChartComponent } from './components/chart/chart.component';
 import { ChartsModule } from 'ng2-charts';
 import { ReportComponent } from '../user/report/report.component';
 import { RatingWithCommentComponent } from './components/rating-with-comment/rating-with-comment.component';
-import { NewsComponent } from './components/news/news.component';
 
 @NgModule({
   imports: [
@@ -32,10 +31,9 @@ import { NewsComponent } from './components/news/news.component';
     ChartComponent,
     ChartsModule,
     ReportComponent,
-    RatingWithCommentComponent,
-    NewsComponent
+    RatingWithCommentComponent
   ],
-  declarations: [CurrencyComponent, ReportComponent, LocationComponent, ChartComponent, RatingWithCommentComponent, NewsComponent]
+  declarations: [CurrencyComponent, ReportComponent, LocationComponent, ChartComponent, RatingWithCommentComponent]
 })
 export class SharedModule {
 

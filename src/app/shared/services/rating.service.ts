@@ -15,7 +15,7 @@ export class RatingService {
     return this.http.post(`${BASE_URL}/rating/create_result/`, JSON.stringify(data))
   }
   addComment(data) {
-    return this.http.post(`${BASE_URL}/rating/add_message/`, JSON.stringify(data))
+    return this.http.post(`${BASE_URL}/rating/add_message/`, JSON.stringify(data), {responseType: 'text'})
   }
 
 }

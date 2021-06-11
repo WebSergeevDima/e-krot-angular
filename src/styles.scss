@@ -254,6 +254,14 @@ mat-spinner {
 }
 
 
+.home-news .news-section {
+  background: #0bdbdf;
+  background: -webkit-gradient(left top, right top, color-stop(0%, #0bdbdf), color-stop(100%, #5ff286));
+  background: linear-gradient(to right, #0bdbdf 0%, #5ff286 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#0bdbdf", endColorstr="#5ff286", GradientType=1 );
+  padding: 40px 0;
+  margin: 60px 0;
+}
 
 
 

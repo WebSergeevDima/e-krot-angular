@@ -1,11 +1,15 @@
 <div>
-
-<div class="news">
-  <div *ngFor="let item of news" class="news__item">
-    <div>{{item.title}}</div>
-    <div [innerHtml]="item.text"></div>
-  </div>  
+<div class="news-section" *ngIf="show">
+  <div class="container">
+    <div class="news">
+      <a [routerLink]="['news/', item.id]" *ngFor="let item of news" class="news__item">
+      <div class="news__item-block">
+        <div class="news__image" style="background-image: url(/assets/files/news/small/image/news/{{item.imagePreview}}); background-size: cover; background-position: center;"></div>
+        <div><div class="news__title">{{item.title}}</div></div>
+        <div [innerHtml]="item.description" class="news__description"></div>
+      </div>
+      </a>  
+    </div>
+  </div>
 </div>
-
-
 </div>

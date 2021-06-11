@@ -9,9 +9,15 @@ export class NewsService {
 
   constructor(private http: HttpClient) { }
 
-  getNews() {
+  getNews(page: number) {
 
-    return this.http.get(`${BASE_URL}/news/all_news/`, {responseType: 'json'})
+    return this.http.get(`${BASE_URL}/news/all_news/?page=${page}`)
+
+  }
+  
+  getNewsItem(id: any) {
+
+    return this.http.get(`${BASE_URL}/news/news/?id=${id}`)
 
   }
   
