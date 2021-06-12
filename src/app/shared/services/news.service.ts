@@ -1,6 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BASE_URL } from 'src/app/api-config';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +19,7 @@ export class NewsService {
   
   getNewsItem(id: any) {
 
-    return this.http.get(`${BASE_URL}/news/news/?id=${id}`)
+    return this.http.get(`${BASE_URL}/news/news.php?id=${id}`)
 
   }
   

@@ -33,41 +33,6 @@ export class AuthGuard implements CanActivate {
 
     return this.tokenValid
 
-    /*.subscribe(response => {
-
-      console.log('DEBUG: ', response)
-
-      if (!response['validateToken']) {
-        console.log('DEBUG NUM 5')
-        return this.auth.updateToken();
-      }
-
-      console.log('DEBUG NUM 4')
-      return response['validateToken']
-
-    })
-*/
-    //console.log('valid valid : ', valid)
-
-    //return this.tokenValid
-
-
-    /*
-    if (this.auth.isAuthentificated()) {
-      console.log('GUARD TRUE: ')
-      return true
-    } else {
-
-      console.log('GUARD FALSE: ')
-      this.auth.logout()
-      this.router.navigate(['/user/login'], {
-        queryParams: {
-          login: false
-        }
-      })
-*/
-
-
   }
 
 

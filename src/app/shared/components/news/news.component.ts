@@ -28,7 +28,7 @@ export class NewsComponent implements OnInit {
 
       this.news = response['news']
 
-      console.log(response['news'])
+      //console.log(response['news'])
 
       this.show = response['news'].length > 0 ? true : false
       

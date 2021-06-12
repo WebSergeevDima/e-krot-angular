@@ -24,6 +24,7 @@ import { AutoBudgetComponent } from './auto-budget/auto-budget.component';
 import { MarketStatisticsComponent } from './market-statistics/market-statistics.component';
 import { NewsPageComponent } from './news-page/news-page.component';
 import { NewsComponent } from './shared/components/news/news.component';
+import {HashLocationStrategy, LocationStrategy, PathLocationStrategy} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { NewsComponent } from './shared/components/news/news.component';
     AutoService,
     AuthService,
     RegistrationService,
-    RolesService
+    RolesService,
+    {provide: LocationStrategy, useClass: PathLocationStrategy}
   ],
   bootstrap: [AppComponent]
 })

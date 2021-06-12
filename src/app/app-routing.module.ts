@@ -8,7 +8,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
 import { SupportComponent } from './support/support.component';
 import { NewsPageComponent } from './news-page/news-page.component';
-
+import {HashLocationStrategy, LocationStrategy, PathLocationStrategy} from '@angular/common';
 
 const routes: Routes = [
   {
@@ -29,7 +29,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy', useHash: true })],
+  exports: [RouterModule],
+  providers: [{provide: LocationStrategy, useClass: PathLocationStrategy}]
 })
 export class AppRoutingModule { }

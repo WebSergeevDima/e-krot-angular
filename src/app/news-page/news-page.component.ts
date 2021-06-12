@@ -23,7 +23,8 @@ export class NewsPageComponent implements OnInit {
     ) {
       this.newsService.getNewsItem(activatedRoute.snapshot.params['id']).pipe(map( response => {
         if(response['status'] !== 'success') {
-          this.router.navigate(['/'])
+          //this.router.navigate(['/'])
+          //console.log(response)
         }
 
         return response
