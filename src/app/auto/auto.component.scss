@@ -54,6 +54,8 @@ margin: 0 0 20px 0;
 
 }
 
+
+
 .info {
   & .mat-form-field {
     width: calc(100% - 30px);
@@ -68,3 +70,11 @@ margin: 0 0 20px 0;
   }
 }
 
+
+.auto__radio-db {
+  background: #f0f5ff;
+    padding: 15px 15px;
+    font-weight: 500;
+    border-radius: 4px;
+    margin: 0 0 20px 0;
+}

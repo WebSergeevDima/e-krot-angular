@@ -4,7 +4,7 @@
     <div class="news">
       <a [routerLink]="['news/', item.id]" *ngFor="let item of news" class="news__item">
       <div class="news__item-block">
-        <div class="news__image" style="background-image: url(/assets/files/news/small/image/news/{{item.imagePreview}}); background-size: cover; background-position: center;"></div>
+        <div class="news__image" style="background-image: url(/assets/files/news/{{item.id}}/thumb/{{item.imagePreview}}); background-size: cover; background-position: center;"></div>
         <div><div class="news__title">{{item.title}}</div></div>
         <div [innerHtml]="item.description" class="news__description"></div>
       </div>

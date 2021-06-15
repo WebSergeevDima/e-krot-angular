@@ -7,6 +7,13 @@
 
             <h1 class="auto-price-page__h1">Внесите параметры автомобиля:</h1>
 
+            <section class="radio auto__radio-db">
+                <mat-radio-group class="radio_red auto-radio-colums-2" formControlName="db" [(ngModel)]="db">
+                    <mat-radio-button value="current">Оценка по текущему рынку</mat-radio-button>
+                    <mat-radio-button value="old">Оценка по рынку за последние 6 месяцев</mat-radio-button>
+                  </mat-radio-group>
+            </section>
+
             <section class="grid-colums-3">
 
                 <mat-form-field>

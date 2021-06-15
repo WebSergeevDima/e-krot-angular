@@ -54,6 +54,8 @@ export class AutoComponent implements OnInit {
   result
   resultShow = false
 
+  db: string = 'current'; 
+
   additionallyEquipment = [
     {
       price: 0,
@@ -96,7 +98,8 @@ export class AutoComponent implements OnInit {
       gear: new FormControl(null, Validators.required),
       generationRestyling: new FormControl(null),
       equipment: new FormControl(null),
-      shape: new FormControl(null)
+      shape: new FormControl(null),
+      db: new FormControl({value: 'current'}, Validators.required)
         })
 
   }
@@ -152,10 +155,10 @@ export class AutoComponent implements OnInit {
   submit() {
 
 
-   // console.log('this.form.value: ', this.form.value)
+    //console.log('this.form.value: ', this.form.value)
     //return
     //console.log('additionallyEquipment: ', this.additionallyEquipment)
-
+    
     if (this.form.invalid) {
       return;
     }

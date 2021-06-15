@@ -43,6 +43,10 @@
         </div>
     </div>
 
+    <div class="report__db">
+    {{report['db'] == 'current' ? 'Оценка автомобиля была произведена по текущему рынку' : 'Оценка автомобиля была произведена по проданным автомобилям за последние пол года'}}
+    </div>
+
     <mat-divider class="divider"></mat-divider>
 
     <div>Стоимость вашего автомобиля <strong
@@ -133,6 +137,12 @@
             <div>Год выпуска: <strong>{{report['year']}}</strong></div>
         </div>
     </div>
+
+    <div class="report__db">
+        {{report['db'] == 'current' ? 'Оценка автомобиля была произведена по текущему рынку' : 'Оценка автомобиля была произведена по проданным автомобилям за последние пол года'}}
+        </div>
+
+
     <mat-divider class="divider"></mat-divider>
 
 

@@ -330,6 +330,17 @@ mat-spinner {
 }
 
 
+.auto-radio-colums-2 {
+  display: flex;
+  margin-left: -20px;
+  
+  & > mat-radio-button {
+    margin-left: 20px;
+  }
+
+}
+
+
 .grid-colums-3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);    
@@ -585,3 +596,32 @@ margin: 0 0 20px 0;
       transform: translateX(28px);
   }
 }
+
+
+
+.radio {
+
+  & &_red {  
+    
+    .mat-radio-button.mat-radio-checked .mat-radio-outer-circle,
+    .mat-radio-outer-circle {
+
+      border-color: #4c8dff;
+
+      & .mat-radio-checked & {
+        border-color: #4c8dff;
+      }
+
+    }
+    .mat-radio-inner-circle {
+      background-color: #4c8dff;
+    }
+
+    .mat-radio-ripple .mat-ripple-element {
+      background-color: rgba(#4c8dff, 0.26);
+    }
+  }
+  
+}
+  
+ 

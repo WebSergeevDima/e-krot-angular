@@ -9,13 +9,13 @@
 
 
           <tr>
-            <th>№</th>
             <th>Дата оценки</th>
             <th>Марка</th>
             <th>Модель</th>
             <th>Год</th>
             <th>Цена</th>
             <th>Локация</th>
+            <th>База оценки</th>
             <th>Отчет</th>
             <!--<th><svg class="user-report__svg-delete-title" version="1.1" xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 172.541 172.541">
@@ -33,7 +33,6 @@
 
 
           <tr *ngFor="let report of reportPage; let i = index">
-            <td data-label="№">{{i + 1 + (pageIndex * pageSize)}}</td>
             <td data-label="Дата:">{{report.dateCreate | date:'dd.MM.yyyy'}} <span
                 class="user-report__date-line">|</span>
               {{report.dateCreate | date:'hh:mm'}}</td>
@@ -42,6 +41,7 @@
             <td data-label="Год:">{{report.year}}</td>
             <td data-label="Цена:">{{report.priceCur}} {{report.priceCur != '-' ? cur : ''}}</td>
             <td data-label="Локация:">{{report.lang}}</td>
+            <td data-label="База оценки:">{{report.db == 'current' ? 'Текущий рынок' : 'Проданные авто за последние пол года'}}</td>
             <td data-label="Отчет:">
               <a [routerLink]="['report', report.uniqId]" class="user-saved-queries__link-report">
                 Подробнее
