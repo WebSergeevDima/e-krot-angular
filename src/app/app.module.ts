@@ -25,6 +25,7 @@ import { MarketStatisticsComponent } from './market-statistics/market-statistics
 import { NewsPageComponent } from './news-page/news-page.component';
 import { NewsComponent } from './shared/components/news/news.component';
 import {HashLocationStrategy, LocationStrategy, PathLocationStrategy} from '@angular/common';
+import { NewsListPageComponent } from './news-list-page/news-list-page.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {HashLocationStrategy, LocationStrategy, PathLocationStrategy} from '@ang
     AutoBudgetComponent,
     MarketStatisticsComponent,
     NewsPageComponent,
-    NewsComponent
+    NewsComponent,
+    NewsListPageComponent
 
   ],
   imports: [

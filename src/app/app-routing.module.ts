@@ -9,6 +9,7 @@ import { RegistrationPageComponent } from './registration-page/registration-page
 import { SupportComponent } from './support/support.component';
 import { NewsPageComponent } from './news-page/news-page.component';
 import {HashLocationStrategy, LocationStrategy, PathLocationStrategy} from '@angular/common';
+import { NewsListPageComponent } from './news-list-page/news-list-page.component';
 
 const routes: Routes = [
   {
@@ -20,7 +21,8 @@ const routes: Routes = [
       { path: 'login', component: LoginPageComponent },
       { path: 'registration', component: RegistrationPageComponent },
       { path: 'support', component: SupportComponent },
-      { path: 'news/:id', component: NewsPageComponent }
+      { path: 'news/:id', component: NewsPageComponent },
+      { path: 'news', component: NewsListPageComponent }
     ]
   },
   {
