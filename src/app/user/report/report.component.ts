@@ -4,6 +4,7 @@ import { PanelService } from '../shared/services/panel.service';
 import { CurrencyService } from 'src/app/shared/services/currency.service';
 import { map } from 'rxjs/operators';
 import { ChartService } from 'src/app/shared/services/chart.service';
+import { RolesService } from 'src/app/shared/services/roles.service';
 
 @Component({
   selector: 'app-report',
@@ -73,7 +74,8 @@ export class ReportComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private panelService: PanelService,
     public currencyService: CurrencyService,
-    private chartService: ChartService
+    private chartService: ChartService,
+    private roles: RolesService    
   ) {
 
     this.currencyService.carrencyChangeEmitter.subscribe(response => {
@@ -200,4 +202,7 @@ export class ReportComponent implements OnInit {
 
   }
 
+  privilege(privelege: string): boolean {
+    return this.roles.validatePrivilege(privelege)
+  }
 }

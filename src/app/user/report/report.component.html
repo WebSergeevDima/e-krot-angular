@@ -1,4 +1,9 @@
 <div class="report__header-block">
+    
+    <div *ngIf="privilege('price-comparisons')">
+        <app-save-report [uniqId]="uniqId"></app-save-report>
+    </div>
+
     <div class="report__header">
 
         <div class="report__header-title">

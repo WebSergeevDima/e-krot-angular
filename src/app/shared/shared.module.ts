@@ -10,6 +10,7 @@ import { ChartComponent } from './components/chart/chart.component';
 import { ChartsModule } from 'ng2-charts';
 import { ReportComponent } from '../user/report/report.component';
 import { RatingWithCommentComponent } from './components/rating-with-comment/rating-with-comment.component';
+import { SaveReportComponent } from './components/save-report/save-report.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,7 @@ import { RatingWithCommentComponent } from './components/rating-with-comment/rat
     ReportComponent,
     RatingWithCommentComponent
   ],
-  declarations: [CurrencyComponent, ReportComponent, LocationComponent, ChartComponent, RatingWithCommentComponent]
+  declarations: [CurrencyComponent, ReportComponent, LocationComponent, ChartComponent, RatingWithCommentComponent, SaveReportComponent]
 })
 export class SharedModule {
 
