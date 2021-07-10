@@ -126,6 +126,8 @@
       flex-direction: column;
 
       &__item {
+        
+        cursor: pointer;
 
         &:nth-child(1) { 
           width: 100%;
