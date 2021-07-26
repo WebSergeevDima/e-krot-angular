@@ -77,4 +77,16 @@ margin: 0 0 20px 0;
     font-weight: 500;
     border-radius: 4px;
     margin: 0 0 20px 0;
+
+
+    & .auto-radio-colums-2 {
+      @media only screen and (max-width: 700px) {
+        flex-direction: column;
+        
+          & > mat-radio-button:nth-child(1) {
+            margin-bottom: 10px;  
+        }
+      }
+  
+    }
 }

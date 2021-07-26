@@ -485,9 +485,14 @@ mat-spinner {
 
   &__text-only {
     display: table;
-    margin: 20px auto;
-    color: #d32f2f;
-    font-weight: 500;
+    margin: 50px auto;
+    color: #540B0E;
+    text-align: center;
+    width: 100%;
+
+    & strong {      
+      font-weight: 500;
+    }
   }
 }
 
